@@ -120,6 +120,28 @@ python3 .claude/skills/shadcn-ui-design/scripts/generate_tokens.py
 # → writes references/DESIGN.md, verifies all 1,804 tokens
 ```
 
+### Pull live data from Figma (REST API)
+
+`scripts/figma-pull.mjs` reads colors and variable bindings straight from the official
+Figma REST API and maps each color back to your tokens (`DESIGN.md` primitives +
+`app/globals.css` semantic tokens) using perceptual OKLab ΔE. Zero dependencies, Node ≥ 18.
+
+```bash
+# 1. Provide a Figma Personal Access Token (never commit it — .mcp.json is gitignored)
+cp .mcp.json.example .mcp.json   # then paste your figd_… token
+#    or: export FIGMA_PERSONAL_ACCESS_TOKEN="figd_…"
+
+# 2. Pull a frame/component by node id (from any figma.com/design/<KEY>/…?node-id=72-2591 URL)
+npm run figma:pull -- --file <FILE_KEY> 72-2591
+
+# 3. Optional JSON report
+npm run figma:pull -- --file <FILE_KEY> 72-2591 --out figma-report.json
+```
+
+> Vendored from [plugin87/figma-rest-api](https://github.com/plugin87/figma-rest-api) (MIT).
+> The Variables REST endpoint is Enterprise-only; on other plans you still get every
+> rendered color + the variable ids each property is bound to.
+
 ---
 
 ## 📂 Project Structure
@@ -135,15 +157,20 @@ python3 .claude/skills/shadcn-ui-design/scripts/generate_tokens.py
 │   ├── providers/           # theme-provider
 │   └── layout/              # app chrome (mode-toggle, …)
 ├── lib/
-│   └── utils.ts             # cn() helper
+│   ├── utils.ts             # cn() helper
+│   └── design-tokens.ts     # reads variables-export.json (docs reference pages)
+├── scripts/
+│   └── figma-pull.mjs       # pull colors/bindings from the Figma REST API
 ├── .claude/skills/          # design-system Skill
 ├── components.json          # shadcn config (radix, neutral, @/ aliases)
+├── .mcp.json.example        # Figma token template (.mcp.json is gitignored)
 └── CLAUDE.md                # Claude Code project guide
 ```
 
 ### Included UI components
-`badge` · `button` · `card` · `dialog` · `dropdown-menu` · `input` · `label`
-· `separator` · `skeleton` · `sonner` · `table`
+`accordion` · `badge` · `breadcrumb` · `button` · `card` · `dialog` · `dropdown-menu`
+· `input` · `label` · `scroll-area` · `separator` · `sheet` · `sidebar` · `skeleton`
+· `sonner` · `table` · `tabs` · `tooltip`
 
 Add more with:
 
