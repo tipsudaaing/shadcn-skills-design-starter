@@ -82,7 +82,14 @@ import { Toggle } from "@/components/ui/toggle";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
-import { ChartDemo, SidebarDemo, SonnerDemo } from "@/components/docs/demos";
+import {
+  ChartDemo,
+  ComboboxDemo,
+  DataTableDemo,
+  DatePickerDemo,
+  SidebarDemo,
+  SonnerDemo,
+} from "@/components/docs/demos";
 import { ColorsReference } from "@/components/docs/references/colors-reference";
 import { RadiusReference } from "@/components/docs/references/radius-reference";
 import { SpacingReference } from "@/components/docs/references/spacing-reference";
@@ -188,6 +195,10 @@ export const registry: DocEntry[] = [
       <NativeSelectOption value="astro">Astro</NativeSelectOption>
     </NativeSelect>,
     `<NativeSelect>\n  <NativeSelectOption value="next">Next.js</NativeSelectOption>\n</NativeSelect>`),
+
+  c("combobox", "Combobox", "Form & Input", "An autocomplete input + command palette — Popover composed with Command.",
+    <ComboboxDemo />,
+    `// Combobox = Popover + Command\n<Popover open={open} onOpenChange={setOpen}>\n  <PopoverTrigger asChild><Button variant="outline" role="combobox">{label}</Button></PopoverTrigger>\n  <PopoverContent><Command><CommandInput /><CommandList>...</CommandList></Command></PopoverContent>\n</Popover>`),
 
   c("radio-group", "Radio Group", "Form & Input", "A set of checkable buttons where only one can be selected.",
     <RadioGroup defaultValue="comfortable">
@@ -477,6 +488,10 @@ export const registry: DocEntry[] = [
     </Command>,
     `<Command>\n  <CommandInput placeholder="Type a command..." />\n  <CommandList><CommandGroup heading="Suggestions"><CommandItem>Calendar</CommandItem></CommandGroup></CommandList>\n</Command>`),
 
+  c("data-table", "Data Table", "Data", "A sortable, structured table — Table composed with sorting state (TanStack-ready).",
+    <DataTableDemo />,
+    `// Data Table = Table + @tanstack/react-table (or local sort state)\n<Table>\n  <TableHeader>...sortable headers...</TableHeader>\n  <TableBody>{rows.map(...)}</TableBody>\n</Table>`),
+
   c("separator", "Separator", "Data", "Visually or semantically separates content.",
     <div className="w-full max-w-sm">
       <div className="space-y-1"><p className="text-sm font-medium">Radix Primitives</p><p className="text-muted-foreground text-sm">An open-source UI component library.</p></div>
@@ -502,6 +517,10 @@ export const registry: DocEntry[] = [
   c("calendar", "Calendar", "Utility", "A date field for selecting dates.",
     <Calendar mode="single" className="rounded-md border" />,
     `<Calendar mode="single" selected={date} onSelect={setDate} className="rounded-md border" />`),
+
+  c("date-picker", "Date Picker", "Utility", "A date field — Popover composed with Calendar.",
+    <DatePickerDemo />,
+    `// Date Picker = Popover + Calendar\n<Popover>\n  <PopoverTrigger asChild><Button variant="outline">{date ? format(date, "PPP") : "Pick a date"}</Button></PopoverTrigger>\n  <PopoverContent><Calendar mode="single" selected={date} onSelect={setDate} /></PopoverContent>\n</Popover>`),
 
   c("scroll-area", "Scroll Area", "Utility", "A scrollable region with a styled scrollbar.",
     <ScrollArea className="h-40 w-full max-w-xs rounded-md border p-4">
