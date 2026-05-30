@@ -63,7 +63,11 @@ export default async function ComponentPage({
         <p className="text-muted-foreground text-base leading-7">{entry.description}</p>
       </header>
 
-      <ComponentPreview preview={entry.demo} code={entry.code} />
+      {entry.reference ? (
+        <div>{entry.demo}</div>
+      ) : (
+        <ComponentPreview preview={entry.demo} code={entry.code} />
+      )}
     </article>
   );
 }

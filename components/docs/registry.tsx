@@ -60,6 +60,10 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { ColorsReference } from "@/components/docs/references/colors-reference";
+import { RadiusReference } from "@/components/docs/references/radius-reference";
+import { SpacingReference } from "@/components/docs/references/spacing-reference";
+import { TypographyReference } from "@/components/docs/references/typography-reference";
 
 export type DocCategory = "Components" | "Design Tokens";
 
@@ -70,20 +74,11 @@ export type DocEntry = {
   category: DocCategory;
   demo: ReactNode;
   code: string;
+  /** Reference pages render the demo full-width without the Preview/Code tabs. */
+  reference?: boolean;
 };
 
 export const CATEGORY_ORDER: DocCategory[] = ["Components", "Design Tokens"];
-
-const swatches: { name: string; className: string; fg: string }[] = [
-  { name: "background", className: "bg-background", fg: "text-foreground" },
-  { name: "primary", className: "bg-primary", fg: "text-primary-foreground" },
-  { name: "secondary", className: "bg-secondary", fg: "text-secondary-foreground" },
-  { name: "muted", className: "bg-muted", fg: "text-muted-foreground" },
-  { name: "accent", className: "bg-accent", fg: "text-accent-foreground" },
-  { name: "destructive", className: "bg-destructive", fg: "text-white" },
-  { name: "card", className: "bg-card", fg: "text-card-foreground" },
-  { name: "border", className: "bg-border", fg: "text-foreground" },
-];
 
 export const registry: DocEntry[] = [
   {
@@ -440,44 +435,39 @@ export const registry: DocEntry[] = [
   {
     slug: "colors",
     title: "Colors",
-    description: "Semantic color tokens. Figma variables map 1:1 to Tailwind classes.",
+    description:
+      "Every color value pulled live from the Figma export — 35 semantic tokens, the Tailwind palette, and the Radix scale.",
     category: "Design Tokens",
-    demo: (
-      <div className="grid w-full grid-cols-2 gap-3 sm:grid-cols-4">
-        {swatches.map((s) => (
-          <div
-            key={s.name}
-            className={`flex h-20 flex-col justify-end rounded-lg border p-3 ${s.className} ${s.fg}`}
-          >
-            <span className="font-mono text-xs">{s.name}</span>
-          </div>
-        ))}
-      </div>
-    ),
-    code: `// Never hardcode colors — use semantic tokens
-<div className="bg-primary text-primary-foreground" />
-<div className="bg-muted text-muted-foreground" />
-<div className="bg-card text-card-foreground" />`,
+    reference: true,
+    demo: <ColorsReference />,
+    code: "",
   },
   {
     slug: "typography",
     title: "Typography",
-    description: "Token-based type scale built on the 4px spacing system.",
+    description: "Font families, sizes, weights, line height, and tracking — pulled from the font tokens.",
     category: "Design Tokens",
-    demo: (
-      <div className="space-y-3">
-        <p className="text-4xl font-bold tracking-tight">Heading 4xl / Bold</p>
-        <p className="text-2xl font-semibold tracking-tight">Heading 2xl / Semibold</p>
-        <p className="text-xl font-semibold">Heading xl / Semibold</p>
-        <p className="text-base leading-7">Body — base size on a 28px line height.</p>
-        <p className="text-muted-foreground text-sm">Muted — helper and caption text.</p>
-        <code className="font-mono text-sm">font-mono — Geist Mono</code>
-      </div>
-    ),
-    code: `<h1 className="text-4xl font-bold tracking-tight">Heading</h1>
-<h2 className="text-2xl font-semibold tracking-tight">Section</h2>
-<p className="text-base leading-7">Body</p>
-<p className="text-muted-foreground text-sm">Muted</p>`,
+    reference: true,
+    demo: <TypographyReference />,
+    code: "",
+  },
+  {
+    slug: "spacing",
+    title: "Spacing",
+    description: "The spacing scale on a 4px base unit, pulled from the gap tokens.",
+    category: "Design Tokens",
+    reference: true,
+    demo: <SpacingReference />,
+    code: "",
+  },
+  {
+    slug: "radius",
+    title: "Radius",
+    description: "Border-radius steps pulled from the Figma export.",
+    category: "Design Tokens",
+    reference: true,
+    demo: <RadiusReference />,
+    code: "",
   },
 ];
 
