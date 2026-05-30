@@ -276,9 +276,9 @@ function Input({ className, ...props }: React.ComponentProps<"input">) {
 
 ## Component Catalogue
 
-**Form & Input:** `button` `checkbox` `input` `input-otp` `label` `radio-group` `select` `slider` `switch` `textarea` `toggle` `toggle-group`
+**Form & Input:** `button` `button-group` `checkbox` `combobox` `field` `input` `input-group` `input-otp` `label` `native-select` `radio-group` `select` `slider` `switch` `textarea` `toggle` `toggle-group`
 
-**Display:** `avatar` `badge` `card` `carousel` `chart` `progress` `skeleton` `spinner` `table`
+**Display:** `avatar` `badge` `card` `carousel` `chart` `empty` `item` `kbd` `progress` `skeleton` `spinner` `table`
 
 **Navigation:** `breadcrumb` `menubar` `navigation-menu` `pagination` `sidebar` `tabs`
 
@@ -289,3 +289,6 @@ function Input({ className, ...props }: React.ComponentProps<"input">) {
 **Feedback:** `alert` `sonner`
 
 **Utility:** `aspect-ratio` `calendar` `date-picker` `resizable` `scroll-area`
+
+> `resizable` is a valid shadcn/ui component but has no page in the current Figma file —
+> kept here as a shadcn capability; add a Figma page if the design needs it.
