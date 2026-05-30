@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-import { CATEGORY_ORDER, getNavGroups } from "@/components/docs/registry";
+import { getNavGroups } from "@/components/docs/registry";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -28,7 +28,7 @@ export default function DocsHome() {
         </p>
         <div className="flex flex-wrap gap-3 pt-2">
           <Button asChild>
-            <Link href={`/docs/${CATEGORY_ORDER[0] === "Components" ? "button" : "colors"}`}>
+            <Link href="/docs/button">
               Browse components <ArrowRight className="size-4" />
             </Link>
           </Button>
