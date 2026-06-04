@@ -90,6 +90,7 @@ import {
   SidebarDemo,
   SonnerDemo,
 } from "@/components/docs/demos";
+import { DemoItem, DemoSection, DemoShowcase } from "@/components/docs/demo";
 import { ColorsReference } from "@/components/docs/references/colors-reference";
 import { IconLibrary } from "@/components/docs/references/icon-library";
 import { RadiusReference } from "@/components/docs/references/radius-reference";
@@ -135,18 +136,21 @@ const c = (slug: string, title: string, category: DocCategory, description: stri
 export const registry: DocEntry[] = [
   // ───────────────────────── Form & Input ─────────────────────────
   c("button", "Button", "Form & Input", "Displays a button or a component that looks like a button.",
-    <div className="flex flex-col items-center gap-4">
-      <div className="flex flex-wrap items-center justify-center gap-2">
-        <Button>Primary</Button><Button variant="secondary">Secondary</Button>
-        <Button variant="outline">Outline</Button><Button variant="ghost">Ghost</Button>
-        <Button variant="destructive">Destructive</Button><Button variant="link">Link</Button>
-      </div>
-      <div className="flex flex-wrap items-center justify-center gap-2">
-        <Button size="sm">Small</Button>
-        <Button size="md">Medium</Button>
-        <Button size="xl">Extra Large</Button>
-      </div>
-    </div>,
+    <DemoShowcase>
+      <DemoSection label="Variants">
+        <DemoItem caption="default"><Button>Primary</Button></DemoItem>
+        <DemoItem caption="secondary"><Button variant="secondary">Secondary</Button></DemoItem>
+        <DemoItem caption="outline"><Button variant="outline">Outline</Button></DemoItem>
+        <DemoItem caption="ghost"><Button variant="ghost">Ghost</Button></DemoItem>
+        <DemoItem caption="destructive"><Button variant="destructive">Destructive</Button></DemoItem>
+        <DemoItem caption="link"><Button variant="link">Link</Button></DemoItem>
+      </DemoSection>
+      <DemoSection label="Sizes">
+        <DemoItem caption="sm"><Button size="sm">Small</Button></DemoItem>
+        <DemoItem caption="md"><Button size="md">Medium</Button></DemoItem>
+        <DemoItem caption="xl"><Button size="xl">Extra Large</Button></DemoItem>
+      </DemoSection>
+    </DemoShowcase>,
     `<Button size="sm">Small</Button>\n<Button size="md">Medium</Button>\n<Button size="xl">Extra Large</Button>`),
 
   c("button-group", "Button Group", "Form & Input", "Groups related buttons together.",
@@ -172,15 +176,21 @@ export const registry: DocEntry[] = [
     `<Field>\n  <FieldLabel htmlFor="fname">Name</FieldLabel>\n  <Input id="fname" />\n  <FieldDescription>...</FieldDescription>\n</Field>`),
 
   c("input", "Input", "Form & Input", "A form input field with a matching label.",
-    <div className="grid w-full max-w-sm gap-3">
-      <div className="grid gap-2">
-        <Label htmlFor="email">Email</Label>
-        <Input id="email" type="email" placeholder="you@example.com" />
-      </div>
-      <Input size="sm" placeholder="Small" />
-      <Input size="md" placeholder="Medium (default)" />
-      <Input size="xl" placeholder="Extra large" />
-    </div>,
+    <DemoShowcase>
+      <DemoSection label="With label">
+        <DemoItem className="w-full max-w-sm items-stretch">
+          <div className="grid gap-2">
+            <Label htmlFor="email">Email</Label>
+            <Input id="email" type="email" placeholder="you@example.com" />
+          </div>
+        </DemoItem>
+      </DemoSection>
+      <DemoSection label="Sizes">
+        <DemoItem caption="sm" className="w-full max-w-sm items-stretch"><Input size="sm" placeholder="Small" /></DemoItem>
+        <DemoItem caption="md" className="w-full max-w-sm items-stretch"><Input size="md" placeholder="Medium (default)" /></DemoItem>
+        <DemoItem caption="xl" className="w-full max-w-sm items-stretch"><Input size="xl" placeholder="Extra large" /></DemoItem>
+      </DemoSection>
+    </DemoShowcase>,
     `<Input size="sm" placeholder="Small" />\n<Input size="md" placeholder="Medium (default)" />\n<Input size="xl" placeholder="Extra large" />`),
 
   c("input-group", "Input Group", "Form & Input", "An input with leading or trailing addons.",
@@ -225,16 +235,20 @@ export const registry: DocEntry[] = [
     `<RadioGroup defaultValue="comfortable">\n  <RadioGroupItem value="default" id="r1" />\n</RadioGroup>`),
 
   c("select", "Select", "Form & Input", "Displays a list of options to pick from, triggered by a button.",
-    <div className="flex flex-col items-center gap-3">
-      {(["sm", "md", "xl"] as const).map((s) => (
-        <Select key={s}>
-          <SelectTrigger size={s} className="w-[200px]">
-            <SelectValue placeholder={`Theme (${s})`} />
-          </SelectTrigger>
-          <SelectContent><SelectItem value="light">Light</SelectItem><SelectItem value="dark">Dark</SelectItem><SelectItem value="system">System</SelectItem></SelectContent>
-        </Select>
-      ))}
-    </div>,
+    <DemoShowcase>
+      <DemoSection label="Sizes">
+        {(["sm", "md", "xl"] as const).map((s) => (
+          <DemoItem key={s} caption={s}>
+            <Select>
+              <SelectTrigger size={s} className="w-[200px]">
+                <SelectValue placeholder="Theme" />
+              </SelectTrigger>
+              <SelectContent><SelectItem value="light">Light</SelectItem><SelectItem value="dark">Dark</SelectItem><SelectItem value="system">System</SelectItem></SelectContent>
+            </Select>
+          </DemoItem>
+        ))}
+      </DemoSection>
+    </DemoShowcase>,
     `<SelectTrigger size="sm">…</SelectTrigger>\n<SelectTrigger size="md">…</SelectTrigger>\n<SelectTrigger size="xl">…</SelectTrigger>`),
 
   c("slider", "Slider", "Form & Input", "An input for selecting a value from a range.",
@@ -246,11 +260,18 @@ export const registry: DocEntry[] = [
     `<Switch id="airplane" />\n<Label htmlFor="airplane">Airplane Mode</Label>`),
 
   c("textarea", "Textarea", "Form & Input", "A multi-line text input field.",
-    <div className="grid w-full max-w-sm gap-3">
-      <div className="grid gap-2"><Label htmlFor="msg">Message</Label><Textarea id="msg" placeholder="Type your message here." /></div>
-      <Textarea size="sm" placeholder="Small" />
-      <Textarea size="xl" placeholder="Extra large" />
-    </div>,
+    <DemoShowcase>
+      <DemoSection label="With label">
+        <DemoItem className="w-full max-w-sm items-stretch">
+          <div className="grid gap-2"><Label htmlFor="msg">Message</Label><Textarea id="msg" placeholder="Type your message here." /></div>
+        </DemoItem>
+      </DemoSection>
+      <DemoSection label="Sizes">
+        <DemoItem caption="sm" className="w-full max-w-sm items-stretch"><Textarea size="sm" placeholder="Small" /></DemoItem>
+        <DemoItem caption="md" className="w-full max-w-sm items-stretch"><Textarea size="md" placeholder="Medium (default)" /></DemoItem>
+        <DemoItem caption="xl" className="w-full max-w-sm items-stretch"><Textarea size="xl" placeholder="Extra large" /></DemoItem>
+      </DemoSection>
+    </DemoShowcase>,
     `<Textarea size="sm" placeholder="Small" />\n<Textarea size="md" placeholder="Medium (default)" />\n<Textarea size="xl" placeholder="Extra large" />`),
 
   c("toggle", "Toggle", "Form & Input", "A two-state button that can be on or off.",
@@ -277,9 +298,14 @@ export const registry: DocEntry[] = [
     `<Avatar>\n  <AvatarImage src="..." alt="@shadcn" />\n  <AvatarFallback>CN</AvatarFallback>\n</Avatar>`),
 
   c("badge", "Badge", "Display", "A small count or status descriptor.",
-    <div className="flex flex-wrap items-center gap-2">
-      <Badge>Default</Badge><Badge variant="secondary">Secondary</Badge><Badge variant="destructive">Destructive</Badge><Badge variant="outline">Outline</Badge>
-    </div>,
+    <DemoShowcase>
+      <DemoSection label="Variants">
+        <DemoItem caption="default"><Badge>Default</Badge></DemoItem>
+        <DemoItem caption="secondary"><Badge variant="secondary">Secondary</Badge></DemoItem>
+        <DemoItem caption="destructive"><Badge variant="destructive">Destructive</Badge></DemoItem>
+        <DemoItem caption="outline"><Badge variant="outline">Outline</Badge></DemoItem>
+      </DemoSection>
+    </DemoShowcase>,
     `<Badge>Default</Badge>\n<Badge variant="secondary">Secondary</Badge>`),
 
   c("card", "Card", "Display", "A container for content with a header, body, and footer.",
@@ -528,7 +554,16 @@ export const registry: DocEntry[] = [
 
   // ───────────────────────── Feedback ─────────────────────────
   c("alert", "Alert", "Feedback", "Displays a callout for user attention.",
-    <Alert className="w-full max-w-md"><Bell className="size-4" /><AlertTitle>Heads up!</AlertTitle><AlertDescription>You can add components to your app using the CLI.</AlertDescription></Alert>,
+    <DemoShowcase>
+      <DemoSection label="Variants">
+        <DemoItem caption="default" className="w-full max-w-md items-stretch">
+          <Alert><Bell className="size-4" /><AlertTitle>Heads up!</AlertTitle><AlertDescription>You can add components to your app using the CLI.</AlertDescription></Alert>
+        </DemoItem>
+        <DemoItem caption="destructive" className="w-full max-w-md items-stretch">
+          <Alert variant="destructive"><Bell className="size-4" /><AlertTitle>Something went wrong</AlertTitle><AlertDescription>Your session has expired. Please log in again.</AlertDescription></Alert>
+        </DemoItem>
+      </DemoSection>
+    </DemoShowcase>,
     `<Alert>\n  <Bell />\n  <AlertTitle>Heads up!</AlertTitle>\n  <AlertDescription>...</AlertDescription>\n</Alert>`),
 
   c("sonner", "Sonner", "Feedback", "An opinionated toast notification system.",
