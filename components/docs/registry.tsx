@@ -227,7 +227,7 @@ export const registry: DocEntry[] = [
     `// Combobox = Popover + Command\n<Popover open={open} onOpenChange={setOpen}>\n  <PopoverTrigger asChild><Button variant="outline" role="combobox">{label}</Button></PopoverTrigger>\n  <PopoverContent><Command><CommandInput /><CommandList>...</CommandList></Command></PopoverContent>\n</Popover>`),
 
   c("radio-group", "Radio Group", "Form & Input", "A set of checkable buttons where only one can be selected.",
-    <RadioGroup defaultValue="comfortable">
+    <RadioGroup defaultValue="comfortable" className="w-fit">
       <div className="flex items-center gap-2"><RadioGroupItem value="default" id="r1" /><Label htmlFor="r1">Default</Label></div>
       <div className="flex items-center gap-2"><RadioGroupItem value="comfortable" id="r2" /><Label htmlFor="r2">Comfortable</Label></div>
       <div className="flex items-center gap-2"><RadioGroupItem value="compact" id="r3" /><Label htmlFor="r3">Compact</Label></div>
@@ -434,13 +434,15 @@ export const registry: DocEntry[] = [
     `<Spinner />\n<Spinner className="size-6" />\n<Button disabled><Spinner />Loading</Button>`),
 
   c("table", "Table", "Display", "A responsive table for tabular data.",
-    <Table>
-      <TableHeader><TableRow><TableHead>Invoice</TableHead><TableHead>Status</TableHead><TableHead className="text-right">Amount</TableHead></TableRow></TableHeader>
-      <TableBody>
-        <TableRow><TableCell className="font-medium">INV001</TableCell><TableCell><Badge>Paid</Badge></TableCell><TableCell className="text-right">$250.00</TableCell></TableRow>
-        <TableRow><TableCell className="font-medium">INV002</TableCell><TableCell><Badge variant="secondary">Pending</Badge></TableCell><TableCell className="text-right">$150.00</TableCell></TableRow>
-      </TableBody>
-    </Table>,
+    <div className="mx-auto w-full max-w-2xl">
+      <Table>
+        <TableHeader><TableRow><TableHead>Invoice</TableHead><TableHead>Status</TableHead><TableHead className="text-right">Amount</TableHead></TableRow></TableHeader>
+        <TableBody>
+          <TableRow><TableCell className="font-medium">INV001</TableCell><TableCell><Badge>Paid</Badge></TableCell><TableCell className="text-right">$250.00</TableCell></TableRow>
+          <TableRow><TableCell className="font-medium">INV002</TableCell><TableCell><Badge variant="secondary">Pending</Badge></TableCell><TableCell className="text-right">$150.00</TableCell></TableRow>
+        </TableBody>
+      </Table>
+    </div>,
     `<Table>\n  <TableHeader>...</TableHeader>\n  <TableBody>...</TableBody>\n</Table>`),
 
   // ───────────────────────── Navigation ─────────────────────────
