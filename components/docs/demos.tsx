@@ -6,13 +6,19 @@ import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 import { toast } from "sonner";
 import {
   ArrowUpDown,
+  BookOpen,
+  Bot,
   Calendar as CalendarIcon,
   Check,
+  ChevronRight,
   ChevronsUpDown,
-  Home,
-  Inbox,
-  Search,
-  Settings,
+  Frame,
+  GalleryVerticalEnd,
+  Map,
+  MoreHorizontal,
+  PieChart,
+  Settings2,
+  SquareTerminal,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -34,15 +40,26 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
-  SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
+  SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
   SidebarProvider,
 } from "@/components/ui/sidebar";
 import {
@@ -98,37 +115,145 @@ export function SonnerDemo() {
 }
 
 /* ───────────────────────── Sidebar ───────────────────────── */
-const sidebarItems = [
-  { title: "Home", icon: Home },
-  { title: "Inbox", icon: Inbox },
-  { title: "Search", icon: Search },
-  { title: "Settings", icon: Settings },
+const navMain = [
+  {
+    title: "Playground",
+    icon: SquareTerminal,
+    isActive: true,
+    items: [{ title: "History" }, { title: "Starred" }, { title: "Settings" }],
+  },
+  {
+    title: "Models",
+    icon: Bot,
+    items: [{ title: "Genesis" }, { title: "Explorer" }, { title: "Quantum" }],
+  },
+  {
+    title: "Documentation",
+    icon: BookOpen,
+    items: [
+      { title: "Introduction" },
+      { title: "Get Started" },
+      { title: "Tutorials" },
+    ],
+  },
+  {
+    title: "Settings",
+    icon: Settings2,
+    items: [{ title: "General" }, { title: "Team" }, { title: "Billing" }],
+  },
+];
+
+const projects = [
+  { name: "Design Engineering", icon: Frame },
+  { name: "Sales & Marketing", icon: PieChart },
+  { name: "Travel", icon: Map },
 ];
 
 export function SidebarDemo() {
   return (
-    <div className="h-[320px] w-full overflow-hidden rounded-lg border">
+    <div className="h-[600px] w-full max-w-[16rem] overflow-hidden rounded-lg border">
       <SidebarProvider className="min-h-full items-stretch">
-        <Sidebar collapsible="none" className="border-r">
+        <Sidebar collapsible="none" className="h-full">
+          {/* Header — team switcher */}
+          <SidebarHeader>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton size="lg">
+                  <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+                    <GalleryVerticalEnd className="size-4" />
+                  </div>
+                  <div className="grid flex-1 text-left text-sm leading-tight">
+                    <span className="truncate font-medium">Acme Inc</span>
+                    <span className="truncate text-xs">Enterprise</span>
+                  </div>
+                  <ChevronsUpDown className="ml-auto size-4" />
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarHeader>
+
           <SidebarContent>
+            {/* Platform — collapsible nav */}
             <SidebarGroup>
-              <SidebarGroupLabel>Application</SidebarGroupLabel>
-              <SidebarGroupContent>
-                <SidebarMenu>
-                  {sidebarItems.map((item) => (
-                    <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton>
-                        <item.icon className="size-4" />
-                        <span>{item.title}</span>
-                      </SidebarMenuButton>
+              <SidebarGroupLabel>Platform</SidebarGroupLabel>
+              <SidebarMenu>
+                {navMain.map((item) => (
+                  <Collapsible
+                    key={item.title}
+                    asChild
+                    defaultOpen={item.isActive}
+                    className="group/collapsible"
+                  >
+                    <SidebarMenuItem>
+                      <CollapsibleTrigger asChild>
+                        <SidebarMenuButton>
+                          <item.icon className="size-4" />
+                          <span>{item.title}</span>
+                          <ChevronRight className="ml-auto size-4 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                        </SidebarMenuButton>
+                      </CollapsibleTrigger>
+                      <CollapsibleContent>
+                        <SidebarMenuSub>
+                          {item.items.map((sub) => (
+                            <SidebarMenuSubItem key={sub.title}>
+                              <SidebarMenuSubButton>
+                                <span>{sub.title}</span>
+                              </SidebarMenuSubButton>
+                            </SidebarMenuSubItem>
+                          ))}
+                        </SidebarMenuSub>
+                      </CollapsibleContent>
                     </SidebarMenuItem>
-                  ))}
-                </SidebarMenu>
-              </SidebarGroupContent>
+                  </Collapsible>
+                ))}
+              </SidebarMenu>
+            </SidebarGroup>
+
+            {/* Projects */}
+            <SidebarGroup>
+              <SidebarGroupLabel>Projects</SidebarGroupLabel>
+              <SidebarMenu>
+                {projects.map((project) => (
+                  <SidebarMenuItem key={project.name}>
+                    <SidebarMenuButton>
+                      <project.icon className="size-4" />
+                      <span>{project.name}</span>
+                    </SidebarMenuButton>
+                    <SidebarMenuAction showOnHover>
+                      <MoreHorizontal className="size-4" />
+                      <span className="sr-only">More</span>
+                    </SidebarMenuAction>
+                  </SidebarMenuItem>
+                ))}
+                <SidebarMenuItem>
+                  <SidebarMenuButton className="text-sidebar-foreground/70">
+                    <MoreHorizontal className="size-4" />
+                    <span>More</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
             </SidebarGroup>
           </SidebarContent>
+
+          {/* Footer — user */}
+          <SidebarFooter>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton size="lg">
+                  <Avatar className="size-8 rounded-lg">
+                    <AvatarImage src="https://github.com/shadcn.png" alt="Shadcn" />
+                    <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                  </Avatar>
+                  <div className="grid flex-1 text-left text-sm leading-tight">
+                    <span className="truncate font-medium">Shadcn</span>
+                    <span className="truncate text-xs">m@example.com</span>
+                  </div>
+                  <ChevronsUpDown className="ml-auto size-4" />
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarFooter>
         </Sidebar>
-        <main className="text-muted-foreground flex-1 p-4 text-sm">Content area</main>
       </SidebarProvider>
     </div>
   );

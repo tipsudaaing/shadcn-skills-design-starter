@@ -376,9 +376,9 @@ export const registry: DocEntry[] = [
     </Pagination>,
     `<Pagination>\n  <PaginationContent>\n    <PaginationItem><PaginationPrevious href="#" /></PaginationItem>\n    <PaginationItem><PaginationLink href="#" isActive>2</PaginationLink></PaginationItem>\n  </PaginationContent>\n</Pagination>`),
 
-  c("sidebar", "Sidebar", "Navigation", "A composable, themeable application sidebar.",
+  c("sidebar", "Sidebar", "Navigation", "A composable, themeable and customizable sidebar component.",
     <SidebarDemo />,
-    `<SidebarProvider>\n  <Sidebar>\n    <SidebarContent>\n      <SidebarGroup>...</SidebarGroup>\n    </SidebarContent>\n  </Sidebar>\n</SidebarProvider>`),
+    `<SidebarProvider>\n  <Sidebar>\n    <SidebarHeader>{/* team switcher */}</SidebarHeader>\n    <SidebarContent>\n      <SidebarGroup>\n        <SidebarGroupLabel>Platform</SidebarGroupLabel>\n        <SidebarMenu>\n          <Collapsible asChild defaultOpen>\n            <SidebarMenuItem>\n              <CollapsibleTrigger asChild>\n                <SidebarMenuButton>\n                  <SquareTerminal />\n                  <span>Playground</span>\n                  <ChevronRight className="ml-auto group-data-[state=open]/collapsible:rotate-90" />\n                </SidebarMenuButton>\n              </CollapsibleTrigger>\n              <CollapsibleContent>\n                <SidebarMenuSub>\n                  <SidebarMenuSubItem>\n                    <SidebarMenuSubButton>History</SidebarMenuSubButton>\n                  </SidebarMenuSubItem>\n                </SidebarMenuSub>\n              </CollapsibleContent>\n            </SidebarMenuItem>\n          </Collapsible>\n        </SidebarMenu>\n      </SidebarGroup>\n    </SidebarContent>\n    <SidebarFooter>{/* user menu */}</SidebarFooter>\n  </Sidebar>\n</SidebarProvider>`),
 
   c("tabs", "Tabs", "Navigation", "Layered sections of content shown one panel at a time.",
     <Tabs defaultValue="account" className="w-full max-w-md">
