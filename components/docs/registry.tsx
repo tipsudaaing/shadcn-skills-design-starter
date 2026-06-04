@@ -275,27 +275,67 @@ export const registry: DocEntry[] = [
     `<Textarea size="sm" placeholder="Small" />\n<Textarea size="md" placeholder="Medium (default)" />\n<Textarea size="xl" placeholder="Extra large" />`),
 
   c("toggle", "Toggle", "Form & Input", "A two-state button that can be on or off.",
-    <div className="flex gap-2">
-      <Toggle aria-label="Bold"><Bold className="size-4" /></Toggle>
-      <Toggle aria-label="Italic"><Italic className="size-4" /></Toggle>
-    </div>,
-    `<Toggle aria-label="Bold"><Bold /></Toggle>`),
+    <DemoShowcase>
+      <DemoSection label="Variants">
+        <DemoItem caption="default"><Toggle aria-label="Bold"><Bold className="size-4" /></Toggle></DemoItem>
+        <DemoItem caption="outline"><Toggle variant="outline" aria-label="Italic"><Italic className="size-4" /></Toggle></DemoItem>
+      </DemoSection>
+      <DemoSection label="Sizes">
+        <DemoItem caption="sm"><Toggle size="sm" aria-label="Bold"><Bold className="size-4" /></Toggle></DemoItem>
+        <DemoItem caption="default"><Toggle size="default" aria-label="Bold"><Bold className="size-4" /></Toggle></DemoItem>
+        <DemoItem caption="lg"><Toggle size="lg" aria-label="Bold"><Bold className="size-4" /></Toggle></DemoItem>
+      </DemoSection>
+    </DemoShowcase>,
+    `<Toggle aria-label="Bold"><Bold /></Toggle>\n<Toggle variant="outline" size="lg"><Italic /></Toggle>`),
 
   c("toggle-group", "Toggle Group", "Form & Input", "A set of two-state buttons that can be toggled.",
-    <ToggleGroup type="multiple">
-      <ToggleGroupItem value="bold" aria-label="Bold"><Bold className="size-4" /></ToggleGroupItem>
-      <ToggleGroupItem value="italic" aria-label="Italic"><Italic className="size-4" /></ToggleGroupItem>
-      <ToggleGroupItem value="underline" aria-label="Underline"><Underline className="size-4" /></ToggleGroupItem>
-    </ToggleGroup>,
-    `<ToggleGroup type="multiple">\n  <ToggleGroupItem value="bold"><Bold /></ToggleGroupItem>\n</ToggleGroup>`),
+    <DemoShowcase>
+      <DemoSection label="Variants">
+        <DemoItem caption="default">
+          <ToggleGroup type="multiple">
+            <ToggleGroupItem value="bold" aria-label="Bold"><Bold className="size-4" /></ToggleGroupItem>
+            <ToggleGroupItem value="italic" aria-label="Italic"><Italic className="size-4" /></ToggleGroupItem>
+            <ToggleGroupItem value="underline" aria-label="Underline"><Underline className="size-4" /></ToggleGroupItem>
+          </ToggleGroup>
+        </DemoItem>
+        <DemoItem caption="outline">
+          <ToggleGroup type="multiple" variant="outline">
+            <ToggleGroupItem value="bold" aria-label="Bold"><Bold className="size-4" /></ToggleGroupItem>
+            <ToggleGroupItem value="italic" aria-label="Italic"><Italic className="size-4" /></ToggleGroupItem>
+            <ToggleGroupItem value="underline" aria-label="Underline"><Underline className="size-4" /></ToggleGroupItem>
+          </ToggleGroup>
+        </DemoItem>
+      </DemoSection>
+      <DemoSection label="Sizes">
+        <DemoItem caption="sm">
+          <ToggleGroup type="multiple" size="sm">
+            <ToggleGroupItem value="bold" aria-label="Bold"><Bold className="size-4" /></ToggleGroupItem>
+            <ToggleGroupItem value="italic" aria-label="Italic"><Italic className="size-4" /></ToggleGroupItem>
+          </ToggleGroup>
+        </DemoItem>
+        <DemoItem caption="lg">
+          <ToggleGroup type="multiple" size="lg">
+            <ToggleGroupItem value="bold" aria-label="Bold"><Bold className="size-4" /></ToggleGroupItem>
+            <ToggleGroupItem value="italic" aria-label="Italic"><Italic className="size-4" /></ToggleGroupItem>
+          </ToggleGroup>
+        </DemoItem>
+      </DemoSection>
+    </DemoShowcase>,
+    `<ToggleGroup type="multiple" variant="outline" size="lg">\n  <ToggleGroupItem value="bold"><Bold /></ToggleGroupItem>\n</ToggleGroup>`),
 
   // ───────────────────────── Display ─────────────────────────
   c("avatar", "Avatar", "Display", "An image element with a fallback for representing a user.",
-    <div className="flex items-center gap-3">
-      <Avatar><AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" /><AvatarFallback>CN</AvatarFallback></Avatar>
-      <Avatar><AvatarFallback>AB</AvatarFallback></Avatar>
-    </div>,
-    `<Avatar>\n  <AvatarImage src="..." alt="@shadcn" />\n  <AvatarFallback>CN</AvatarFallback>\n</Avatar>`),
+    <DemoShowcase>
+      <DemoSection label="Sizes">
+        <DemoItem caption="sm"><Avatar size="sm"><AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" /><AvatarFallback>CN</AvatarFallback></Avatar></DemoItem>
+        <DemoItem caption="default"><Avatar size="default"><AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" /><AvatarFallback>CN</AvatarFallback></Avatar></DemoItem>
+        <DemoItem caption="lg"><Avatar size="lg"><AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" /><AvatarFallback>CN</AvatarFallback></Avatar></DemoItem>
+      </DemoSection>
+      <DemoSection label="Fallback">
+        <DemoItem caption="initials"><Avatar><AvatarFallback>AB</AvatarFallback></Avatar></DemoItem>
+      </DemoSection>
+    </DemoShowcase>,
+    `<Avatar size="lg">\n  <AvatarImage src="..." alt="@shadcn" />\n  <AvatarFallback>CN</AvatarFallback>\n</Avatar>`),
 
   c("badge", "Badge", "Display", "A small count or status descriptor.",
     <DemoShowcase>
@@ -352,19 +392,46 @@ export const registry: DocEntry[] = [
     `<KbdGroup><Kbd>⌘</Kbd><Kbd>K</Kbd></KbdGroup>`),
 
   c("progress", "Progress", "Display", "Displays an indicator showing completion progress.",
-    <Progress value={60} className="w-full max-w-sm" />,
-    `<Progress value={60} />`),
+    <DemoShowcase>
+      <DemoSection label="Values">
+        <DemoItem caption="25%" className="w-full max-w-sm items-stretch"><Progress value={25} /></DemoItem>
+        <DemoItem caption="50%" className="w-full max-w-sm items-stretch"><Progress value={50} /></DemoItem>
+        <DemoItem caption="75%" className="w-full max-w-sm items-stretch"><Progress value={75} /></DemoItem>
+      </DemoSection>
+    </DemoShowcase>,
+    `<Progress value={25} />\n<Progress value={50} />\n<Progress value={75} />`),
 
   c("skeleton", "Skeleton", "Display", "A placeholder to show while content is loading.",
-    <div className="flex items-center gap-4">
-      <Skeleton className="size-12 rounded-full" />
-      <div className="space-y-2"><Skeleton className="h-4 w-[200px]" /><Skeleton className="h-4 w-[160px]" /></div>
-    </div>,
+    <DemoShowcase>
+      <DemoSection label="Shapes">
+        <DemoItem caption="avatar + lines">
+          <div className="flex items-center gap-4">
+            <Skeleton className="size-12 rounded-full" />
+            <div className="space-y-2"><Skeleton className="h-4 w-[200px]" /><Skeleton className="h-4 w-[160px]" /></div>
+          </div>
+        </DemoItem>
+        <DemoItem caption="card">
+          <div className="flex flex-col gap-2">
+            <Skeleton className="h-28 w-[250px] rounded-lg" />
+            <Skeleton className="h-4 w-[250px]" /><Skeleton className="h-4 w-[200px]" />
+          </div>
+        </DemoItem>
+      </DemoSection>
+    </DemoShowcase>,
     `<Skeleton className="size-12 rounded-full" />\n<Skeleton className="h-4 w-[200px]" />`),
 
   c("spinner", "Spinner", "Display", "An animated loading indicator.",
-    <div className="flex items-center gap-4"><Spinner /><Button disabled><Spinner />Loading</Button></div>,
-    `<Spinner />\n<Button disabled><Spinner />Loading</Button>`),
+    <DemoShowcase>
+      <DemoSection label="Sizes">
+        <DemoItem caption="size-4"><Spinner /></DemoItem>
+        <DemoItem caption="size-6"><Spinner className="size-6" /></DemoItem>
+        <DemoItem caption="size-8"><Spinner className="size-8" /></DemoItem>
+      </DemoSection>
+      <DemoSection label="In context">
+        <DemoItem caption="button"><Button disabled><Spinner />Loading</Button></DemoItem>
+      </DemoSection>
+    </DemoShowcase>,
+    `<Spinner />\n<Spinner className="size-6" />\n<Button disabled><Spinner />Loading</Button>`),
 
   c("table", "Table", "Display", "A responsive table for tabular data.",
     <Table>
