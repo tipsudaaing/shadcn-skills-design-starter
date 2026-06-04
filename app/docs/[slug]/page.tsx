@@ -17,6 +17,13 @@ export function generateStaticParams() {
   return registry.map((e) => ({ slug: e.slug }));
 }
 
+// Composition patterns have no single `shadcn add` item — install the primitives.
+const INSTALL_OVERRIDES: Record<string, string> = {
+  combobox: "popover command",
+  "data-table": "table",
+  "date-picker": "calendar popover",
+};
+
 export async function generateMetadata({
   params,
 }: {
@@ -66,7 +73,11 @@ export default async function ComponentPage({
       {entry.reference ? (
         <div>{entry.demo}</div>
       ) : (
-        <ComponentPreview preview={entry.demo} code={entry.code} />
+        <ComponentPreview
+          preview={entry.demo}
+          code={entry.code}
+          install={INSTALL_OVERRIDES[entry.slug] ?? entry.slug}
+        />
       )}
     </article>
   );
