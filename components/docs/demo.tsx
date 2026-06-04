@@ -5,7 +5,8 @@ import { cn } from "@/lib/utils";
 /**
  * Presentational scaffolding for the docs previews so every showcase reads the
  * same: optional group headings + per-example captions act as the "indicator"
- * that labels each variant/size.
+ * that labels each variant/size. Everything is centered to match the
+ * single-example previews.
  */
 export function DemoShowcase({
   className,
@@ -17,7 +18,7 @@ export function DemoShowcase({
   return (
     <div
       className={cn(
-        "flex w-full max-w-2xl flex-col [&>section+section]:mt-6 [&>section+section]:border-t [&>section+section]:border-border [&>section+section]:pt-6",
+        "mx-auto flex w-full max-w-2xl flex-col [&>section+section]:mt-6 [&>section+section]:border-t [&>section+section]:border-border [&>section+section]:pt-6",
         className,
       )}
     >
@@ -28,28 +29,21 @@ export function DemoShowcase({
 
 export function DemoSection({
   label,
-  align = "start",
   className,
   children,
 }: {
   label?: string;
-  align?: "start" | "center";
   className?: string;
   children: React.ReactNode;
 }) {
   return (
-    <section className={cn("flex flex-col gap-3", className)}>
+    <section className={cn("flex w-full flex-col gap-3", className)}>
       {label && (
-        <span className="text-muted-foreground text-[0.65rem] font-medium tracking-wider uppercase">
+        <span className="text-muted-foreground text-center text-[0.65rem] font-medium tracking-wider uppercase">
           {label}
         </span>
       )}
-      <div
-        className={cn(
-          "flex flex-wrap items-end gap-x-6 gap-y-4",
-          align === "center" && "justify-center",
-        )}
-      >
+      <div className="flex flex-wrap items-end justify-center gap-x-6 gap-y-4">
         {children}
       </div>
     </section>
@@ -69,7 +63,7 @@ export function DemoItem({
     <div className={cn("flex flex-col items-center gap-1.5", className)}>
       {children}
       {caption && (
-        <span className="text-muted-foreground font-mono text-[0.7rem]">
+        <span className="text-muted-foreground text-center font-mono text-[0.7rem]">
           {caption}
         </span>
       )}
