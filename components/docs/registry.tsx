@@ -91,6 +91,7 @@ import {
   SonnerDemo,
 } from "@/components/docs/demos";
 import { ColorsReference } from "@/components/docs/references/colors-reference";
+import { IconLibrary } from "@/components/docs/references/icon-library";
 import { RadiusReference } from "@/components/docs/references/radius-reference";
 import { SpacingReference } from "@/components/docs/references/spacing-reference";
 import { TypographyReference } from "@/components/docs/references/typography-reference";
@@ -103,6 +104,7 @@ export type DocCategory =
   | "Data"
   | "Feedback"
   | "Utility"
+  | "Foundations"
   | "Design Tokens";
 
 export type DocEntry = {
@@ -123,6 +125,7 @@ export const CATEGORY_ORDER: DocCategory[] = [
   "Data",
   "Feedback",
   "Utility",
+  "Foundations",
   "Design Tokens",
 ];
 
@@ -527,6 +530,11 @@ export const registry: DocEntry[] = [
       <div className="space-y-2">{Array.from({ length: 20 }).map((_, i) => (<div key={i} className="text-sm">Item {i + 1}</div>))}</div>
     </ScrollArea>,
     `<ScrollArea className="h-40 rounded-md border p-4">\n  {items.map(...)}\n</ScrollArea>`),
+
+  // ───────────────────────── Foundations ─────────────────────────
+  { slug: "icons", title: "Icons", category: "Foundations", reference: true, code: "",
+    description: "The Lucide outline icon set, rendered live from lucide-react — searchable, click to copy. Mirrors the Figma “Lucide - Outline” library.",
+    demo: <IconLibrary /> },
 
   // ───────────────────────── Design Tokens ─────────────────────────
   { slug: "colors", title: "Colors", category: "Design Tokens", reference: true, code: "",
