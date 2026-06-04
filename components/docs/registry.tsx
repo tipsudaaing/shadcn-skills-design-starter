@@ -135,12 +135,19 @@ const c = (slug: string, title: string, category: DocCategory, description: stri
 export const registry: DocEntry[] = [
   // ───────────────────────── Form & Input ─────────────────────────
   c("button", "Button", "Form & Input", "Displays a button or a component that looks like a button.",
-    <div className="flex flex-wrap items-center gap-2">
-      <Button>Primary</Button><Button variant="secondary">Secondary</Button>
-      <Button variant="outline">Outline</Button><Button variant="ghost">Ghost</Button>
-      <Button variant="destructive">Destructive</Button><Button variant="link">Link</Button>
+    <div className="flex flex-col items-center gap-4">
+      <div className="flex flex-wrap items-center justify-center gap-2">
+        <Button>Primary</Button><Button variant="secondary">Secondary</Button>
+        <Button variant="outline">Outline</Button><Button variant="ghost">Ghost</Button>
+        <Button variant="destructive">Destructive</Button><Button variant="link">Link</Button>
+      </div>
+      <div className="flex flex-wrap items-center justify-center gap-2">
+        <Button size="sm">Small</Button>
+        <Button size="md">Medium</Button>
+        <Button size="xl">Extra Large</Button>
+      </div>
     </div>,
-    `<Button>Primary</Button>\n<Button variant="secondary">Secondary</Button>\n<Button variant="outline">Outline</Button>`),
+    `<Button size="sm">Small</Button>\n<Button size="md">Medium</Button>\n<Button size="xl">Extra Large</Button>`),
 
   c("button-group", "Button Group", "Form & Input", "Groups related buttons together.",
     <ButtonGroup>
@@ -165,10 +172,16 @@ export const registry: DocEntry[] = [
     `<Field>\n  <FieldLabel htmlFor="fname">Name</FieldLabel>\n  <Input id="fname" />\n  <FieldDescription>...</FieldDescription>\n</Field>`),
 
   c("input", "Input", "Form & Input", "A form input field with a matching label.",
-    <div className="grid w-full max-w-sm gap-2">
-      <Label htmlFor="email">Email</Label><Input id="email" type="email" placeholder="you@example.com" />
+    <div className="grid w-full max-w-sm gap-3">
+      <div className="grid gap-2">
+        <Label htmlFor="email">Email</Label>
+        <Input id="email" type="email" placeholder="you@example.com" />
+      </div>
+      <Input size="sm" placeholder="Small" />
+      <Input size="md" placeholder="Medium (default)" />
+      <Input size="xl" placeholder="Extra large" />
     </div>,
-    `<Label htmlFor="email">Email</Label>\n<Input id="email" type="email" placeholder="you@example.com" />`),
+    `<Input size="sm" placeholder="Small" />\n<Input size="md" placeholder="Medium (default)" />\n<Input size="xl" placeholder="Extra large" />`),
 
   c("input-group", "Input Group", "Form & Input", "An input with leading or trailing addons.",
     <InputGroup className="w-full max-w-sm">
@@ -212,11 +225,17 @@ export const registry: DocEntry[] = [
     `<RadioGroup defaultValue="comfortable">\n  <RadioGroupItem value="default" id="r1" />\n</RadioGroup>`),
 
   c("select", "Select", "Form & Input", "Displays a list of options to pick from, triggered by a button.",
-    <Select>
-      <SelectTrigger className="w-[180px]"><SelectValue placeholder="Theme" /></SelectTrigger>
-      <SelectContent><SelectItem value="light">Light</SelectItem><SelectItem value="dark">Dark</SelectItem><SelectItem value="system">System</SelectItem></SelectContent>
-    </Select>,
-    `<Select>\n  <SelectTrigger><SelectValue placeholder="Theme" /></SelectTrigger>\n  <SelectContent><SelectItem value="light">Light</SelectItem></SelectContent>\n</Select>`),
+    <div className="flex flex-col items-center gap-3">
+      {(["sm", "md", "xl"] as const).map((s) => (
+        <Select key={s}>
+          <SelectTrigger size={s} className="w-[200px]">
+            <SelectValue placeholder={`Theme (${s})`} />
+          </SelectTrigger>
+          <SelectContent><SelectItem value="light">Light</SelectItem><SelectItem value="dark">Dark</SelectItem><SelectItem value="system">System</SelectItem></SelectContent>
+        </Select>
+      ))}
+    </div>,
+    `<SelectTrigger size="sm">…</SelectTrigger>\n<SelectTrigger size="md">…</SelectTrigger>\n<SelectTrigger size="xl">…</SelectTrigger>`),
 
   c("slider", "Slider", "Form & Input", "An input for selecting a value from a range.",
     <Slider defaultValue={[50]} max={100} step={1} className="w-full max-w-sm" />,
@@ -227,8 +246,12 @@ export const registry: DocEntry[] = [
     `<Switch id="airplane" />\n<Label htmlFor="airplane">Airplane Mode</Label>`),
 
   c("textarea", "Textarea", "Form & Input", "A multi-line text input field.",
-    <div className="grid w-full max-w-sm gap-2"><Label htmlFor="msg">Message</Label><Textarea id="msg" placeholder="Type your message here." /></div>,
-    `<Label htmlFor="msg">Message</Label>\n<Textarea id="msg" placeholder="Type your message here." />`),
+    <div className="grid w-full max-w-sm gap-3">
+      <div className="grid gap-2"><Label htmlFor="msg">Message</Label><Textarea id="msg" placeholder="Type your message here." /></div>
+      <Textarea size="sm" placeholder="Small" />
+      <Textarea size="xl" placeholder="Extra large" />
+    </div>,
+    `<Textarea size="sm" placeholder="Small" />\n<Textarea size="md" placeholder="Medium (default)" />\n<Textarea size="xl" placeholder="Extra large" />`),
 
   c("toggle", "Toggle", "Form & Input", "A two-state button that can be on or off.",
     <div className="flex gap-2">
