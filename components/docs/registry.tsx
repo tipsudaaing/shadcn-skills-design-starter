@@ -44,7 +44,6 @@ import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Input } from "@/components/ui/input";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
-import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "@/components/ui/input-otp";
 import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from "@/components/ui/item";
 import { Kbd, KbdGroup } from "@/components/ui/kbd";
 import { Label } from "@/components/ui/label";
@@ -87,6 +86,7 @@ import {
   ComboboxDemo,
   DataTableDemo,
   DatePickerDemo,
+  InputOTPDemo,
   SidebarDemo,
   SonnerDemo,
 } from "@/components/docs/demos";
@@ -201,12 +201,8 @@ export const registry: DocEntry[] = [
     `<InputGroup>\n  <InputGroupAddon><Search /></InputGroupAddon>\n  <InputGroupInput placeholder="Search..." />\n</InputGroup>`),
 
   c("input-otp", "Input OTP", "Form & Input", "Accessible one-time-password input.",
-    <InputOTP maxLength={6}>
-      <InputOTPGroup><InputOTPSlot index={0} /><InputOTPSlot index={1} /><InputOTPSlot index={2} /></InputOTPGroup>
-      <InputOTPSeparator />
-      <InputOTPGroup><InputOTPSlot index={3} /><InputOTPSlot index={4} /><InputOTPSlot index={5} /></InputOTPGroup>
-    </InputOTP>,
-    `<InputOTP maxLength={6}>\n  <InputOTPGroup>\n    <InputOTPSlot index={0} /> ...\n  </InputOTPGroup>\n</InputOTP>`),
+    <InputOTPDemo />,
+    `const [value, setValue] = React.useState("123456")\n\n<InputOTP maxLength={6} value={value} onChange={setValue}>\n  <InputOTPGroup>\n    <InputOTPSlot index={0} />\n    <InputOTPSlot index={1} />\n    <InputOTPSlot index={2} />\n    <InputOTPSlot index={3} />\n    <InputOTPSlot index={4} />\n    <InputOTPSlot index={5} />\n  </InputOTPGroup>\n</InputOTP>`),
 
   c("label", "Label", "Form & Input", "An accessible label associated with a control.",
     <div className="flex items-center gap-2">

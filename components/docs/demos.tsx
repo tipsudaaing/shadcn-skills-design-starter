@@ -39,6 +39,11 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@/components/ui/input-otp";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -94,6 +99,26 @@ export function ChartDemo() {
         <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
       </BarChart>
     </ChartContainer>
+  );
+}
+
+/* ───────────────────────── Input OTP ───────────────────────── */
+export function InputOTPDemo() {
+  // Controlled so the field can be pre-filled — input-otp manages its own
+  // value internally, so `defaultValue` would warn about a mixed
+  // controlled/uncontrolled input.
+  const [value, setValue] = React.useState("123456");
+  return (
+    <InputOTP maxLength={6} value={value} onChange={setValue}>
+      <InputOTPGroup>
+        <InputOTPSlot index={0} />
+        <InputOTPSlot index={1} />
+        <InputOTPSlot index={2} />
+        <InputOTPSlot index={3} />
+        <InputOTPSlot index={4} />
+        <InputOTPSlot index={5} />
+      </InputOTPGroup>
+    </InputOTP>
   );
 }
 
