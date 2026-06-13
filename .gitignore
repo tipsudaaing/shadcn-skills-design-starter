@@ -4,6 +4,9 @@
 /node_modules
 /.pnp
 .pnp.*
+
+# storybook
+/storybook-static
 .yarn/*
 !.yarn/patches
 !.yarn/plugins

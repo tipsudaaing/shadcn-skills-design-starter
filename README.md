@@ -65,12 +65,16 @@ Open **[http://localhost:3000](http://localhost:3000)** for the app, or **[/docs
 | `npm run typecheck` | Type-check with `tsc --noEmit` |
 | `npm run figma:pull` | Pull live colors & variable bindings from the Figma REST API |
 | `npm run docs:offline` | Build + serve the component docs as a fully offline site |
+| `npm run storybook` | Start Storybook (dev/QA component explorer) on :6006 |
+| `npm run build-storybook` | Build the static Storybook to `storybook-static/` |
+| `npm run gen:stories` | Regenerate demo stories from the component registry |
+| `npm run test-storybook` | Run every story as a browser render test (Vitest + Playwright) |
 
 ---
 
 ## 🔄 Workflows
 
-Six end-to-end flows this repo is built around.
+Seven end-to-end flows this repo is built around.
 
 ### 1 · Figma → Code (the design-to-code loop)
 
@@ -137,7 +141,31 @@ npm run docs:offline      # builds out/ if missing, then serves it offline at ht
 
 > Or double-click `scripts/open-docs.command` in Finder. It serves `out/` via Python's static server — no internet, no Node server runtime.
 
-### 6 · Multi-platform / any-framework token export
+### 6 · Storybook (dev + QA component explorer)
+
+A Storybook complements the `/docs` gallery as the **dev/QA surface** — browse each component
+in isolation, flip light/dark, and run accessibility checks. Stories are **generated from the
+same `components/docs/registry.tsx`** (single source of truth), so they never drift from the docs.
+
+```bash
+npm run storybook          # http://localhost:6006
+npm run gen:stories        # regenerate demo stories after editing the registry
+npm run test-storybook     # run every story as a render test (CI-friendly)
+```
+
+- **52 components**, sidebar grouped by the 7 categories, each with an autodocs page + code snippet.
+- **Interactive Controls** — 16 prop-driven primitives (Button, Badge, Input, Switch…) have a
+  hand-authored **Playground** story with `args`/`argTypes` (live `variant`/`size`/`disabled`…).
+  These live in `stories/manual/`; the rest are generated into `stories/generated/`.
+- **Themes** toolbar toggles light/dark (`.dark` class, matching `next-themes`).
+- **a11y** addon runs axe on every story for QA.
+- **Test runner** — `@storybook/addon-vitest` adds a sidebar **Testing** widget that runs every
+  story as a browser render smoke-test (Vitest + Playwright/Chromium); `npm run test-storybook`
+  runs the same headless. ✅ All 71 stories currently pass.
+- Stack: Storybook 10 · `@storybook/nextjs-vite` · Tailwind v4 via `@tailwindcss/vite`.
+- Foundations / Design-Token pages stay in `/docs` (they read tokens server-side; stubbed in SB).
+
+### 7 · Multi-platform / any-framework token export
 
 The token-build pipeline sources the **real** neutral theme — not samples — straight from `app/globals.css`:
 
