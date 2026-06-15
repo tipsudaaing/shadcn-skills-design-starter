@@ -28,6 +28,15 @@ const MANUAL = new Set([
   "badge", "button", "input", "textarea", "label", "switch", "checkbox",
   "toggle", "slider", "progress", "separator", "kbd", "alert", "avatar",
   "spinner", "skeleton",
+  // wave 1 — overlay/composite with meaningful knobs
+  "accordion", "tabs", "card", "collapsible", "radio-group", "select",
+  "dialog", "tooltip", "popover", "sheet", "hover-card", "drawer",
+  // wave 2
+  "aspect-ratio", "button-group", "carousel", "field", "input-otp",
+  "native-select", "scroll-area", "toggle-group", "alert-dialog", "dropdown-menu",
+  // wave 3
+  "empty", "sonner", "breadcrumb", "pagination", "item", "command",
+  "table", "calendar", "sidebar",
 ]);
 
 const kebab = (s) => s.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");

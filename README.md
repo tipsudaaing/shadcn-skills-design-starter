@@ -154,14 +154,16 @@ npm run test-storybook     # run every story as a render test (CI-friendly)
 ```
 
 - **52 components**, sidebar grouped by the 7 categories, each with an autodocs page + code snippet.
-- **Interactive Controls** — 16 prop-driven primitives (Button, Badge, Input, Switch…) have a
-  hand-authored **Playground** story with `args`/`argTypes` (live `variant`/`size`/`disabled`…).
-  These live in `stories/manual/`; the rest are generated into `stories/generated/`.
+- **Interactive Controls** — **47 components** have a hand-authored **Playground** story with
+  `args`/`argTypes` for live knobs (variant/size/disabled, overlay open/side, type, counts, text…),
+  in `stories/manual/`. The 8 deeply-composite ones (chart, data-table, menubar, navigation-menu,
+  command-palette combobox, date-picker, context-menu, input-group) keep a rich Demo (generated
+  into `stories/generated/`), where prop-level controls aren't meaningful.
 - **Themes** toolbar toggles light/dark (`.dark` class, matching `next-themes`).
 - **a11y** addon runs axe on every story for QA.
 - **Test runner** — `@storybook/addon-vitest` adds a sidebar **Testing** widget that runs every
   story as a browser render smoke-test (Vitest + Playwright/Chromium); `npm run test-storybook`
-  runs the same headless. ✅ All 71 stories currently pass.
+  runs the same headless. ✅ All 102 stories currently pass.
 - Stack: Storybook 10 · `@storybook/nextjs-vite` · Tailwind v4 via `@tailwindcss/vite`.
 - Foundations / Design-Token pages stay in `/docs` (they read tokens server-side; stubbed in SB).
 
