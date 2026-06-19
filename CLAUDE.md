@@ -33,7 +33,19 @@ npm run start        # serve production build
 npm run lint         # eslint
 npx tsc --noEmit     # typecheck
 npx shadcn@latest add <name>   # add a shadcn/ui component
+npm run storybook        # component explorer (http://localhost:6006)
+npm run gen:stories      # regenerate stories/generated/ from the registry
+npm run test-storybook   # render-smoke every story (vitest + playwright)
 ```
+
+> **Storybook stories:** all components are now hand-authored in `stories/manual/**` (one file
+> per component, with `args`/`argTypes` controls). `npm run gen:stories` emits Demo-only stories
+> into `stories/generated/**` from `components/docs/registry.tsx`, **skipping** any slug in the
+> `MANUAL` set in `scripts/gen-stories.mjs`. Since every slug is currently in `MANUAL`,
+> `stories/generated/` is empty and the script writes 0 files — that is expected. Its guard
+> distinguishes "regex matched **nothing**" (registry format broke → abort) from "everything is
+> manual" (valid → wipe `generated/`, write 0). To get a generated story back, remove its slug
+> from `MANUAL` and re-run.
 
 > App is scaffolded: Next.js 16 + React 19 + Tailwind v4, shadcn/ui (radix, neutral base,
 > CSS variables). `globals.css` carries all semantic + sidebar + chart tokens as oklch
