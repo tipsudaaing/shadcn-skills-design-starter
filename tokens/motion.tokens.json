@@ -1,0 +1,34 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "Motion tokens for component transitions. UI motion stays 100–300ms and is always paired with a prefers-reduced-motion fallback. Components use `transition-*` utilities bound to these durations — no hardcoded timing.",
+
+  "primitive": {
+    "duration": {
+      "instant": { "$type": "duration", "$value": "0ms",   "$description": "Reduced-motion fallback" },
+      "fast":    { "$type": "duration", "$value": "150ms", "$description": "Micro-interactions — hover, focus, color/opacity" },
+      "base":    { "$type": "duration", "$value": "200ms", "$description": "Default UI transition" },
+      "moderate":{ "$type": "duration", "$value": "300ms", "$description": "Overlays — dialog open/close" }
+    },
+    "easing": {
+      "standard": { "$type": "cubicBezier", "$value": [0.4, 0, 0.2, 1], "$description": "Default ease-in-out for UI" },
+      "out":      { "$type": "cubicBezier", "$value": [0, 0, 0.2, 1],   "$description": "Decelerate — enter transitions" }
+    }
+  },
+
+  "component": {
+    "$description": "Per-component motion.",
+    "button": {
+      "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" },
+      "transition-easing":   { "$type": "cubicBezier", "$value": "{primitive.easing.standard}" }
+    },
+    "field": {
+      "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" }
+    },
+    "dialog": {
+      "transition-duration": { "$type": "duration", "$value": "{primitive.duration.moderate}", "$description": "Overlay fade + content zoom" }
+    },
+    "spinner": {
+      "spin-duration": { "$type": "duration", "$value": "1000ms", "$description": "Loading spinner rotation period" }
+    }
+  }
+}

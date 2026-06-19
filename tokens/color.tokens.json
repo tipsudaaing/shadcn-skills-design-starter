@@ -1,0 +1,95 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "3-tier color architecture (Primitive → Semantic → Component) re-pointed to an APPLE design language (apply-aesthetic: apple). Action blue #0071e3, near-black ink #1d1d1f, pale gray #f5f5f7 light surfaces, graphite dark surfaces. Light $value + dark override under $extensions.mode.dark. Every mapped text/UI pair verified WCAG 2.2 AA via scripts/contrast.py. globals.css :root/.dark is the compiled output. NOTE: intentionally diverges from the original Figma-synced neutral theme.",
+
+  "primitive": {
+    "$description": "Raw Apple palette — never referenced directly in components.",
+    "white":     { "$type": "color", "$value": "#ffffff" },
+    "black":     { "$type": "color", "$value": "#000000" },
+    "ink":       { "$type": "color", "$value": "#1d1d1f", "$description": "Near-black primary text/ink" },
+    "blue": {
+      "action":  { "$type": "color", "$value": "#0071e3", "$description": "Primary action fill + focus signal (white text = 4.70:1 AA)" },
+      "link":    { "$type": "color", "$value": "#0066cc", "$description": "Inline link on light" },
+      "bright":  { "$type": "color", "$value": "#2997ff", "$description": "High-luminance link on dark scenes" },
+      "ring-dark": { "$type": "color", "$value": "#0a84ff", "$description": "Focus ring on dark (5.76:1 on black)" }
+    },
+    "gray": {
+      "f5":       { "$type": "color", "$value": "#f5f5f7", "$description": "Pale Apple gray — light surfaces" },
+      "border":   { "$type": "color", "$value": "#d2d2d7", "$description": "Soft border / divider" },
+      "mid":      { "$type": "color", "$value": "#86868b", "$description": "Mid border / dark secondary text" },
+      "text":     { "$type": "color", "$value": "#6e6e73", "$description": "Secondary text (5.07:1 on white AA)" },
+      "graphite": { "$type": "color", "$value": "#272729", "$description": "Dark card/utility surface" },
+      "utility":  { "$type": "color", "$value": "#424245", "$description": "Dark border / utility neutral" }
+    },
+    "red": {
+      "strong": { "$type": "color", "$value": "#d70015", "$description": "Light destructive (white text 5.38:1)" },
+      "bright": { "$type": "color", "$value": "#ff453a", "$description": "Dark destructive text (6.16:1 on black)" }
+    },
+    "chart": {
+      "1": { "$type": "color", "$value": "oklch(0.734 0.121 243.1)" },
+      "2": { "$type": "color", "$value": "oklch(0.649 0.193 251.8)" },
+      "3": { "$type": "color", "$value": "oklch(0.622 0.183 251.7)" },
+      "4": { "$type": "color", "$value": "oklch(0.556 0.162 252.2)" },
+      "5": { "$type": "color", "$value": "oklch(0.324 0.096 258.8)" }
+    }
+  },
+
+  "semantic": {
+    "$description": "Purpose-based roles. $value = LIGHT primitive; $extensions.mode.dark = DARK primitive. Names map 1:1 to CSS vars in globals.css and Tailwind token classes.",
+    "background":            { "$type": "color", "$value": "{primitive.white}",        "$extensions": { "mode": { "dark": "{primitive.black}" } } },
+    "foreground":            { "$type": "color", "$value": "{primitive.ink}",          "$extensions": { "mode": { "dark": "{primitive.gray.f5}" } } },
+    "card":                  { "$type": "color", "$value": "{primitive.white}",        "$extensions": { "mode": { "dark": "{primitive.ink}" } } },
+    "card-foreground":       { "$type": "color", "$value": "{primitive.ink}",          "$extensions": { "mode": { "dark": "{primitive.gray.f5}" } } },
+    "popover":               { "$type": "color", "$value": "{primitive.white}",        "$extensions": { "mode": { "dark": "{primitive.ink}" } } },
+    "popover-foreground":    { "$type": "color", "$value": "{primitive.ink}",          "$extensions": { "mode": { "dark": "{primitive.gray.f5}" } } },
+    "primary":               { "$type": "color", "$value": "{primitive.blue.action}",  "$description": "Apple action blue, both modes (white text 4.70:1 AA)", "$extensions": { "mode": { "dark": "{primitive.blue.action}" } } },
+    "primary-foreground":    { "$type": "color", "$value": "{primitive.white}",        "$extensions": { "mode": { "dark": "{primitive.white}" } } },
+    "secondary":             { "$type": "color", "$value": "{primitive.gray.f5}",      "$extensions": { "mode": { "dark": "{primitive.gray.graphite}" } } },
+    "secondary-foreground":  { "$type": "color", "$value": "{primitive.ink}",          "$extensions": { "mode": { "dark": "{primitive.gray.f5}" } } },
+    "muted":                 { "$type": "color", "$value": "{primitive.gray.f5}",      "$extensions": { "mode": { "dark": "{primitive.gray.graphite}" } } },
+    "muted-foreground":      { "$type": "color", "$value": "{primitive.gray.text}",    "$description": "Secondary/placeholder text — 5.07:1 light, 5.80:1 dark", "$extensions": { "mode": { "dark": "{primitive.gray.mid}" } } },
+    "accent":                { "$type": "color", "$value": "{primitive.gray.f5}",      "$extensions": { "mode": { "dark": "{primitive.gray.graphite}" } } },
+    "accent-foreground":     { "$type": "color", "$value": "{primitive.ink}",          "$extensions": { "mode": { "dark": "{primitive.gray.f5}" } } },
+    "destructive":           { "$type": "color", "$value": "{primitive.red.strong}",   "$extensions": { "mode": { "dark": "{primitive.red.bright}" } } },
+    "border":                { "$type": "color", "$value": "{primitive.gray.border}",  "$extensions": { "mode": { "dark": "{primitive.gray.utility}" } } },
+    "input":                 { "$type": "color", "$value": "{primitive.gray.border}",  "$extensions": { "mode": { "dark": "{primitive.gray.utility}" } } },
+    "ring":                  { "$type": "color", "$value": "{primitive.blue.action}",  "$description": "Apple blue focus signal", "$extensions": { "mode": { "dark": "{primitive.blue.ring-dark}" } } }
+  },
+
+  "component": {
+    "$description": "Component-scoped tokens — what Button / Field / Dialog consume. Each aliases a semantic role so components never touch primitives or raw values.",
+    "button": {
+      "default-bg":       { "$type": "color", "$value": "{semantic.primary}" },
+      "default-fg":       { "$type": "color", "$value": "{semantic.primary-foreground}" },
+      "default-bg-hover": { "$type": "color", "$value": "{semantic.primary}", "$description": "Rendered at 90% opacity on hover" },
+      "secondary-bg":     { "$type": "color", "$value": "{semantic.secondary}" },
+      "secondary-fg":     { "$type": "color", "$value": "{semantic.secondary-foreground}" },
+      "outline-bg":       { "$type": "color", "$value": "{semantic.background}" },
+      "outline-border":   { "$type": "color", "$value": "{semantic.border}" },
+      "ghost-bg-hover":   { "$type": "color", "$value": "{semantic.muted}" },
+      "destructive-fg":   { "$type": "color", "$value": "{semantic.destructive}", "$description": "Soft destructive: destructive text on destructive/10 surface" },
+      "focus-ring":       { "$type": "color", "$value": "{semantic.ring}" },
+      "invalid-ring":     { "$type": "color", "$value": "{semantic.destructive}" }
+    },
+    "field": {
+      "bg":             { "$type": "color", "$value": "{semantic.background}" },
+      "text":           { "$type": "color", "$value": "{semantic.foreground}" },
+      "placeholder":    { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "border":         { "$type": "color", "$value": "{semantic.input}" },
+      "border-focus":   { "$type": "color", "$value": "{semantic.ring}" },
+      "border-error":   { "$type": "color", "$value": "{semantic.destructive}" },
+      "label":          { "$type": "color", "$value": "{semantic.foreground}" },
+      "description":    { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "error-text":     { "$type": "color", "$value": "{semantic.destructive}" }
+    },
+    "dialog": {
+      "overlay":      { "$type": "color", "$value": "oklch(0 0 0 / 50%)", "$description": "Modal backdrop — black at 50%" },
+      "bg":           { "$type": "color", "$value": "{semantic.background}" },
+      "fg":           { "$type": "color", "$value": "{semantic.foreground}" },
+      "border":       { "$type": "color", "$value": "{semantic.border}" },
+      "title":        { "$type": "color", "$value": "{semantic.foreground}" },
+      "description":  { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "close-ring":   { "$type": "color", "$value": "{semantic.ring}" }
+    }
+  }
+}

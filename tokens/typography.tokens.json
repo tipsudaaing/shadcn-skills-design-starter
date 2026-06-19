@@ -1,0 +1,40 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "Type tokens, Apple language. Sans uses the Apple system stack so SF Pro renders natively on Apple devices (SF Pro is proprietary; -apple-system pulls it on macOS/iOS, graceful fallback elsewhere). Size/weight steps map 1:1 to Tailwind's built-in text-* / font-* scale, referenced via utilities rather than redeclared.",
+
+  "primitive": {
+    "fontFamily": {
+      "sans": { "$type": "fontFamily", "$value": ["-apple-system", "BlinkMacSystemFont", "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"], "$description": "Apple system stack — renders SF Pro on Apple platforms" },
+      "mono": { "$type": "fontFamily", "$value": ["var(--font-geist-mono)", "ui-monospace", "SFMono-Regular", "Menlo", "monospace"] }
+    },
+    "fontWeight": {
+      "normal":   { "$type": "fontWeight", "$value": 400 },
+      "medium":   { "$type": "fontWeight", "$value": 500 },
+      "semibold": { "$type": "fontWeight", "$value": 600 }
+    },
+    "fontSize": {
+      "xs":   { "$type": "dimension", "$value": "0.75rem" },
+      "sm":   { "$type": "dimension", "$value": "0.875rem" },
+      "base": { "$type": "dimension", "$value": "1rem" }
+    }
+  },
+
+  "component": {
+    "$description": "Per-component type roles.",
+    "button": {
+      "font-family": { "$type": "fontFamily", "$value": "{primitive.fontFamily.sans}" },
+      "font-weight": { "$type": "fontWeight", "$value": "{primitive.fontWeight.medium}" },
+      "font-size":   { "$type": "dimension",  "$value": "{primitive.fontSize.sm}", "$description": "Default size; xl variant steps up to base" }
+    },
+    "field": {
+      "font-family":  { "$type": "fontFamily", "$value": "{primitive.fontFamily.sans}" },
+      "label-weight": { "$type": "fontWeight", "$value": "{primitive.fontWeight.medium}" },
+      "font-size":    { "$type": "dimension",  "$value": "{primitive.fontSize.sm}" }
+    },
+    "dialog": {
+      "title-weight": { "$type": "fontWeight", "$value": "{primitive.fontWeight.semibold}" },
+      "title-size":   { "$type": "dimension",  "$value": "{primitive.fontSize.base}" },
+      "body-size":    { "$type": "dimension",  "$value": "{primitive.fontSize.sm}" }
+    }
+  }
+}

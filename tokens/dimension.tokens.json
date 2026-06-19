@@ -1,0 +1,25 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "Radius scale (Primitive → Semantic → Component), Apple-language soft geometry. Base radius is 0.75rem (12px) for rounded iOS/macOS-style controls; the ramp is derived by multiplier and matches the @theme --radius-* tokens in globals.css. Spacing uses Tailwind v4's built-in 4px scale (p-4, gap-6 …) so it is not redeclared here.",
+
+  "primitive": {
+    "radius": {
+      "base": { "$type": "dimension", "$value": "0.75rem", "$description": "12px — root radius all others derive from (Apple-soft)" }
+    }
+  },
+
+  "semantic": {
+    "$description": "Named radius steps — map 1:1 to Tailwind rounded-* utilities and @theme --radius-*.",
+    "radius-sm": { "$type": "dimension", "$value": "0.45rem", "$description": "base × 0.6 — inputs, small controls" },
+    "radius-md": { "$type": "dimension", "$value": "0.6rem",  "$description": "base × 0.8" },
+    "radius-lg": { "$type": "dimension", "$value": "0.75rem", "$description": "base × 1 — buttons, cards (Apple ~12px)" },
+    "radius-xl": { "$type": "dimension", "$value": "1.05rem", "$description": "base × 1.4 — dialogs (Apple ~17px panels)" }
+  },
+
+  "component": {
+    "$description": "Per-component radii.",
+    "button": { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
+    "field":  { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
+    "dialog": { "radius": { "$type": "dimension", "$value": "{semantic.radius-xl}" } }
+  }
+}
