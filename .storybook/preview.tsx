@@ -1,3 +1,4 @@
+import * as React from "react";
 import type { Preview } from "@storybook/nextjs-vite";
 import { withThemeByClassName } from "@storybook/addon-themes";
 import { Geist_Mono } from "next/font/google";
@@ -14,7 +15,7 @@ const preview: Preview = {
     // the full canvas with no padding/centering of its own.
     layout: "fullscreen",
     controls: { matchers: { color: /(background|color)$/i, date: /Date$/i } },
-    a11y: { test: "todo" },
+    a11y: { test: "error" },
     backgrounds: { disable: true },
   },
   decorators: [

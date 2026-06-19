@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { FieldGroup, Field, FieldLabel, FieldDescription } from "@/components/ui/field";
+import { FieldGroup, Field, FieldLabel, FieldDescription, FieldError } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { getEntry } from "@/components/docs/registry";
 
@@ -29,4 +29,33 @@ export default meta;
 type Story = StoryObj<Args>;
 
 export const Playground: Story = {};
+
+export const States: Story = {
+  name: "States",
+  parameters: {
+    docs: { description: { story: "Default (label + description), error (FieldError + `aria-invalid` input, described by the message), and disabled." } },
+  },
+  render: () => (
+    <FieldGroup className="w-full max-w-sm gap-6">
+      <Field>
+        <FieldLabel htmlFor="s-default">Name</FieldLabel>
+        <Input id="s-default" placeholder="Evil Rabbit" />
+        <FieldDescription>This is your public display name.</FieldDescription>
+      </Field>
+
+      <Field data-invalid>
+        <FieldLabel htmlFor="s-error">Email</FieldLabel>
+        <Input id="s-error" defaultValue="not-an-email" aria-invalid aria-describedby="s-error-msg" />
+        <FieldError id="s-error-msg">Enter a valid email address.</FieldError>
+      </Field>
+
+      <Field data-disabled>
+        <FieldLabel htmlFor="s-disabled">Username</FieldLabel>
+        <Input id="s-disabled" placeholder="Locked" disabled />
+        <FieldDescription>You can't change this right now.</FieldDescription>
+      </Field>
+    </FieldGroup>
+  ),
+};
+
 export const Demo: Story = { name: "Demo", render: () => <>{getEntry("field")!.demo}</> };
