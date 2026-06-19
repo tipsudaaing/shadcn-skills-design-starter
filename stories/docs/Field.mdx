@@ -1,0 +1,68 @@
+import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as InputStories from "../manual/input.stories";
+import * as FieldStories from "../manual/field.stories";
+
+<Meta title="Docs/Field & Input" />
+
+# Field & Input
+
+Text entry. **Input** (`components/ui/input.tsx`) is the control; **Field**
+(`components/ui/field.tsx`) is the composition that wires a label, description,
+and error message to it accessibly. Document them together because a bare input
+should rarely ship without a Field around it.
+
+## Anatomy
+
+```
+Field
+ ├─ FieldLabel        → htmlFor ↔ input id
+ ├─ Input             → the control (aria-invalid on error)
+ ├─ FieldDescription  → helper text
+ └─ FieldError        → error message (aria-describedby ↔ input)
+```
+
+## API — Input
+
+<ArgTypes of={InputStories.Playground} />
+
+## Input states
+
+<Canvas of={InputStories.States} />
+<Canvas of={InputStories.Sizes} />
+
+`default · focus · filled · disabled · error`. Sizes: `sm · md · xl`.
+
+## Field composition & states
+
+<Canvas of={FieldStories.States} />
+
+Default (label + description), **error** (`FieldError` + `aria-invalid` input,
+described by the message), and disabled.
+
+## Usage
+
+- **Do** always pair an Input with a `FieldLabel` (`htmlFor` ↔ `id`). Placeholders are not labels.
+- **Do** put validation messages in `FieldError` and link them with `aria-describedby`.
+- **Do** set `aria-invalid` on the input for the error state (drives the destructive ring).
+- **Don't** rely on red color alone to signal an error — always include text.
+- **Don't** use the disabled state to hide actions the user might need; explain why instead.
+
+## Token mapping
+
+| Token | Role |
+|---|---|
+| `--field-bg` → `--background` | Field surface |
+| `--field-border` → `--input` | Resting border |
+| `--field-border-focus` → `--ring` | Focus ring (Apple blue) |
+| `--field-border-error` → `--destructive` | Invalid border + ring |
+| `--field-placeholder` → `--muted-foreground` | Placeholder (5.07:1 AA) |
+| `--field-radius` → `--radius-lg` | Corner radius |
+
+## Accessibility (WCAG 2.2 AA)
+
+- Programmatic label association via `htmlFor`/`id`.
+- Error: `aria-invalid` + `aria-describedby` pointing at `FieldError`, so screen
+  readers announce the message with the field.
+- Visible focus ring; placeholder/text contrast ≥ 4.5:1 in both themes.
+- Disabled fields use `disabled` (removed from tab order) with a reduced-opacity,
+  still-legible treatment.

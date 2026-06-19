@@ -4,15 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run tokens:build && next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "figma:pull": "node scripts/figma-pull.mjs",
     "docs:offline": "bash scripts/open-docs.command",
     "gen:stories": "node scripts/gen-stories.mjs",
+    "tokens:build": "node scripts/build-tokens.mjs",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build-storybook": "npm run tokens:build && storybook build",
     "test-storybook": "vitest run --project=storybook"
   },
   "dependencies": {

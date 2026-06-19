@@ -23,6 +23,32 @@ Design in Figma → tokens flow **1:1** into Tailwind → AI skills build, revie
 
 ---
 
+## 🧩 Design Components → Storybook
+
+Three shadcn/ui components taken through the full design-system pipeline
+(**tokens → code → docs → Storybook**) in an **Apple** design language:
+
+| Component | Level | States covered |
+|---|---|---|
+| **Button** | atom | default · hover · focus · active · disabled · loading · error |
+| **Input / Field** | form | default · focus · filled · disabled · error |
+| **Dialog** | composition | trigger · overlay · focus-trapped panel · form / destructive confirm |
+
+- **Tokens** — DTCG 3-tier (`tokens/*.tokens.json`: primitive → semantic → component), compiled to CSS by `npm run tokens:build`. See [`tokens/README.md`](tokens/README.md).
+- **Docs** — per-component MDX (anatomy · API · usage · a11y) under **Docs/** in Storybook.
+- **A11y** — WCAG 2.2 AA; the Storybook a11y addon runs in `error` mode and passes on every story.
+
+```bash
+npm run storybook        # explore components + docs (http://localhost:6006)
+npm run tokens:build     # DTCG tokens → app/tokens.generated.css
+npm run test-storybook   # render + a11y smoke test (all stories)
+npm run build-storybook  # static build → storybook-static/
+```
+
+**Live Storybook:** https://npsin-oreo.github.io/shadcn-skills-design-starter/ — deployed via GitHub Actions on push to `main`.
+
+---
+
 ## ✨ Overview
 
 This starter connects four layers so a Figma design becomes production code with minimal prompting:

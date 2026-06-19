@@ -6,14 +6,18 @@ const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
 const config: StorybookConfig = {
   framework: "@storybook/nextjs-vite",
-  stories: ["../stories/**/*.stories.@(tsx|mdx)"],
+  stories: ["../stories/**/*.mdx", "../stories/**/*.stories.@(tsx|mdx)"],
   addons: [
     "@storybook/addon-docs",
     "@storybook/addon-a11y",
     "@storybook/addon-themes",
     "@storybook/addon-vitest",
   ],
-  async viteFinal(viteConfig) {
+  async viteFinal(viteConfig, { configType }) {
+    // Relative asset base so the static build works under a GitHub Pages
+    // project subpath (https://<user>.github.io/<repo>/). Dev stays at "/".
+    if (configType === "PRODUCTION") viteConfig.base = "./";
+
     // Tailwind v4 — process app/globals.css (@import "tailwindcss" + @theme inline)
     const { default: tailwindcss } = await import("@tailwindcss/vite");
     viteConfig.plugins = [...(viteConfig.plugins ?? []), tailwindcss()];
