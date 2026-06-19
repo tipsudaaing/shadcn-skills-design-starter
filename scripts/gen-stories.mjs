@@ -37,6 +37,9 @@ const MANUAL = new Set([
   // wave 3
   "empty", "sonner", "breadcrumb", "pagination", "item", "command",
   "table", "calendar", "sidebar",
+  // wave 4 — composites now with meaningful knobs
+  "input-group", "combobox", "chart", "menubar", "navigation-menu",
+  "context-menu", "data-table", "date-picker",
 ]);
 
 const kebab = (s) => s.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
@@ -44,12 +47,16 @@ const kebab = (s) => s.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g,
 // Match: c("slug", "Title", "Category", …
 const re = /\bc\(\s*"([^"]+)"\s*,\s*"([^"]+)"\s*,\s*"([^"]+)"/g;
 const entries = [];
+let matched = 0;
 let m;
 while ((m = re.exec(registrySrc)) !== null) {
+  matched++;
   if (MANUAL.has(m[1])) continue; // hand-authored in stories/manual/
   entries.push({ slug: m[1], title: m[2], category: m[3] });
 }
-if (entries.length === 0) {
+if (matched === 0) {
+  // Zero matches means the regex broke (registry format changed), not that
+  // every component is manual — that's a real error worth aborting on.
   console.error("No component entries found in registry.tsx — aborting.");
   process.exit(1);
 }
@@ -87,7 +94,7 @@ for (const e of entries) {
   (byCat[e.category] ??= []).push(e.title);
 }
 
-console.log(`Generated ${entries.length} stories → stories/`);
+console.log(`Generated ${entries.length} stories → stories/ (${matched - entries.length} are hand-authored in stories/manual/)`);
 for (const [cat, items] of Object.entries(byCat)) {
   console.log(`  ${cat} (${items.length}): ${items.join(", ")}`);
 }
