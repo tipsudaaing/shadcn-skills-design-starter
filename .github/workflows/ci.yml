@@ -21,9 +21,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      # eslint can exhaust the default heap on this repo — give it room.
       - name: ESLint
-        run: NODE_OPTIONS=--max-old-space-size=4096 npm run lint
+        run: npm run lint
       - name: TypeScript
         run: npx tsc --noEmit
 
