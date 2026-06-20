@@ -15,7 +15,9 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs"
 import { join } from "node:path"
 
 const root = process.cwd()
-const FILE_KEY = process.env.FIGMA_FILE_KEY || "s1RUIz6zs7ZHPvChvkg9XC"
+// This repo's Figma file is "@shadcn/ui Learning". Override with $FIGMA_FILE_KEY.
+// (.mcp.json PAT currently 403s on the REST API — supply a fresh token to run.)
+const FILE_KEY = process.env.FIGMA_FILE_KEY || "aZs8dlgg9wlcmEM0lFd3Zw"
 const CACHE = "/tmp/fig-components.json"
 const REGISTRY = "components/docs/registry.tsx"
 

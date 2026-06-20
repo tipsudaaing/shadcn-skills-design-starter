@@ -15,7 +15,11 @@ import { readFileSync, writeFileSync, readdirSync } from "node:fs"
 import { join } from "node:path"
 
 const root = process.cwd()
-const FILE_KEY = process.env.FIGMA_FILE_KEY || "s1RUIz6zs7ZHPvChvkg9XC"
+// This repo's Figma file is "@shadcn/ui Learning" (71 component pages). Note:
+// the OVERRIDES map + the `section === "Components"` page-grouping below were
+// tuned for a sibling file — re-verify the page structure once a valid token is
+// available (the .mcp.json PAT currently 403s on the REST API; needs a fresh one).
+const FILE_KEY = process.env.FIGMA_FILE_KEY || "aZs8dlgg9wlcmEM0lFd3Zw"
 const REGISTRY = "components/docs/registry.tsx"
 
 function token() {
