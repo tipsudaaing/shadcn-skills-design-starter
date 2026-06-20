@@ -1,0 +1,80 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Cancel superseded runs on the same ref.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-typecheck:
+    name: Lint & typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: ESLint
+        run: npm run lint
+      - name: TypeScript
+        run: npx tsc --noEmit
+
+  design-gates:
+    name: Design-system gates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # Token drift — app/tokens.generated.css must match the DTCG source.
+      - name: Token drift (tokens:build is reproducible)
+        run: |
+          npm run tokens:build
+          git diff --exit-code app/tokens.generated.css \
+            || { echo "::error::token drift — run \`npm run tokens:build\` and commit app/tokens.generated.css"; exit 1; }
+      # Rule #1 — no hardcoded colors outside components/ui (audit runs in local
+      # mode without a Figma token; the hardcoded-color check is token-independent).
+      - name: No hardcoded colors (audit rule #1)
+        run: |
+          npm run audit:components
+          grep -q "Hardcoded-color violations.*0 ✅" AUDIT.md \
+            || { echo "::error::hardcoded colors found outside components/ui — see AUDIT.md"; exit 1; }
+
+  storybook-tests:
+    name: Storybook tests (render + a11y)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      # Render-smokes every story + runs play functions + axe (a11y error-mode).
+      # tokens:build runs first via the build-storybook/test pipeline.
+      - name: test-storybook
+        run: npm run test-storybook
+
+  build:
+    name: Next.js build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build

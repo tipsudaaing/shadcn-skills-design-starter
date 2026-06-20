@@ -51,7 +51,7 @@ export const States: Story = {
       <Field data-disabled>
         <FieldLabel htmlFor="s-disabled">Username</FieldLabel>
         <Input id="s-disabled" placeholder="Locked" disabled />
-        <FieldDescription>You can't change this right now.</FieldDescription>
+        <FieldDescription>This field is locked for now.</FieldDescription>
       </Field>
     </FieldGroup>
   ),
