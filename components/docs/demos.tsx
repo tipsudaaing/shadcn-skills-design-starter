@@ -3,6 +3,14 @@
 import * as React from "react";
 import { format } from "date-fns";
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
+import {
+  type ColumnDef,
+  type SortingState,
+  flexRender,
+  getCoreRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
 import { toast } from "sonner";
 import {
   ArrowUpDown,
@@ -357,43 +365,76 @@ export function DatePickerDemo() {
   );
 }
 
-/* ───────────────────────── Data Table (Table + sort state) ───────────────────────── */
-const payments = [
+/* ───────────────────────── Data Table (Table + TanStack Table) ───────────────────────── */
+type Payment = { id: string; status: string; email: string; amount: number };
+
+const payments: Payment[] = [
   { id: "1", status: "success", email: "ken99@example.com", amount: 316 },
   { id: "2", status: "pending", email: "abe45@example.com", amount: 242 },
   { id: "3", status: "processing", email: "monserrat@example.com", amount: 837 },
   { id: "4", status: "failed", email: "carmella@example.com", amount: 721 },
 ];
 
+const paymentColumns: ColumnDef<Payment>[] = [
+  {
+    accessorKey: "status",
+    header: "Status",
+    cell: ({ row }) => (
+      <Badge variant={row.original.status === "success" ? "default" : "secondary"}>
+        {row.original.status}
+      </Badge>
+    ),
+  },
+  { accessorKey: "email", header: "Email" },
+  {
+    accessorKey: "amount",
+    header: ({ column }) => (
+      <button
+        type="button"
+        className="ml-auto flex items-center gap-1 hover:text-foreground"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        Amount <ArrowUpDown className="size-3.5" />
+      </button>
+    ),
+    cell: ({ row }) => (
+      <div className="text-right font-medium">${row.original.amount.toFixed(2)}</div>
+    ),
+  },
+];
+
 export function DataTableDemo() {
-  const [desc, setDesc] = React.useState(true);
-  const rows = [...payments].sort((a, b) => (desc ? b.amount - a.amount : a.amount - b.amount));
+  const [sorting, setSorting] = React.useState<SortingState>([{ id: "amount", desc: true }]);
+  const table = useReactTable({
+    data: payments,
+    columns: paymentColumns,
+    state: { sorting },
+    onSortingChange: setSorting,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+  });
   return (
     <div className="w-full max-w-lg rounded-md border">
       <Table>
         <TableHeader>
-          <TableRow>
-            <TableHead>Status</TableHead>
-            <TableHead>Email</TableHead>
-            <TableHead className="text-right">
-              <button
-                type="button"
-                className="ml-auto flex items-center gap-1 hover:text-foreground"
-                onClick={() => setDesc((d) => !d)}
-              >
-                Amount <ArrowUpDown className="size-3.5" />
-              </button>
-            </TableHead>
-          </TableRow>
+          {table.getHeaderGroups().map((hg) => (
+            <TableRow key={hg.id}>
+              {hg.headers.map((h) => (
+                <TableHead key={h.id} className={h.column.id === "amount" ? "text-right" : undefined}>
+                  {h.isPlaceholder ? null : flexRender(h.column.columnDef.header, h.getContext())}
+                </TableHead>
+              ))}
+            </TableRow>
+          ))}
         </TableHeader>
         <TableBody>
-          {rows.map((r) => (
-            <TableRow key={r.id}>
-              <TableCell>
-                <Badge variant={r.status === "success" ? "default" : "secondary"}>{r.status}</Badge>
-              </TableCell>
-              <TableCell>{r.email}</TableCell>
-              <TableCell className="text-right font-medium">${r.amount.toFixed(2)}</TableCell>
+          {table.getRowModel().rows.map((row) => (
+            <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
+              {row.getVisibleCells().map((cell) => (
+                <TableCell key={cell.id}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </TableCell>
+              ))}
             </TableRow>
           ))}
         </TableBody>
