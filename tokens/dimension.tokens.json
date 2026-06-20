@@ -42,6 +42,19 @@
     "input-otp": {
       "slot-size":   { "$type": "dimension", "$value": "2rem", "$description": "32px square slot (size-8)" },
       "slot-radius": { "$type": "dimension", "$value": "{semantic.radius-lg}", "$description": "Applied to the group's outer corners only" }
-    }
+    },
+    "avatar": {
+      "radius": { "$type": "dimension", "$value": "9999px", "$description": "Full circle" },
+      "size":   { "$type": "dimension", "$value": "2rem", "$description": "32px default (sm 24px, lg 40px)" }
+    },
+    "progress": {
+      "height": { "$type": "dimension", "$value": "0.25rem", "$description": "4px rail (h-1)" },
+      "radius": { "$type": "dimension", "$value": "9999px" }
+    },
+    "skeleton": { "radius": { "$type": "dimension", "$value": "{semantic.radius-md}" } },
+    "spinner":  { "size":   { "$type": "dimension", "$value": "1rem", "$description": "16px default (size-4)" } },
+    "kbd":      { "radius": { "$type": "dimension", "$value": "{semantic.radius-sm}" } },
+    "empty":    { "radius": { "$type": "dimension", "$value": "{semantic.radius-xl}" } },
+    "item":     { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } }
   }
 }

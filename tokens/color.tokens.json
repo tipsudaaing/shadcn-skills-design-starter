@@ -196,6 +196,51 @@
     },
     "label": {
       "text": { "$type": "color", "$value": "{semantic.foreground}", "$description": "Disabled state is opacity-only (no separate color)" }
+    },
+    "avatar": {
+      "fallback-bg": { "$type": "color", "$value": "{semantic.muted}",            "$description": "Initials surface when no image" },
+      "fallback-fg": { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "ring":        { "$type": "color", "$value": "{semantic.background}",        "$description": "Group/badge ring to separate overlaps" },
+      "border":      { "$type": "color", "$value": "{semantic.border}",            "$description": "Hairline (blended) around the image" },
+      "badge-bg":    { "$type": "color", "$value": "{semantic.primary}",           "$description": "Presence/status badge" },
+      "badge-fg":    { "$type": "color", "$value": "{semantic.primary-foreground}" }
+    },
+    "progress": {
+      "track":     { "$type": "color", "$value": "{semantic.muted}" },
+      "indicator": { "$type": "color", "$value": "{semantic.primary}" }
+    },
+    "skeleton": {
+      "bg": { "$type": "color", "$value": "{semantic.muted}", "$description": "Pulsing placeholder fill" }
+    },
+    "spinner": {
+      "color": { "$type": "color", "$value": "currentColor", "$description": "Inherits text color — set via text-* on the parent" }
+    },
+    "kbd": {
+      "bg": { "$type": "color", "$value": "{semantic.muted}" },
+      "fg": { "$type": "color", "$value": "{semantic.muted-foreground}" }
+    },
+    "empty": {
+      "icon-bg":     { "$type": "color", "$value": "{semantic.muted}" },
+      "icon-fg":     { "$type": "color", "$value": "{semantic.foreground}" },
+      "title":       { "$type": "color", "$value": "{semantic.foreground}" },
+      "description": { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "border":      { "$type": "color", "$value": "{semantic.border}", "$description": "Dashed container edge" }
+    },
+    "item": {
+      "border":      { "$type": "color", "$value": "{semantic.border}",   "$description": "Outline variant edge" },
+      "muted-bg":    { "$type": "color", "$value": "{semantic.muted}",    "$description": "Muted variant surface (rendered at 50%)" },
+      "hover-bg":    { "$type": "color", "$value": "{semantic.muted}",    "$description": "Hover when interactive (asChild link)" },
+      "focus-ring":  { "$type": "color", "$value": "{semantic.ring}" },
+      "title":       { "$type": "color", "$value": "{semantic.foreground}" },
+      "description": { "$type": "color", "$value": "{semantic.muted-foreground}" }
+    },
+    "table": {
+      "header-fg":    { "$type": "color", "$value": "{semantic.foreground}",       "$description": "Column heading text" },
+      "row-hover":    { "$type": "color", "$value": "{semantic.muted}",            "$description": "Row hover (rendered at 50%)" },
+      "row-selected": { "$type": "color", "$value": "{semantic.muted}" },
+      "footer-bg":    { "$type": "color", "$value": "{semantic.muted}",            "$description": "Footer/total row (50%)" },
+      "border":       { "$type": "color", "$value": "{semantic.border}",           "$description": "Row dividers" },
+      "caption":      { "$type": "color", "$value": "{semantic.muted-foreground}" }
     }
   }
 }

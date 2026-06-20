@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, TableCaption } from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
 import { getEntry } from "@/components/docs/registry";
 
 type Args = { rows: number; caption: boolean };
@@ -55,4 +56,26 @@ export default meta;
 type Story = StoryObj<Args>;
 
 export const Playground: Story = {};
+
+export const RowStates: Story = {
+  name: "Row states",
+  parameters: { docs: { description: { story: "Resting, hover (shown statically via `--table-row-hover`), and selected (`data-state=\"selected\"`)." } } },
+  render: () => (
+    <Table className="w-[28rem]">
+      <TableHeader>
+        <TableRow>
+          <TableHead>Invoice</TableHead>
+          <TableHead>Status</TableHead>
+          <TableHead className="text-right">Amount</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow><TableCell className="font-medium">INV001</TableCell><TableCell><Badge>Paid</Badge></TableCell><TableCell className="text-right">$250.00</TableCell></TableRow>
+        <TableRow className="bg-muted/50"><TableCell className="font-medium">INV002 (hover)</TableCell><TableCell><Badge variant="secondary">Pending</Badge></TableCell><TableCell className="text-right">$150.00</TableCell></TableRow>
+        <TableRow data-state="selected"><TableCell className="font-medium">INV003 (selected)</TableCell><TableCell><Badge variant="destructive">Unpaid</Badge></TableCell><TableCell className="text-right">$350.00</TableCell></TableRow>
+      </TableBody>
+    </Table>
+  ),
+};
+
 export const Demo: Story = { name: "Demo", render: () => <>{getEntry("table")!.demo}</> };

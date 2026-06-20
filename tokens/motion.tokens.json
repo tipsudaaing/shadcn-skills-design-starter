@@ -46,6 +46,9 @@
     "native-select": { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
     "input-group":   { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
     "slider":        { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Thumb color + ring" } },
-    "input-otp":     { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Slot border/ring" } }
+    "input-otp":     { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Slot border/ring" } },
+    "progress":      { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.base}", "$description": "Indicator width tween" } },
+    "item":          { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Hover/focus color" } },
+    "table":         { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Row hover color" } }
   }
 }

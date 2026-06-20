@@ -1,0 +1,63 @@
+import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as SkeletonStories from "../manual/skeleton.stories";
+import * as SpinnerStories from "../manual/spinner.stories";
+
+<Meta title="Docs/Skeleton & Spinner" />
+
+# Skeleton & Spinner
+
+Loading indicators. **Skeleton** (`components/ui/skeleton.tsx`) is a pulsing
+placeholder that mimics the shape of content that's still loading; **Spinner**
+(`components/ui/spinner.tsx`) is a small animated ring for indeterminate, short waits.
+Both are styled through the Apple-language tokens.
+
+## Anatomy
+
+```
+Skeleton                      Spinner
+▓▓▓▓▓▓▓▓▓▓  (animate-pulse)    ◜◝  (animate-spin, currentColor)
+```
+
+- **Skeleton** — a `bg-muted` block; you set the shape with `h-* / w-* / rounded-*`.
+- **Spinner** — a Lucide loader at `size-4` by default; recolors via `currentColor`.
+
+## API — Skeleton
+
+<ArgTypes of={SkeletonStories.Playground} />
+
+## Skeleton shapes
+
+<Canvas of={SkeletonStories.Shapes} />
+<Canvas of={SkeletonStories.InLayout} />
+
+## Spinner sizes, colors & context
+
+<Canvas of={SpinnerStories.Sizes} />
+<Canvas of={SpinnerStories.Colors} />
+<Canvas of={SpinnerStories.InContext} />
+
+## Usage
+
+- **Do** use a **Skeleton** when you know the layout — it prevents layout shift on load.
+- **Do** mirror the real content's shape and size with the skeleton.
+- **Do** use a **Spinner** for short, indeterminate waits (a submit, a fetch).
+- **Don't** show a spinner for long known-progress tasks — use `Progress`.
+- **Don't** hardcode colors — fills map to `--skeleton-bg` / `--spinner-color` / semantic tokens.
+
+## Token mapping
+
+| Token | Role |
+|---|---|
+| `--skeleton-bg` → `--muted` | Pulsing placeholder fill |
+| `--skeleton-radius` → `--radius-md` | Default corner (override per shape) |
+| `--spinner-color` → currentColor | Inherits text color |
+| `--spinner-size` | 16px default (size-4) |
+| `--spinner-spin-duration` | 1000ms rotation |
+
+## Accessibility (WCAG 2.2 AA)
+
+- **Spinner** ships with `role="status"` + `aria-label="Loading"` so it's announced.
+- **Skeleton** is decorative; mark the region `aria-busy="true"` while loading and
+  swap in real content (with its own semantics) when ready.
+- Respect reduced motion at the app level for the pulse/spin animations.
+- Never block the UI silently — a visible loading state must accompany long operations.
