@@ -32,4 +32,22 @@ export default meta;
 type Story = StoryObj<Args>;
 
 export const Playground: Story = {};
+
+export const Empty: Story = {
+  name: "Empty state",
+  parameters: { docs: { description: { story: "When the query matches nothing, `CommandEmpty` renders the no-results message (`--command-empty`)." } } },
+  render: () => (
+    <Command className="w-80 rounded-lg border shadow-sm" value="">
+      <CommandInput placeholder="Search…" value="zzzzz" onValueChange={() => {}} />
+      <CommandList>
+        <CommandEmpty>No results found.</CommandEmpty>
+        <CommandGroup heading="Suggestions">
+          <CommandItem>Calendar</CommandItem>
+          <CommandItem>Search Emoji</CommandItem>
+        </CommandGroup>
+      </CommandList>
+    </Command>
+  ),
+};
+
 export const Demo: Story = { name: "Demo", render: () => <>{getEntry("command")!.demo}</> };

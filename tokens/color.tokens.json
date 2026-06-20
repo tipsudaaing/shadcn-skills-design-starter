@@ -328,6 +328,25 @@
       "bg":    { "$type": "color", "$value": "{semantic.foreground}", "$description": "Inverted surface (dark on light)" },
       "fg":    { "$type": "color", "$value": "{semantic.background}", "$description": "Inverted text" },
       "arrow": { "$type": "color", "$value": "{semantic.foreground}" }
+    },
+    "accordion": {
+      "trigger-fg": { "$type": "color", "$value": "{semantic.foreground}" },
+      "item-border":{ "$type": "color", "$value": "{semantic.border}", "$description": "Between items" },
+      "icon":       { "$type": "color", "$value": "{semantic.foreground}", "$description": "Chevron" },
+      "focus-ring": { "$type": "color", "$value": "{semantic.ring}" }
+    },
+    "command": {
+      "content-bg":    { "$type": "color", "$value": "{semantic.popover}" },
+      "content-fg":    { "$type": "color", "$value": "{semantic.popover-foreground}" },
+      "input-border":  { "$type": "color", "$value": "{semantic.border}", "$description": "Under the search input" },
+      "item-focus-bg": { "$type": "color", "$value": "{semantic.accent}" },
+      "item-focus-fg": { "$type": "color", "$value": "{semantic.accent-foreground}" },
+      "group-heading": { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "shortcut":      { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "empty":         { "$type": "color", "$value": "{semantic.muted-foreground}", "$description": "No-results text" }
+    },
+    "separator": {
+      "color": { "$type": "color", "$value": "{semantic.border}" }
     }
   }
 }

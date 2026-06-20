@@ -75,6 +75,8 @@
     "popover":       { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
     "hover-card":    { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
     "drawer":        { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}", "$description": "Rounded leading edge" } },
-    "tooltip":       { "radius": { "$type": "dimension", "$value": "{semantic.radius-md}" } }
+    "tooltip":       { "radius": { "$type": "dimension", "$value": "{semantic.radius-md}" } },
+    "command":       { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}", "$description": "Palette container" } },
+    "separator":     { "thickness": { "$type": "dimension", "$value": "1px", "$description": "Hairline (h/w px)" } }
   }
 }

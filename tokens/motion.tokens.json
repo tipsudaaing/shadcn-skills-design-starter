@@ -62,6 +62,8 @@
     "context-menu":  { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
     "popover":       { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
     "hover-card":    { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
-    "tooltip":       { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } }
+    "tooltip":       { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "accordion":     { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.base}", "$description": "Expand/collapse height" } },
+    "collapsible":   { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.base}", "$description": "Expand/collapse height" } }
   }
 }
