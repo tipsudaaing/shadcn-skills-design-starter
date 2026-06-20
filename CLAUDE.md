@@ -36,7 +36,19 @@ npx shadcn@latest add <name>   # add a shadcn/ui component
 npm run storybook        # component explorer (http://localhost:6006)
 npm run gen:stories      # regenerate stories/generated/ from the registry
 npm run test-storybook   # render-smoke every story (vitest + playwright)
+npm run audit            # audit:components + audit:variants → AUDIT.md + VARIANTS.md
 ```
+
+> **Design-system audit** (`scripts/audit-{components,variants}.mjs`): cross-checks the Figma
+> component set against `components/ui/*`, the doc registry, and the 1:1 MDX docs, and enforces
+> **rule #1 — no hardcoded colors outside `components/ui`** (only `.tsx/.ts` is scanned, so the
+> token `*.css` files are exempt; a sanctioned arbitrary value must carry a `ds-allow-hardcode`
+> comment marker on its line to be skipped). Needs a Figma REST token in `$FIGMA_PERSONAL_ACCESS_TOKEN`
+> or `.mcp.json` (file key `$FIGMA_FILE_KEY`). **Without a valid token it degrades to a local
+> code-only audit** — `audit:components` still writes `AUDIT.md` (primitives × registry × MDX +
+> the hardcoded-color check) and `audit:variants` skips with a notice. The committed `AUDIT.md`
+> was generated in local mode; supply a working token to populate the Figma coverage matrix +
+> `VARIANTS.md`.
 
 > **Storybook stories:** all components are now hand-authored in `stories/manual/**` (one file
 > per component, with `args`/`argTypes` controls). Every component is at **assignment depth**:
