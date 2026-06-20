@@ -90,6 +90,288 @@
       "title":        { "$type": "color", "$value": "{semantic.foreground}" },
       "description":  { "$type": "color", "$value": "{semantic.muted-foreground}" },
       "close-ring":   { "$type": "color", "$value": "{semantic.ring}" }
+    },
+    "badge": {
+      "default-bg":     { "$type": "color", "$value": "{semantic.primary}" },
+      "default-fg":     { "$type": "color", "$value": "{semantic.primary-foreground}" },
+      "secondary-bg":   { "$type": "color", "$value": "{semantic.secondary}" },
+      "secondary-fg":   { "$type": "color", "$value": "{semantic.secondary-foreground}" },
+      "destructive-fg": { "$type": "color", "$value": "{semantic.destructive}", "$description": "Soft destructive: destructive text on destructive/10 surface" },
+      "outline-border": { "$type": "color", "$value": "{semantic.border}" },
+      "outline-fg":     { "$type": "color", "$value": "{semantic.foreground}" },
+      "focus-ring":     { "$type": "color", "$value": "{semantic.ring}" }
+    },
+    "switch": {
+      "track-on":     { "$type": "color", "$value": "{semantic.primary}",    "$description": "Checked track fill (Apple blue)" },
+      "track-off":    { "$type": "color", "$value": "{semantic.input}",      "$description": "Unchecked track fill" },
+      "thumb":        { "$type": "color", "$value": "{semantic.background}",  "$description": "Sliding knob" },
+      "focus-ring":   { "$type": "color", "$value": "{semantic.ring}" },
+      "invalid-ring": { "$type": "color", "$value": "{semantic.destructive}" }
+    },
+    "select": {
+      "trigger-bg":     { "$type": "color", "$value": "{semantic.background}" },
+      "trigger-text":   { "$type": "color", "$value": "{semantic.foreground}" },
+      "trigger-border": { "$type": "color", "$value": "{semantic.input}" },
+      "placeholder":    { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "focus-ring":     { "$type": "color", "$value": "{semantic.ring}" },
+      "invalid-ring":   { "$type": "color", "$value": "{semantic.destructive}" },
+      "content-bg":     { "$type": "color", "$value": "{semantic.popover}" },
+      "content-fg":     { "$type": "color", "$value": "{semantic.popover-foreground}" },
+      "item-focus-bg":  { "$type": "color", "$value": "{semantic.accent}",    "$description": "Highlighted/keyboard-focused option" },
+      "item-focus-fg":  { "$type": "color", "$value": "{semantic.accent-foreground}" },
+      "label":          { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "separator":      { "$type": "color", "$value": "{semantic.border}" }
+    },
+    "card": {
+      "bg":          { "$type": "color", "$value": "{semantic.card}" },
+      "fg":          { "$type": "color", "$value": "{semantic.card-foreground}" },
+      "title":       { "$type": "color", "$value": "{semantic.card-foreground}" },
+      "description": { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "footer-bg":   { "$type": "color", "$value": "{semantic.muted}", "$description": "Footer bar — rendered at 50% (bg-muted/50)" },
+      "ring":        { "$type": "color", "$value": "color-mix(in oklch, var(--foreground) 10%, transparent)", "$description": "Hairline edge — foreground at 10% (mode-aware)" }
+    },
+    "checkbox": {
+      "border":       { "$type": "color", "$value": "{semantic.input}" },
+      "checked-bg":   { "$type": "color", "$value": "{semantic.primary}",            "$description": "Checked box fill + border (Apple blue)" },
+      "checked-fg":   { "$type": "color", "$value": "{semantic.primary-foreground}",  "$description": "Check glyph" },
+      "focus-ring":   { "$type": "color", "$value": "{semantic.ring}" },
+      "invalid-ring": { "$type": "color", "$value": "{semantic.destructive}" }
+    },
+    "radio": {
+      "border":         { "$type": "color", "$value": "{semantic.input}" },
+      "checked-bg":     { "$type": "color", "$value": "{semantic.primary}" },
+      "checked-border": { "$type": "color", "$value": "{semantic.primary}" },
+      "dot":            { "$type": "color", "$value": "{semantic.primary-foreground}", "$description": "Selected dot" },
+      "focus-ring":     { "$type": "color", "$value": "{semantic.ring}" },
+      "invalid-ring":   { "$type": "color", "$value": "{semantic.destructive}" }
+    },
+    "slider": {
+      "track":        { "$type": "color", "$value": "{semantic.muted}",  "$description": "Unfilled rail" },
+      "range":        { "$type": "color", "$value": "{semantic.primary}", "$description": "Filled portion (Apple blue)" },
+      "thumb-bg":     { "$type": "color", "$value": "{primitive.white}",  "$description": "Knob fill (constant white, both modes)" },
+      "thumb-border": { "$type": "color", "$value": "{semantic.ring}" },
+      "focus-ring":   { "$type": "color", "$value": "{semantic.ring}" }
+    },
+    "textarea": {
+      "bg":           { "$type": "color", "$value": "{semantic.background}" },
+      "text":         { "$type": "color", "$value": "{semantic.foreground}" },
+      "placeholder":  { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "border":       { "$type": "color", "$value": "{semantic.input}" },
+      "border-focus": { "$type": "color", "$value": "{semantic.ring}" },
+      "border-error": { "$type": "color", "$value": "{semantic.destructive}" }
+    },
+    "toggle": {
+      "on-bg":          { "$type": "color", "$value": "{semantic.muted}",     "$description": "Pressed/on surface (also hover)" },
+      "on-fg":          { "$type": "color", "$value": "{semantic.foreground}" },
+      "outline-border": { "$type": "color", "$value": "{semantic.input}" },
+      "focus-ring":     { "$type": "color", "$value": "{semantic.ring}" }
+    },
+    "native-select": {
+      "bg":           { "$type": "color", "$value": "{semantic.background}" },
+      "text":         { "$type": "color", "$value": "{semantic.foreground}" },
+      "placeholder":  { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "border":       { "$type": "color", "$value": "{semantic.input}" },
+      "icon":         { "$type": "color", "$value": "{semantic.muted-foreground}", "$description": "Chevron" },
+      "focus-ring":   { "$type": "color", "$value": "{semantic.ring}" },
+      "invalid-ring": { "$type": "color", "$value": "{semantic.destructive}" }
+    },
+    "input-group": {
+      "bg":           { "$type": "color", "$value": "{semantic.background}" },
+      "border":       { "$type": "color", "$value": "{semantic.input}" },
+      "border-focus": { "$type": "color", "$value": "{semantic.ring}" },
+      "border-error": { "$type": "color", "$value": "{semantic.destructive}" },
+      "addon":        { "$type": "color", "$value": "{semantic.muted-foreground}", "$description": "Addon icon/text" }
+    },
+    "button-group": {
+      "separator": { "$type": "color", "$value": "{semantic.input}" },
+      "text-bg":   { "$type": "color", "$value": "{semantic.muted}", "$description": "ButtonGroupText label cell" }
+    },
+    "input-otp": {
+      "slot-bg":        { "$type": "color", "$value": "{semantic.background}" },
+      "slot-text":      { "$type": "color", "$value": "{semantic.foreground}" },
+      "slot-border":    { "$type": "color", "$value": "{semantic.input}" },
+      "active-ring":    { "$type": "color", "$value": "{semantic.ring}",        "$description": "Ring on the focused slot" },
+      "invalid-border": { "$type": "color", "$value": "{semantic.destructive}" },
+      "caret":          { "$type": "color", "$value": "{semantic.foreground}",  "$description": "Blinking fake caret" }
+    },
+    "label": {
+      "text": { "$type": "color", "$value": "{semantic.foreground}", "$description": "Disabled state is opacity-only (no separate color)" }
+    },
+    "avatar": {
+      "fallback-bg": { "$type": "color", "$value": "{semantic.muted}",            "$description": "Initials surface when no image" },
+      "fallback-fg": { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "ring":        { "$type": "color", "$value": "{semantic.background}",        "$description": "Group/badge ring to separate overlaps" },
+      "border":      { "$type": "color", "$value": "{semantic.border}",            "$description": "Hairline (blended) around the image" },
+      "badge-bg":    { "$type": "color", "$value": "{semantic.primary}",           "$description": "Presence/status badge" },
+      "badge-fg":    { "$type": "color", "$value": "{semantic.primary-foreground}" }
+    },
+    "progress": {
+      "track":     { "$type": "color", "$value": "{semantic.muted}" },
+      "indicator": { "$type": "color", "$value": "{semantic.primary}" }
+    },
+    "skeleton": {
+      "bg": { "$type": "color", "$value": "{semantic.muted}", "$description": "Pulsing placeholder fill" }
+    },
+    "spinner": {
+      "color": { "$type": "color", "$value": "currentColor", "$description": "Inherits text color — set via text-* on the parent" }
+    },
+    "kbd": {
+      "bg": { "$type": "color", "$value": "{semantic.muted}" },
+      "fg": { "$type": "color", "$value": "{semantic.muted-foreground}" }
+    },
+    "empty": {
+      "icon-bg":     { "$type": "color", "$value": "{semantic.muted}" },
+      "icon-fg":     { "$type": "color", "$value": "{semantic.foreground}" },
+      "title":       { "$type": "color", "$value": "{semantic.foreground}" },
+      "description": { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "border":      { "$type": "color", "$value": "{semantic.border}", "$description": "Dashed container edge" }
+    },
+    "item": {
+      "border":      { "$type": "color", "$value": "{semantic.border}",   "$description": "Outline variant edge" },
+      "muted-bg":    { "$type": "color", "$value": "{semantic.muted}",    "$description": "Muted variant surface (rendered at 50%)" },
+      "hover-bg":    { "$type": "color", "$value": "{semantic.muted}",    "$description": "Hover when interactive (asChild link)" },
+      "focus-ring":  { "$type": "color", "$value": "{semantic.ring}" },
+      "title":       { "$type": "color", "$value": "{semantic.foreground}" },
+      "description": { "$type": "color", "$value": "{semantic.muted-foreground}" }
+    },
+    "table": {
+      "header-fg":    { "$type": "color", "$value": "{semantic.foreground}",       "$description": "Column heading text" },
+      "row-hover":    { "$type": "color", "$value": "{semantic.muted}",            "$description": "Row hover (rendered at 50%)" },
+      "row-selected": { "$type": "color", "$value": "{semantic.muted}" },
+      "footer-bg":    { "$type": "color", "$value": "{semantic.muted}",            "$description": "Footer/total row (50%)" },
+      "border":       { "$type": "color", "$value": "{semantic.border}",           "$description": "Row dividers" },
+      "caption":      { "$type": "color", "$value": "{semantic.muted-foreground}" }
+    },
+    "tabs": {
+      "list-bg":          { "$type": "color", "$value": "{semantic.muted}",            "$description": "Segmented track (default variant)" },
+      "trigger-fg":       { "$type": "color", "$value": "{semantic.muted-foreground}", "$description": "Inactive tab label" },
+      "trigger-active-bg":{ "$type": "color", "$value": "{semantic.background}",        "$description": "Active tab pill" },
+      "trigger-active-fg":{ "$type": "color", "$value": "{semantic.foreground}" },
+      "line-indicator":   { "$type": "color", "$value": "{semantic.foreground}",        "$description": "Underline (line variant)" },
+      "focus-ring":       { "$type": "color", "$value": "{semantic.ring}" }
+    },
+    "breadcrumb": {
+      "fg":         { "$type": "color", "$value": "{semantic.muted-foreground}", "$description": "Trail + separators" },
+      "link-hover": { "$type": "color", "$value": "{semantic.foreground}" },
+      "current":    { "$type": "color", "$value": "{semantic.foreground}",       "$description": "Current page (aria-current)" }
+    },
+    "menubar": {
+      "trigger-open-bg": { "$type": "color", "$value": "{semantic.muted}",            "$description": "Hover/open trigger" },
+      "content-bg":      { "$type": "color", "$value": "{semantic.popover}" },
+      "content-fg":      { "$type": "color", "$value": "{semantic.popover-foreground}" },
+      "item-focus-bg":   { "$type": "color", "$value": "{semantic.accent}" },
+      "item-focus-fg":   { "$type": "color", "$value": "{semantic.accent-foreground}" },
+      "separator":       { "$type": "color", "$value": "{semantic.border}" },
+      "shortcut":        { "$type": "color", "$value": "{semantic.muted-foreground}" }
+    },
+    "navigation-menu": {
+      "trigger-bg":    { "$type": "color", "$value": "{semantic.muted}",            "$description": "Hover/open trigger" },
+      "content-bg":    { "$type": "color", "$value": "{semantic.popover}" },
+      "content-fg":    { "$type": "color", "$value": "{semantic.popover-foreground}" },
+      "link-hover-bg": { "$type": "color", "$value": "{semantic.accent}" },
+      "focus-ring":    { "$type": "color", "$value": "{semantic.ring}" }
+    },
+    "pagination": {
+      "active-border": { "$type": "color", "$value": "{semantic.border}", "$description": "Current page uses Button outline; inactive is ghost" }
+    },
+    "alert-dialog": {
+      "overlay":     { "$type": "color", "$value": "oklch(0 0 0 / 50%)", "$description": "Modal backdrop — black at 50%" },
+      "bg":          { "$type": "color", "$value": "{semantic.background}" },
+      "fg":          { "$type": "color", "$value": "{semantic.foreground}" },
+      "title":       { "$type": "color", "$value": "{semantic.foreground}" },
+      "description": { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "border":      { "$type": "color", "$value": "{semantic.border}" }
+    },
+    "dropdown-menu": {
+      "content-bg":    { "$type": "color", "$value": "{semantic.popover}" },
+      "content-fg":    { "$type": "color", "$value": "{semantic.popover-foreground}" },
+      "item-focus-bg": { "$type": "color", "$value": "{semantic.accent}" },
+      "item-focus-fg": { "$type": "color", "$value": "{semantic.accent-foreground}" },
+      "separator":     { "$type": "color", "$value": "{semantic.border}" },
+      "shortcut":      { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "destructive":   { "$type": "color", "$value": "{semantic.destructive}", "$description": "Destructive item text" }
+    },
+    "context-menu": {
+      "content-bg":    { "$type": "color", "$value": "{semantic.popover}" },
+      "content-fg":    { "$type": "color", "$value": "{semantic.popover-foreground}" },
+      "item-focus-bg": { "$type": "color", "$value": "{semantic.accent}" },
+      "item-focus-fg": { "$type": "color", "$value": "{semantic.accent-foreground}" },
+      "separator":     { "$type": "color", "$value": "{semantic.border}" },
+      "shortcut":      { "$type": "color", "$value": "{semantic.muted-foreground}" }
+    },
+    "popover": {
+      "bg":          { "$type": "color", "$value": "{semantic.popover}" },
+      "fg":          { "$type": "color", "$value": "{semantic.popover-foreground}" },
+      "border":      { "$type": "color", "$value": "color-mix(in oklch, var(--foreground) 10%, transparent)", "$description": "Hairline ring (foreground/10, mode-aware)" },
+      "title":       { "$type": "color", "$value": "{semantic.foreground}" },
+      "description": { "$type": "color", "$value": "{semantic.muted-foreground}" }
+    },
+    "hover-card": {
+      "bg":     { "$type": "color", "$value": "{semantic.popover}" },
+      "fg":     { "$type": "color", "$value": "{semantic.popover-foreground}" },
+      "border": { "$type": "color", "$value": "color-mix(in oklch, var(--foreground) 10%, transparent)", "$description": "Hairline ring (foreground/10, mode-aware)" }
+    },
+    "sheet": {
+      "overlay": { "$type": "color", "$value": "oklch(0 0 0 / 50%)", "$description": "Backdrop — black at 50%" },
+      "bg":      { "$type": "color", "$value": "{semantic.background}" },
+      "fg":      { "$type": "color", "$value": "{semantic.foreground}" },
+      "border":  { "$type": "color", "$value": "{semantic.border}", "$description": "Edge against the page" }
+    },
+    "drawer": {
+      "overlay": { "$type": "color", "$value": "oklch(0 0 0 / 50%)", "$description": "Backdrop — black at 50%" },
+      "bg":      { "$type": "color", "$value": "{semantic.background}" },
+      "fg":      { "$type": "color", "$value": "{semantic.foreground}" },
+      "handle":  { "$type": "color", "$value": "{semantic.muted}", "$description": "Drag handle bar" },
+      "border":  { "$type": "color", "$value": "{semantic.border}" }
+    },
+    "tooltip": {
+      "bg":    { "$type": "color", "$value": "{semantic.foreground}", "$description": "Inverted surface (dark on light)" },
+      "fg":    { "$type": "color", "$value": "{semantic.background}", "$description": "Inverted text" },
+      "arrow": { "$type": "color", "$value": "{semantic.foreground}" }
+    },
+    "accordion": {
+      "trigger-fg": { "$type": "color", "$value": "{semantic.foreground}" },
+      "item-border":{ "$type": "color", "$value": "{semantic.border}", "$description": "Between items" },
+      "icon":       { "$type": "color", "$value": "{semantic.foreground}", "$description": "Chevron" },
+      "focus-ring": { "$type": "color", "$value": "{semantic.ring}" }
+    },
+    "command": {
+      "content-bg":    { "$type": "color", "$value": "{semantic.popover}" },
+      "content-fg":    { "$type": "color", "$value": "{semantic.popover-foreground}" },
+      "input-border":  { "$type": "color", "$value": "{semantic.border}", "$description": "Under the search input" },
+      "item-focus-bg": { "$type": "color", "$value": "{semantic.accent}" },
+      "item-focus-fg": { "$type": "color", "$value": "{semantic.accent-foreground}" },
+      "group-heading": { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "shortcut":      { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "empty":         { "$type": "color", "$value": "{semantic.muted-foreground}", "$description": "No-results text" }
+    },
+    "separator": {
+      "color": { "$type": "color", "$value": "{semantic.border}" }
+    },
+    "alert": {
+      "bg":             { "$type": "color", "$value": "{semantic.card}" },
+      "fg":             { "$type": "color", "$value": "{semantic.card-foreground}" },
+      "description":    { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "border":         { "$type": "color", "$value": "{semantic.border}" },
+      "destructive-fg": { "$type": "color", "$value": "{semantic.destructive}", "$description": "Destructive variant title/icon" }
+    },
+    "sonner": {
+      "bg":          { "$type": "color", "$value": "{semantic.popover}" },
+      "fg":          { "$type": "color", "$value": "{semantic.popover-foreground}" },
+      "border":      { "$type": "color", "$value": "{semantic.border}" },
+      "description": { "$type": "color", "$value": "{semantic.muted-foreground}" }
+    },
+    "calendar": {
+      "selected-bg": { "$type": "color", "$value": "{semantic.primary}",            "$description": "Selected day (Apple blue)" },
+      "selected-fg": { "$type": "color", "$value": "{semantic.primary-foreground}" },
+      "today-bg":    { "$type": "color", "$value": "{semantic.accent}",             "$description": "Today marker" },
+      "range-bg":    { "$type": "color", "$value": "{semantic.accent}",             "$description": "In-range days" },
+      "outside-fg":  { "$type": "color", "$value": "{semantic.muted-foreground}",   "$description": "Outside/disabled days" },
+      "nav-hover-bg":{ "$type": "color", "$value": "{semantic.accent}",             "$description": "Prev/next month buttons" },
+      "focus-ring":  { "$type": "color", "$value": "{semantic.ring}" }
+    },
+    "scroll-area": {
+      "thumb": { "$type": "color", "$value": "{semantic.border}", "$description": "Scrollbar thumb" }
     }
   }
 }

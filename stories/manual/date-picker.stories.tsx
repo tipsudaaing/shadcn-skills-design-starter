@@ -29,7 +29,6 @@ function DatePicker({ placeholder, disabled }: Args) {
 
 const meta: Meta<Args> = {
   title: "Utility/Date Picker",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("date-picker")?.description } } },
   args: { placeholder: "Pick a date", disabled: false },
   argTypes: {

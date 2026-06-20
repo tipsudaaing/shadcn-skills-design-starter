@@ -29,6 +29,41 @@
     },
     "spinner": {
       "spin-duration": { "$type": "duration", "$value": "1000ms", "$description": "Loading spinner rotation period" }
-    }
+    },
+    "badge": {
+      "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Color/hover transition" }
+    },
+    "switch": {
+      "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Track color + thumb translate" },
+      "transition-easing":   { "$type": "cubicBezier", "$value": "{primitive.easing.standard}" }
+    },
+    "select": {
+      "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Trigger color transition" }
+    },
+    "checkbox":      { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "toggle":        { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "textarea":      { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "native-select": { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "input-group":   { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "slider":        { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Thumb color + ring" } },
+    "input-otp":     { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Slot border/ring" } },
+    "progress":      { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.base}", "$description": "Indicator width tween" } },
+    "item":          { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Hover/focus color" } },
+    "table":         { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Row hover color" } },
+    "tabs":          { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Trigger active/hover" } },
+    "menubar":       { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "navigation-menu": {
+      "transition-duration": { "$type": "duration", "$value": "{primitive.duration.moderate}", "$description": "Viewport + content motion (300ms)" }
+    },
+    "alert-dialog":  { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.moderate}", "$description": "Overlay fade + content zoom" } },
+    "sheet":         { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.moderate}", "$description": "Slide in/out" } },
+    "drawer":        { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.moderate}", "$description": "Slide in/out" } },
+    "dropdown-menu": { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "context-menu":  { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "popover":       { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "hover-card":    { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "tooltip":       { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "accordion":     { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.base}", "$description": "Expand/collapse height" } },
+    "collapsible":   { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.base}", "$description": "Expand/collapse height" } }
   }
 }

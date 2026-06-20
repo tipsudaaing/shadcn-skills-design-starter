@@ -7,7 +7,6 @@ type Args = { side: "top" | "right" | "bottom" | "left" };
 
 const meta: Meta<Args> = {
   title: "Overlay/Hover Card",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("hover-card")?.description } } },
   args: { side: "bottom" },
   argTypes: { side: { control: "inline-radio", options: ["top", "right", "bottom", "left"] } },

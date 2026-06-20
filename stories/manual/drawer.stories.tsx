@@ -7,7 +7,6 @@ type Args = { direction: "top" | "bottom" | "left" | "right"; defaultOpen: boole
 
 const meta: Meta<Args> = {
   title: "Overlay/Drawer",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("drawer")?.description } } },
   args: { direction: "bottom", defaultOpen: false },
   argTypes: {
@@ -38,4 +37,27 @@ export default meta;
 type Story = StoryObj<Args>;
 
 export const Playground: Story = {};
+
+export const Open: Story = {
+  name: "Open (bottom)",
+  parameters: { docs: { description: { story: "A Drawer open from the bottom edge with a drag handle — the touch-friendly counterpart to a Dialog/Sheet." } } },
+  render: () => (
+    <Drawer defaultOpen>
+      <DrawerTrigger asChild>
+        <Button variant="outline">Move goal</Button>
+      </DrawerTrigger>
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>Move goal</DrawerTitle>
+          <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+        </DrawerHeader>
+        <DrawerFooter>
+          <Button>Submit</Button>
+          <DrawerClose asChild><Button variant="outline">Cancel</Button></DrawerClose>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
+  ),
+};
+
 export const Demo: Story = { name: "Demo", render: () => <>{getEntry("drawer")!.demo}</> };

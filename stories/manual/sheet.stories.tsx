@@ -7,7 +7,6 @@ type Args = { side: "top" | "right" | "bottom" | "left"; defaultOpen: boolean };
 
 const meta: Meta<Args> = {
   title: "Overlay/Sheet",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("sheet")?.description } } },
   args: { side: "right", defaultOpen: false },
   argTypes: {
@@ -32,4 +31,23 @@ export default meta;
 type Story = StoryObj<Args>;
 
 export const Playground: Story = {};
+
+export const Open: Story = {
+  name: "Open (right)",
+  parameters: { docs: { description: { story: "A Sheet open on mount, sliding from the right. Set `side` to `top · right · bottom · left`." } } },
+  render: () => (
+    <Sheet defaultOpen>
+      <SheetTrigger asChild>
+        <Button variant="outline">Edit profile</Button>
+      </SheetTrigger>
+      <SheetContent side="right">
+        <SheetHeader>
+          <SheetTitle>Edit profile</SheetTitle>
+          <SheetDescription>Make changes to your profile. Changes save when you close the sheet.</SheetDescription>
+        </SheetHeader>
+      </SheetContent>
+    </Sheet>
+  ),
+};
+
 export const Demo: Story = { name: "Demo", render: () => <>{getEntry("sheet")!.demo}</> };

@@ -20,6 +20,66 @@
     "$description": "Per-component radii.",
     "button": { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
     "field":  { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
-    "dialog": { "radius": { "$type": "dimension", "$value": "{semantic.radius-xl}" } }
+    "dialog": { "radius": { "$type": "dimension", "$value": "{semantic.radius-xl}" } },
+    "badge":  { "radius": { "$type": "dimension", "$value": "2rem", "$description": "Pill (rounded-4xl) — radius >> height fully rounds the ends" } },
+    "switch": { "radius": { "$type": "dimension", "$value": "9999px", "$description": "Full pill track + thumb (rounded-full)" } },
+    "select": {
+      "radius":         { "$type": "dimension", "$value": "{semantic.radius-lg}", "$description": "Trigger + content corner" },
+      "content-radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" }
+    },
+    "card":   { "radius": { "$type": "dimension", "$value": "{semantic.radius-xl}", "$description": "Card panel (rounded-xl ~17px)" } },
+    "checkbox": { "radius": { "$type": "dimension", "$value": "4px", "$description": "Small rounded square (rounded-[4px])" } },
+    "radio":    { "radius": { "$type": "dimension", "$value": "9999px", "$description": "Full circle (rounded-full)" } },
+    "slider": {
+      "track-radius": { "$type": "dimension", "$value": "9999px", "$description": "Pill rail + thumb" },
+      "thumb-size":   { "$type": "dimension", "$value": "0.75rem", "$description": "12px knob (size-3)" }
+    },
+    "textarea":      { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
+    "toggle":        { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
+    "native-select": { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
+    "input-group":   { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
+    "button-group":  { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}", "$description": "Outer corners; inner edges square via the group" } },
+    "input-otp": {
+      "slot-size":   { "$type": "dimension", "$value": "2rem", "$description": "32px square slot (size-8)" },
+      "slot-radius": { "$type": "dimension", "$value": "{semantic.radius-lg}", "$description": "Applied to the group's outer corners only" }
+    },
+    "avatar": {
+      "radius": { "$type": "dimension", "$value": "9999px", "$description": "Full circle" },
+      "size":   { "$type": "dimension", "$value": "2rem", "$description": "32px default (sm 24px, lg 40px)" }
+    },
+    "progress": {
+      "height": { "$type": "dimension", "$value": "0.25rem", "$description": "4px rail (h-1)" },
+      "radius": { "$type": "dimension", "$value": "9999px" }
+    },
+    "skeleton": { "radius": { "$type": "dimension", "$value": "{semantic.radius-md}" } },
+    "spinner":  { "size":   { "$type": "dimension", "$value": "1rem", "$description": "16px default (size-4)" } },
+    "kbd":      { "radius": { "$type": "dimension", "$value": "{semantic.radius-sm}" } },
+    "empty":    { "radius": { "$type": "dimension", "$value": "{semantic.radius-xl}" } },
+    "item":     { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
+    "tabs": {
+      "list-radius":    { "$type": "dimension", "$value": "{semantic.radius-lg}", "$description": "Track corner (default variant)" },
+      "trigger-radius": { "$type": "dimension", "$value": "{semantic.radius-md}", "$description": "Active tab pill" }
+    },
+    "menubar": {
+      "radius":         { "$type": "dimension", "$value": "{semantic.radius-lg}", "$description": "Bar container" },
+      "trigger-radius": { "$type": "dimension", "$value": "{semantic.radius-sm}" },
+      "content-radius": { "$type": "dimension", "$value": "{semantic.radius-md}" }
+    },
+    "navigation-menu": {
+      "trigger-radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" },
+      "content-radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" }
+    },
+    "alert-dialog":  { "radius": { "$type": "dimension", "$value": "{semantic.radius-xl}", "$description": "Modal panel (~17px)" } },
+    "dropdown-menu": { "content-radius": { "$type": "dimension", "$value": "{semantic.radius-md}" } },
+    "context-menu":  { "content-radius": { "$type": "dimension", "$value": "{semantic.radius-md}" } },
+    "popover":       { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
+    "hover-card":    { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
+    "drawer":        { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}", "$description": "Rounded leading edge" } },
+    "tooltip":       { "radius": { "$type": "dimension", "$value": "{semantic.radius-md}" } },
+    "command":       { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}", "$description": "Palette container" } },
+    "separator":     { "thickness": { "$type": "dimension", "$value": "1px", "$description": "Hairline (h/w px)" } },
+    "alert":         { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
+    "calendar":      { "day-radius": { "$type": "dimension", "$value": "{semantic.radius-md}", "$description": "Day cell" } },
+    "scroll-area":   { "scrollbar-size": { "$type": "dimension", "$value": "0.625rem", "$description": "10px track width (w-2.5)" } }
   }
 }

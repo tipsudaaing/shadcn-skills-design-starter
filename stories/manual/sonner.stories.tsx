@@ -8,7 +8,6 @@ type Args = { message: string; description: string; withAction: boolean };
 
 const meta: Meta<Args> = {
   title: "Feedback/Sonner",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("sonner")?.description } } },
   args: {
     message: "Event has been created",
@@ -41,4 +40,21 @@ export default meta;
 type Story = StoryObj<Args>;
 
 export const Playground: Story = {};
+
+export const Types: Story = {
+  name: "Toast types",
+  parameters: { docs: { description: { story: "Sonner's variants — default, success, error, and a toast with an action. Click to trigger (toasts render in the portal)." } } },
+  render: () => (
+    <>
+      <Toaster />
+      <div className="flex flex-wrap gap-2">
+        <Button variant="outline" onClick={() => toast("Event has been created")}>Default</Button>
+        <Button variant="outline" onClick={() => toast.success("Saved", { description: "Your changes are live." })}>Success</Button>
+        <Button variant="outline" onClick={() => toast.error("Failed", { description: "Could not reach the server." })}>Error</Button>
+        <Button variant="outline" onClick={() => toast("Deleted", { action: { label: "Undo", onClick: () => {} } })}>With action</Button>
+      </div>
+    </>
+  ),
+};
+
 export const Demo: Story = { name: "Demo", render: () => <>{getEntry("sonner")!.demo}</> };

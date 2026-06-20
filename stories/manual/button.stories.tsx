@@ -5,7 +5,6 @@ import { getEntry } from "@/components/docs/registry";
 const meta: Meta<typeof Button> = {
   title: "Form & Input/Button",
   component: Button,
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("button")?.description } } },
   args: { children: "Button", variant: "default", size: "default", disabled: false, loading: false },
   argTypes: {
