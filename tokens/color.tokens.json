@@ -90,6 +90,45 @@
       "title":        { "$type": "color", "$value": "{semantic.foreground}" },
       "description":  { "$type": "color", "$value": "{semantic.muted-foreground}" },
       "close-ring":   { "$type": "color", "$value": "{semantic.ring}" }
+    },
+    "badge": {
+      "default-bg":     { "$type": "color", "$value": "{semantic.primary}" },
+      "default-fg":     { "$type": "color", "$value": "{semantic.primary-foreground}" },
+      "secondary-bg":   { "$type": "color", "$value": "{semantic.secondary}" },
+      "secondary-fg":   { "$type": "color", "$value": "{semantic.secondary-foreground}" },
+      "destructive-fg": { "$type": "color", "$value": "{semantic.destructive}", "$description": "Soft destructive: destructive text on destructive/10 surface" },
+      "outline-border": { "$type": "color", "$value": "{semantic.border}" },
+      "outline-fg":     { "$type": "color", "$value": "{semantic.foreground}" },
+      "focus-ring":     { "$type": "color", "$value": "{semantic.ring}" }
+    },
+    "switch": {
+      "track-on":     { "$type": "color", "$value": "{semantic.primary}",    "$description": "Checked track fill (Apple blue)" },
+      "track-off":    { "$type": "color", "$value": "{semantic.input}",      "$description": "Unchecked track fill" },
+      "thumb":        { "$type": "color", "$value": "{semantic.background}",  "$description": "Sliding knob" },
+      "focus-ring":   { "$type": "color", "$value": "{semantic.ring}" },
+      "invalid-ring": { "$type": "color", "$value": "{semantic.destructive}" }
+    },
+    "select": {
+      "trigger-bg":     { "$type": "color", "$value": "{semantic.background}" },
+      "trigger-text":   { "$type": "color", "$value": "{semantic.foreground}" },
+      "trigger-border": { "$type": "color", "$value": "{semantic.input}" },
+      "placeholder":    { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "focus-ring":     { "$type": "color", "$value": "{semantic.ring}" },
+      "invalid-ring":   { "$type": "color", "$value": "{semantic.destructive}" },
+      "content-bg":     { "$type": "color", "$value": "{semantic.popover}" },
+      "content-fg":     { "$type": "color", "$value": "{semantic.popover-foreground}" },
+      "item-focus-bg":  { "$type": "color", "$value": "{semantic.accent}",    "$description": "Highlighted/keyboard-focused option" },
+      "item-focus-fg":  { "$type": "color", "$value": "{semantic.accent-foreground}" },
+      "label":          { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "separator":      { "$type": "color", "$value": "{semantic.border}" }
+    },
+    "card": {
+      "bg":          { "$type": "color", "$value": "{semantic.card}" },
+      "fg":          { "$type": "color", "$value": "{semantic.card-foreground}" },
+      "title":       { "$type": "color", "$value": "{semantic.card-foreground}" },
+      "description": { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "footer-bg":   { "$type": "color", "$value": "{semantic.muted}", "$description": "Footer bar — rendered at 50% (bg-muted/50)" },
+      "ring":        { "$type": "color", "$value": "color-mix(in oklch, var(--foreground) 10%, transparent)", "$description": "Hairline edge — foreground at 10% (mode-aware)" }
     }
   }
 }

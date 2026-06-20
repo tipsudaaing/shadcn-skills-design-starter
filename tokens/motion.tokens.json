@@ -29,6 +29,16 @@
     },
     "spinner": {
       "spin-duration": { "$type": "duration", "$value": "1000ms", "$description": "Loading spinner rotation period" }
+    },
+    "badge": {
+      "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Color/hover transition" }
+    },
+    "switch": {
+      "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Track color + thumb translate" },
+      "transition-easing":   { "$type": "cubicBezier", "$value": "{primitive.easing.standard}" }
+    },
+    "select": {
+      "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Trigger color transition" }
     }
   }
 }

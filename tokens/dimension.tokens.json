@@ -20,6 +20,13 @@
     "$description": "Per-component radii.",
     "button": { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
     "field":  { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
-    "dialog": { "radius": { "$type": "dimension", "$value": "{semantic.radius-xl}" } }
+    "dialog": { "radius": { "$type": "dimension", "$value": "{semantic.radius-xl}" } },
+    "badge":  { "radius": { "$type": "dimension", "$value": "2rem", "$description": "Pill (rounded-4xl) — radius >> height fully rounds the ends" } },
+    "switch": { "radius": { "$type": "dimension", "$value": "9999px", "$description": "Full pill track + thumb (rounded-full)" } },
+    "select": {
+      "radius":         { "$type": "dimension", "$value": "{semantic.radius-lg}", "$description": "Trigger + content corner" },
+      "content-radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" }
+    },
+    "card":   { "radius": { "$type": "dimension", "$value": "{semantic.radius-xl}", "$description": "Card panel (rounded-xl ~17px)" } }
   }
 }
