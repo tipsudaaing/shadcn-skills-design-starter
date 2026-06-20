@@ -1,0 +1,71 @@
+import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as CalendarStories from "../manual/calendar.stories";
+import * as DatePickerStories from "../manual/date-picker.stories";
+
+<Meta title="Docs/Calendar & Date Picker" />
+
+# Calendar & Date Picker
+
+Date selection. **Calendar** (`components/ui/calendar.tsx`, react-day-picker) is the
+inline month grid; **Date Picker** is the common composition — a `Button` trigger + a
+`Popover` holding a Calendar. Both are styled through the Apple-language tokens.
+
+## Anatomy
+
+```
+Calendar                          Date Picker
+┌──────────────────────────┐      [ 📅 Pick a date ▾ ]
+│  ‹   June 2026        ›   │            │
+│  Su Mo Tu We Th Fr Sa     │            ▼
+│           1  2  3  4  5   │      ┌──────────────┐
+│   …  [12] …               │      │  Calendar     │  ← in a Popover
+└──────────────────────────┘      └──────────────┘
+   selected = --calendar-selected-bg
+```
+
+- **Calendar** — `mode` `single · range · multiple`; nav buttons, outside/disabled days.
+- **Date Picker** — `Button` (shows the formatted date) + `Popover` + `Calendar`.
+
+## API — Calendar
+
+<ArgTypes of={CalendarStories.Playground} />
+
+## Selection modes
+
+<Canvas of={CalendarStories.Modes} />
+
+`single · range · multiple`. The selected day uses `--calendar-selected-bg`; a range
+fills with `--calendar-range-bg`.
+
+## Date Picker
+
+<Canvas of={DatePickerStories.Playground} />
+
+The trigger shows the chosen date (or a placeholder) and opens the Calendar in a Popover.
+
+## Usage
+
+- **Do** use an inline **Calendar** when the month view should always be visible.
+- **Do** use a **Date Picker** to save space — collapse the calendar behind a field.
+- **Do** format the trigger date clearly and keep a placeholder until one is chosen.
+- **Don't** force calendar entry for simple, known dates — a typed field can be faster.
+- **Don't** hardcode colors — days/nav map to `--calendar-*` / semantic tokens.
+
+## Token mapping
+
+| Token | Role |
+|---|---|
+| `--calendar-selected-bg` → `--primary` | Selected day (Apple blue) |
+| `--calendar-selected-fg` → `--primary-foreground` | Selected day text |
+| `--calendar-today-bg` → `--accent` | Today marker |
+| `--calendar-range-bg` → `--accent` | In-range days |
+| `--calendar-outside-fg` → `--muted-foreground` | Outside/disabled days |
+| `--calendar-focus-ring` → `--ring` | Focused day ring |
+| `--calendar-day-radius` → `--radius-md` | Day cell corner |
+
+## Accessibility (WCAG 2.2 AA)
+
+- react-day-picker provides a labeled grid with full keyboard navigation (arrows, Page Up/Down, Home/End).
+- The Date Picker trigger states the current value; the popover traps focus and restores it on close.
+- Selected/today are conveyed by fill **and** `aria-selected`/`aria-current`, not color alone.
+- Day/nav contrast verified ≥ 4.5:1 in both themes.

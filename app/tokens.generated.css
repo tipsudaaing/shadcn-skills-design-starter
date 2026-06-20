@@ -6,6 +6,10 @@
   --accordion-item-border: var(--border);
   --accordion-transition-duration: 200ms;
   --accordion-trigger-fg: var(--foreground);
+  --alert-bg: var(--card);
+  --alert-border: var(--border);
+  --alert-description: var(--muted-foreground);
+  --alert-destructive-fg: var(--destructive);
   --alert-dialog-bg: var(--background);
   --alert-dialog-border: var(--border);
   --alert-dialog-description: var(--muted-foreground);
@@ -14,6 +18,8 @@
   --alert-dialog-radius: var(--radius-xl);
   --alert-dialog-title: var(--foreground);
   --alert-dialog-transition-duration: 300ms;
+  --alert-fg: var(--card-foreground);
+  --alert-radius: var(--radius-lg);
   --avatar-badge-bg: var(--primary);
   --avatar-badge-fg: var(--primary-foreground);
   --avatar-border: var(--border);
@@ -55,6 +61,14 @@
   --button-secondary-fg: var(--secondary-foreground);
   --button-transition-duration: 150ms;
   --button-transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+  --calendar-day-radius: var(--radius-md);
+  --calendar-focus-ring: var(--ring);
+  --calendar-nav-hover-bg: var(--accent);
+  --calendar-outside-fg: var(--muted-foreground);
+  --calendar-range-bg: var(--accent);
+  --calendar-selected-bg: var(--primary);
+  --calendar-selected-fg: var(--primary-foreground);
+  --calendar-today-bg: var(--accent);
   --card-bg: var(--card);
   --card-description: var(--muted-foreground);
   --card-fg: var(--card-foreground);
@@ -216,6 +230,8 @@
   --radio-focus-ring: var(--ring);
   --radio-invalid-ring: var(--destructive);
   --radio-radius: 9999px;
+  --scroll-area-scrollbar-size: 0.625rem;
+  --scroll-area-thumb: var(--border);
   --select-content-bg: var(--popover);
   --select-content-fg: var(--popover-foreground);
   --select-content-radius: var(--radius-lg);
@@ -248,6 +264,10 @@
   --slider-track-radius: 9999px;
   --slider-track: var(--muted);
   --slider-transition-duration: 150ms;
+  --sonner-bg: var(--popover);
+  --sonner-border: var(--border);
+  --sonner-description: var(--muted-foreground);
+  --sonner-fg: var(--popover-foreground);
   --spinner-color: currentColor;
   --spinner-size: 1rem;
   --spinner-spin-duration: 1000ms;

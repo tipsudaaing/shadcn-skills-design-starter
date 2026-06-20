@@ -77,6 +77,9 @@
     "drawer":        { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}", "$description": "Rounded leading edge" } },
     "tooltip":       { "radius": { "$type": "dimension", "$value": "{semantic.radius-md}" } },
     "command":       { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}", "$description": "Palette container" } },
-    "separator":     { "thickness": { "$type": "dimension", "$value": "1px", "$description": "Hairline (h/w px)" } }
+    "separator":     { "thickness": { "$type": "dimension", "$value": "1px", "$description": "Hairline (h/w px)" } },
+    "alert":         { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
+    "calendar":      { "day-radius": { "$type": "dimension", "$value": "{semantic.radius-md}", "$description": "Day cell" } },
+    "scroll-area":   { "scrollbar-size": { "$type": "dimension", "$value": "0.625rem", "$description": "10px track width (w-2.5)" } }
   }
 }

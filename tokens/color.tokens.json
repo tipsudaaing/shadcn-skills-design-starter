@@ -347,6 +347,31 @@
     },
     "separator": {
       "color": { "$type": "color", "$value": "{semantic.border}" }
+    },
+    "alert": {
+      "bg":             { "$type": "color", "$value": "{semantic.card}" },
+      "fg":             { "$type": "color", "$value": "{semantic.card-foreground}" },
+      "description":    { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "border":         { "$type": "color", "$value": "{semantic.border}" },
+      "destructive-fg": { "$type": "color", "$value": "{semantic.destructive}", "$description": "Destructive variant title/icon" }
+    },
+    "sonner": {
+      "bg":          { "$type": "color", "$value": "{semantic.popover}" },
+      "fg":          { "$type": "color", "$value": "{semantic.popover-foreground}" },
+      "border":      { "$type": "color", "$value": "{semantic.border}" },
+      "description": { "$type": "color", "$value": "{semantic.muted-foreground}" }
+    },
+    "calendar": {
+      "selected-bg": { "$type": "color", "$value": "{semantic.primary}",            "$description": "Selected day (Apple blue)" },
+      "selected-fg": { "$type": "color", "$value": "{semantic.primary-foreground}" },
+      "today-bg":    { "$type": "color", "$value": "{semantic.accent}",             "$description": "Today marker" },
+      "range-bg":    { "$type": "color", "$value": "{semantic.accent}",             "$description": "In-range days" },
+      "outside-fg":  { "$type": "color", "$value": "{semantic.muted-foreground}",   "$description": "Outside/disabled days" },
+      "nav-hover-bg":{ "$type": "color", "$value": "{semantic.accent}",             "$description": "Prev/next month buttons" },
+      "focus-ring":  { "$type": "color", "$value": "{semantic.ring}" }
+    },
+    "scroll-area": {
+      "thumb": { "$type": "color", "$value": "{semantic.border}", "$description": "Scrollbar thumb" }
     }
   }
 }
