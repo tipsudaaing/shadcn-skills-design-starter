@@ -39,7 +39,14 @@ npm run test-storybook   # render-smoke every story (vitest + playwright)
 ```
 
 > **Storybook stories:** all components are now hand-authored in `stories/manual/**` (one file
-> per component, with `args`/`argTypes` controls). `npm run gen:stories` emits Demo-only stories
+> per component, with `args`/`argTypes` controls). Every component is at **assignment depth**:
+> discrete state/variant galleries in its manual story (static focus/hover reproduce the
+> component's own pseudo-class utilities; `disabled`/`aria-invalid` use real attributes), a
+> curated MDX doc in `stories/docs/**` (45 files — closely-related pairs like Checkbox+Radio,
+> Toggle+ToggleGroup, Sheet+Drawer are combined), and a component-tier token block in
+> `tokens/*.tokens.json` (313 vars; pure compositions like combobox/data-table/date-picker reuse
+> their constituents' tokens and are documented rather than re-tokenised). `npm run gen:stories`
+> emits Demo-only stories
 > into `stories/generated/**` from `components/docs/registry.tsx`, **skipping** any slug in the
 > `MANUAL` set in `scripts/gen-stories.mjs`. Since every slug is currently in `MANUAL`,
 > `stories/generated/` is empty and the script writes 0 files — that is expected. Its guard
