@@ -13,7 +13,6 @@ type Args = {
 
 const meta: Meta<Args> = {
   title: "Display/Item",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("item")?.description } } },
   args: { variant: "outline", size: "default", title: "Basic Item", description: "A simple item with title and description." },
   argTypes: {

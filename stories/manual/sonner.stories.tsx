@@ -8,7 +8,6 @@ type Args = { message: string; description: string; withAction: boolean };
 
 const meta: Meta<Args> = {
   title: "Feedback/Sonner",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("sonner")?.description } } },
   args: {
     message: "Event has been created",

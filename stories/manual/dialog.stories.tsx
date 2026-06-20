@@ -9,7 +9,6 @@ type Args = { defaultOpen: boolean; title: string; description: string };
 
 const meta: Meta<Args> = {
   title: "Overlay/Dialog",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("dialog")?.description } } },
   args: {
     defaultOpen: true,

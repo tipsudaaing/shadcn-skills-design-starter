@@ -6,7 +6,6 @@ import { getEntry } from "@/components/docs/registry";
 const meta: Meta<typeof Badge> = {
   title: "Display/Badge",
   component: Badge,
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("badge")?.description } } },
   args: { children: "Badge", variant: "default" },
   argTypes: {

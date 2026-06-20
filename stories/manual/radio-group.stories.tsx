@@ -9,7 +9,6 @@ const options = ["Default", "Comfortable", "Compact"];
 
 const meta: Meta<Args> = {
   title: "Form & Input/Radio Group",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("radio-group")?.description } } },
   args: { defaultValue: "Comfortable", disabled: false },
   argTypes: {

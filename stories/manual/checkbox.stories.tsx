@@ -6,7 +6,6 @@ import { getEntry } from "@/components/docs/registry";
 const meta: Meta<typeof Checkbox> = {
   title: "Form & Input/Checkbox",
   component: Checkbox,
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("checkbox")?.description } } },
   args: { defaultChecked: false, disabled: false },
   argTypes: {

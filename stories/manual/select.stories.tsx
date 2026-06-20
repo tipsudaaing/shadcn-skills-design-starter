@@ -27,7 +27,6 @@ function FruitSelect(props: React.ComponentProps<typeof Select> & { placeholder?
 
 const meta: Meta<Args> = {
   title: "Form & Input/Select",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("select")?.description } } },
   args: { placeholder: "Select a fruit", disabled: false },
   argTypes: {

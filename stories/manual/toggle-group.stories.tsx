@@ -12,7 +12,6 @@ type Args = {
 
 const meta: Meta<Args> = {
   title: "Form & Input/Toggle Group",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("toggle-group")?.description } } },
   args: { type: "multiple", variant: "outline", size: "default", disabled: false },
   argTypes: {

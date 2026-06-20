@@ -20,7 +20,6 @@ const links = [
 
 const meta: Meta<Args> = {
   title: "Navigation/Sidebar",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("sidebar")?.description } } },
   args: { side: "left", variant: "sidebar", collapsible: "icon" },
   argTypes: {

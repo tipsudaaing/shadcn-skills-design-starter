@@ -9,7 +9,6 @@ type Args = { menuCount: number; showShortcuts: boolean; disablePrint: boolean }
 
 const meta: Meta<Args> = {
   title: "Navigation/Menubar",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("menubar")?.description } } },
   args: { menuCount: 2, showShortcuts: true, disablePrint: false },
   argTypes: {

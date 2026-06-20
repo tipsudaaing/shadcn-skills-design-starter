@@ -9,7 +9,6 @@ type Args = { side: "top" | "right" | "bottom" | "left"; align: "start" | "cente
 
 const meta: Meta<Args> = {
   title: "Overlay/Popover",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("popover")?.description } } },
   args: { side: "bottom", align: "center" },
   argTypes: {

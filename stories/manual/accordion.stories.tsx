@@ -8,7 +8,6 @@ const items = ["Product Information", "Shipping Details", "Return Policy"];
 
 const meta: Meta<Args> = {
   title: "Data/Accordion",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("accordion")?.description } } },
   args: { type: "single", collapsible: true },
   argTypes: {

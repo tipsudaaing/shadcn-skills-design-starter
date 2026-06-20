@@ -50,7 +50,6 @@ function Combobox({ placeholder, searchPlaceholder, disabled }: Args) {
 
 const meta: Meta<Args> = {
   title: "Form & Input/Combobox",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("combobox")?.description } } },
   args: { placeholder: "Select framework...", searchPlaceholder: "Search framework...", disabled: false },
   argTypes: {

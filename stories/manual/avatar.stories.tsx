@@ -8,7 +8,6 @@ const SRC = "https://github.com/shadcn.png";
 
 const meta: Meta<AvatarArgs> = {
   title: "Display/Avatar",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("avatar")?.description } } },
   args: { src: SRC, fallback: "CN" },
   argTypes: {

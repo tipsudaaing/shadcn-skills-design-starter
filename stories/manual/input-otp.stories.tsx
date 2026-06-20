@@ -31,7 +31,6 @@ function Otp6({ withSeparator = true, ...props }: Otp6Props) {
 
 const meta: Meta<Args> = {
   title: "Form & Input/Input OTP",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("input-otp")?.description } } },
   args: { maxLength: 6, withSeparator: true, disabled: false },
   argTypes: {

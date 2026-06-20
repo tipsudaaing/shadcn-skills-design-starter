@@ -6,7 +6,6 @@ type Args = { numberOfMonths: number; showOutsideDays: boolean };
 
 const meta: Meta<Args> = {
   title: "Utility/Calendar",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("calendar")?.description } } },
   args: { numberOfMonths: 1, showOutsideDays: true },
   argTypes: {

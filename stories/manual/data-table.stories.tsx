@@ -51,7 +51,6 @@ function DataTable({ rowCount, defaultDesc }: Args) {
 
 const meta: Meta<Args> = {
   title: "Data/Data Table",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("data-table")?.description } } },
   args: { rowCount: 4, defaultDesc: true },
   argTypes: {

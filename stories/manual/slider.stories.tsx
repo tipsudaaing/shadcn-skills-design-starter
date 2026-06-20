@@ -5,7 +5,6 @@ import { getEntry } from "@/components/docs/registry";
 const meta: Meta<typeof Slider> = {
   title: "Form & Input/Slider",
   component: Slider,
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("slider")?.description } } },
   args: { defaultValue: [50], min: 0, max: 100, step: 1, disabled: false },
   argTypes: {

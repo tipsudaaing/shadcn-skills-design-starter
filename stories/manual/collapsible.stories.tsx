@@ -8,7 +8,6 @@ type Args = { defaultOpen: boolean };
 
 const meta: Meta<Args> = {
   title: "Data/Collapsible",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("collapsible")?.description } } },
   args: { defaultOpen: false },
   argTypes: { defaultOpen: { control: "boolean" } },

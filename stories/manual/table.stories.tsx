@@ -15,7 +15,6 @@ const data = [
 
 const meta: Meta<Args> = {
   title: "Data/Table",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("table")?.description } } },
   args: { rows: 4, caption: true },
   argTypes: {

@@ -18,7 +18,6 @@ function StatusSelect(props: React.ComponentProps<typeof NativeSelect>) {
 
 const meta: Meta<Args> = {
   title: "Form & Input/Native Select",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("native-select")?.description } } },
   args: { disabled: false },
   argTypes: { disabled: { control: "boolean" } },

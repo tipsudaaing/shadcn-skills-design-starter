@@ -7,7 +7,6 @@ type Args = { direction: "top" | "bottom" | "left" | "right"; defaultOpen: boole
 
 const meta: Meta<Args> = {
   title: "Overlay/Drawer",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("drawer")?.description } } },
   args: { direction: "bottom", defaultOpen: false },
   argTypes: {

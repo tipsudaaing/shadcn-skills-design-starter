@@ -7,7 +7,6 @@ type Args = { placeholder: string; addon: "leading" | "trailing" | "both"; disab
 
 const meta: Meta<Args> = {
   title: "Form & Input/Input Group",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("input-group")?.description } } },
   args: { placeholder: "Search...", addon: "leading", disabled: false },
   argTypes: {

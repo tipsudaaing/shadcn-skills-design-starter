@@ -5,7 +5,6 @@ import { getEntry } from "@/components/docs/registry";
 const meta: Meta<typeof Separator> = {
   title: "Data/Separator",
   component: Separator,
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("separator")?.description } } },
   args: { orientation: "horizontal", decorative: true },
   argTypes: {

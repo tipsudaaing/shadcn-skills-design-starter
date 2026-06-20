@@ -7,7 +7,6 @@ type SpinnerArgs = { size: number };
 
 const meta: Meta<SpinnerArgs> = {
   title: "Display/Spinner",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("spinner")?.description } } },
   args: { size: 24 },
   argTypes: {

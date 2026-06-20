@@ -9,7 +9,6 @@ type Args = { label: string; showShortcuts: boolean; showCheckbox: boolean; disa
 
 const meta: Meta<Args> = {
   title: "Overlay/Context Menu",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("context-menu")?.description } } },
   args: { label: "Right click here", showShortcuts: false, showCheckbox: false, disableReload: false },
   argTypes: {

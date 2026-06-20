@@ -13,7 +13,6 @@ const Slide = ({ n }: { n: number }) => (
 
 const meta: Meta<Args> = {
   title: "Display/Carousel",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("carousel")?.description } } },
   args: { orientation: "horizontal", slides: 5 },
   argTypes: {

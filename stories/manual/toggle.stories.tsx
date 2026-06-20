@@ -6,7 +6,6 @@ import { getEntry } from "@/components/docs/registry";
 const meta: Meta<typeof Toggle> = {
   title: "Form & Input/Toggle",
   component: Toggle,
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("toggle")?.description } } },
   args: { variant: "default", size: "default", disabled: false, defaultPressed: false },
   argTypes: {

@@ -7,7 +7,6 @@ type Args = { side: "top" | "right" | "bottom" | "left"; text: string };
 
 const meta: Meta<Args> = {
   title: "Overlay/Tooltip",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("tooltip")?.description } } },
   args: { side: "top", text: "Add to library" },
   argTypes: {

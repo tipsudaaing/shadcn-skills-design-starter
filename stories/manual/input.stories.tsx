@@ -5,7 +5,6 @@ import { getEntry } from "@/components/docs/registry";
 const meta: Meta<typeof Input> = {
   title: "Form & Input/Input",
   component: Input,
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("input")?.description } } },
   args: { placeholder: "Email", type: "text", disabled: false },
   argTypes: {

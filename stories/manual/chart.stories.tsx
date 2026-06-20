@@ -16,7 +16,6 @@ const chartData = [
 
 const meta: Meta<Args> = {
   title: "Display/Chart",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("chart")?.description } } },
   args: { color: "chart-1", showGrid: true, showTooltip: true, radius: 4 },
   argTypes: {

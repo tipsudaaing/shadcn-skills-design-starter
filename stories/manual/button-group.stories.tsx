@@ -8,7 +8,6 @@ type Args = { orientation: "horizontal" | "vertical" };
 
 const meta: Meta<Args> = {
   title: "Form & Input/Button Group",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("button-group")?.description } } },
   args: { orientation: "horizontal" },
   argTypes: { orientation: { control: "inline-radio", options: ["horizontal", "vertical"] } },

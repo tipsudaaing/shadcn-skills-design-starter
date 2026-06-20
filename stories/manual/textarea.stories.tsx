@@ -5,7 +5,6 @@ import { getEntry } from "@/components/docs/registry";
 const meta: Meta<typeof Textarea> = {
   title: "Form & Input/Textarea",
   component: Textarea,
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("textarea")?.description } } },
   args: { placeholder: "Type your message here.", disabled: false, rows: 4 },
   argTypes: {

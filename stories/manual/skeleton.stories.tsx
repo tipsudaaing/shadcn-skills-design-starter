@@ -5,7 +5,6 @@ import { getEntry } from "@/components/docs/registry";
 const meta: Meta<typeof Skeleton> = {
   title: "Display/Skeleton",
   component: Skeleton,
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("skeleton")?.description } } },
   args: { className: "h-4 w-48 rounded-md" },
   argTypes: {

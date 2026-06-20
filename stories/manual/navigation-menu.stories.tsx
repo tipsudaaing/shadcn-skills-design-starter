@@ -11,7 +11,6 @@ const links = ["Introduction", "Installation", "Typography", "Theming", "Compone
 
 const meta: Meta<Args> = {
   title: "Navigation/Navigation Menu",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("navigation-menu")?.description } } },
   args: { viewport: true, linkCount: 2 },
   argTypes: {

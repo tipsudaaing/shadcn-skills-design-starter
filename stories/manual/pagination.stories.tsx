@@ -9,7 +9,6 @@ type Args = { pages: number; current: number };
 
 const meta: Meta<Args> = {
   title: "Navigation/Pagination",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("pagination")?.description } } },
   args: { pages: 3, current: 2 },
   argTypes: {

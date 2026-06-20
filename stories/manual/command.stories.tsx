@@ -6,7 +6,6 @@ type Args = { placeholder: string };
 
 const meta: Meta<Args> = {
   title: "Data/Command",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("command")?.description } } },
   args: { placeholder: "Type a command or search…" },
   argTypes: { placeholder: { control: "text" } },

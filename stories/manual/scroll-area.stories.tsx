@@ -6,7 +6,6 @@ type Args = { height: number; items: number };
 
 const meta: Meta<Args> = {
   title: "Utility/Scroll Area",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("scroll-area")?.description } } },
   args: { height: 160, items: 20 },
   argTypes: {

@@ -10,7 +10,6 @@ type Args = { title: string; description: string; content: string; footer: boole
 
 const meta: Meta<Args> = {
   title: "Display/Card",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("card")?.description } } },
   args: {
     title: "Create project",

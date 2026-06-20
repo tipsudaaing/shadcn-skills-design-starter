@@ -6,7 +6,6 @@ import { getEntry } from "@/components/docs/registry";
 const meta: Meta<typeof Switch> = {
   title: "Form & Input/Switch",
   component: Switch,
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("switch")?.description } } },
   args: { defaultChecked: false, disabled: false },
   argTypes: {

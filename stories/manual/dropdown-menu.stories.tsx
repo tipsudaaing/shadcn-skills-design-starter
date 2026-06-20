@@ -11,7 +11,6 @@ type Args = { defaultOpen: boolean };
 
 const meta: Meta<Args> = {
   title: "Overlay/Dropdown Menu",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("dropdown-menu")?.description } } },
   args: { defaultOpen: true },
   argTypes: { defaultOpen: { control: "boolean", description: "Open on mount" } },

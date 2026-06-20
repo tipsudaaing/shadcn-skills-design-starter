@@ -7,7 +7,6 @@ import { getEntry } from "@/components/docs/registry";
 const meta: Meta<typeof Alert> = {
   title: "Feedback/Alert",
   component: Alert,
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("alert")?.description } } },
   args: { variant: "default" },
   argTypes: {

@@ -6,7 +6,6 @@ type Args = { defaultValue: "account" | "password" };
 
 const meta: Meta<Args> = {
   title: "Navigation/Tabs",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("tabs")?.description } } },
   args: { defaultValue: "account" },
   argTypes: {

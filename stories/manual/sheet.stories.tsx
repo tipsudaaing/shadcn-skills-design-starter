@@ -7,7 +7,6 @@ type Args = { side: "top" | "right" | "bottom" | "left"; defaultOpen: boolean };
 
 const meta: Meta<Args> = {
   title: "Overlay/Sheet",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("sheet")?.description } } },
   args: { side: "right", defaultOpen: false },
   argTypes: {

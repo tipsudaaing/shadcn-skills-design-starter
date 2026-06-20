@@ -11,7 +11,6 @@ const trail = ["Home", "Components", "Breadcrumb", "Item", "Current"];
 
 const meta: Meta<Args> = {
   title: "Navigation/Breadcrumb",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("breadcrumb")?.description } } },
   args: { depth: 3, withEllipsis: false },
   argTypes: {

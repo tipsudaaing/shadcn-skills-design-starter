@@ -6,7 +6,6 @@ type Args = { ratio: number };
 
 const meta: Meta<Args> = {
   title: "Utility/Aspect Ratio",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("aspect-ratio")?.description } } },
   args: { ratio: 16 / 9 },
   argTypes: {

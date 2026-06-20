@@ -7,7 +7,6 @@ type Args = { label: string; description: string; placeholder: string };
 
 const meta: Meta<Args> = {
   title: "Form & Input/Field",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("field")?.description } } },
   args: { label: "Name", description: "This is your public display name.", placeholder: "Evil Rabbit" },
   argTypes: {

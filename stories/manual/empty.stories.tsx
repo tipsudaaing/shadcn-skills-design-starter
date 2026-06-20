@@ -8,7 +8,6 @@ type Args = { title: string; description: string; withAction: boolean };
 
 const meta: Meta<Args> = {
   title: "Display/Empty",
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("empty")?.description } } },
   args: {
     title: "No Projects Yet",

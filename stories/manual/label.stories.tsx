@@ -7,7 +7,6 @@ import { getEntry } from "@/components/docs/registry";
 const meta: Meta<typeof Label> = {
   title: "Form & Input/Label",
   component: Label,
-  tags: ["autodocs"],
   parameters: { docs: { description: { component: getEntry("label")?.description } } },
   args: { children: "Your email address" },
   argTypes: { children: { control: "text" } },
