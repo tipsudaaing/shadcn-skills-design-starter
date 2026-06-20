@@ -68,6 +68,13 @@
     "navigation-menu": {
       "trigger-radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" },
       "content-radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" }
-    }
+    },
+    "alert-dialog":  { "radius": { "$type": "dimension", "$value": "{semantic.radius-xl}", "$description": "Modal panel (~17px)" } },
+    "dropdown-menu": { "content-radius": { "$type": "dimension", "$value": "{semantic.radius-md}" } },
+    "context-menu":  { "content-radius": { "$type": "dimension", "$value": "{semantic.radius-md}" } },
+    "popover":       { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
+    "hover-card":    { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
+    "drawer":        { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}", "$description": "Rounded leading edge" } },
+    "tooltip":       { "radius": { "$type": "dimension", "$value": "{semantic.radius-md}" } }
   }
 }

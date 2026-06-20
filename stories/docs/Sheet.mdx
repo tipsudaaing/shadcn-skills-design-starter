@@ -1,0 +1,61 @@
+import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as SheetStories from "../manual/sheet.stories";
+import * as DrawerStories from "../manual/drawer.stories";
+
+<Meta title="Docs/Sheet & Drawer" />
+
+# Sheet & Drawer
+
+Panels that slide in from an edge over the page. **Sheet** (`components/ui/sheet.tsx`,
+Radix `Dialog`) is the desktop side-panel; **Drawer** (`components/ui/drawer.tsx`, Vaul)
+is the touch-friendly variant with drag-to-dismiss. Both are styled through the
+Apple-language tokens and trap focus while open.
+
+## Anatomy
+
+```
+Sheet (right)                 Drawer (bottom)
+       ▒▒▒┌────────┐          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+          │ Title  │          ┌──────────────┐
+          │ Desc.  │          │     ──        │ ← drag handle
+          │        │          │ Title / Desc │
+          └────────┘          └──────────────┘
+```
+
+- **Sheet** — `side` `top · right · bottom · left`; slides over a 50% backdrop.
+- **Drawer** — `direction` matches; adds a drag handle and momentum dismiss.
+- **Header / Title / Description / Footer / Close** — same parts in both.
+
+## API — Sheet
+
+<ArgTypes of={SheetStories.Playground} />
+
+## Sheet & Drawer open
+
+<Canvas of={SheetStories.Open} />
+<Canvas of={DrawerStories.Open} />
+
+## Usage
+
+- **Do** use a **Sheet** for secondary tasks beside the main content (filters, details, edit).
+- **Do** use a **Drawer** on mobile/touch where an edge swipe and handle feel natural.
+- **Do** keep a clear title + primary action; close returns focus to the trigger.
+- **Don't** stack sheets/drawers — one panel at a time.
+- **Don't** hardcode colors — surfaces/overlay map to `--sheet-*` / `--drawer-*` / semantic tokens.
+
+## Token mapping
+
+| Token | Role |
+|---|---|
+| `--sheet-overlay` / `--drawer-overlay` | Backdrop — black at 50% |
+| `--sheet-bg` / `--drawer-bg` → `--background` | Panel surface |
+| `--sheet-border` / `--drawer-border` → `--border` | Edge against the page |
+| `--drawer-handle` → `--muted` | Drag handle bar |
+| `--drawer-radius` → `--radius-lg` | Rounded leading edge |
+
+## Accessibility (WCAG 2.2 AA)
+
+- Both are dialogs: focus is trapped, Esc closes, and focus returns to the trigger.
+- Provide a `Title` (and ideally a `Description`) so the panel is announced.
+- The backdrop is inert; background content can't be reached while open.
+- Drawer's drag-dismiss is augmented by a real close button and Esc — never gesture-only.

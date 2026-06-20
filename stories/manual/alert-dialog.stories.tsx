@@ -44,4 +44,29 @@ export default meta;
 type Story = StoryObj<Args>;
 
 export const Playground: Story = {};
+
+export const Destructive: Story = {
+  name: "Destructive confirm",
+  parameters: {
+    docs: { description: { story: "A destructive confirmation — the action button takes the `destructive` Button variant; Cancel is the safe default and gets initial focus." } },
+  },
+  render: () => (
+    <AlertDialog defaultOpen>
+      <AlertDialogTrigger asChild>
+        <Button variant="destructive">Delete account</Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Delete account?</AlertDialogTitle>
+          <AlertDialogDescription>This permanently removes your account and all of its data. This cannot be undone.</AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction className="bg-destructive/10 text-destructive hover:bg-destructive/20">Delete</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  ),
+};
+
 export const Demo: Story = { name: "Demo", render: () => <>{getEntry("alert-dialog")!.demo}</> };

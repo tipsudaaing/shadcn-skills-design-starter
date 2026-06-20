@@ -54,6 +54,14 @@
     "menubar":       { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
     "navigation-menu": {
       "transition-duration": { "$type": "duration", "$value": "{primitive.duration.moderate}", "$description": "Viewport + content motion (300ms)" }
-    }
+    },
+    "alert-dialog":  { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.moderate}", "$description": "Overlay fade + content zoom" } },
+    "sheet":         { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.moderate}", "$description": "Slide in/out" } },
+    "drawer":        { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.moderate}", "$description": "Slide in/out" } },
+    "dropdown-menu": { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "context-menu":  { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "popover":       { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "hover-card":    { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "tooltip":       { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } }
   }
 }

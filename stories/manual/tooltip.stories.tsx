@@ -29,4 +29,24 @@ export default meta;
 type Story = StoryObj<Args>;
 
 export const Playground: Story = {};
+
+export const Sides: Story = {
+  name: "Sides",
+  parameters: { docs: { description: { story: "The tooltip points to its trigger from any side. It uses the inverted surface (`--tooltip-bg` / `--tooltip-fg`) with a matching arrow." } } },
+  render: () => (
+    <TooltipProvider>
+      <div className="grid grid-cols-2 gap-16 p-12">
+        {(["top", "right", "bottom", "left"] as const).map((side) => (
+          <Tooltip key={side} defaultOpen>
+            <TooltipTrigger asChild>
+              <Button variant="outline">{side}</Button>
+            </TooltipTrigger>
+            <TooltipContent side={side}>Tooltip on {side}</TooltipContent>
+          </Tooltip>
+        ))}
+      </div>
+    </TooltipProvider>
+  ),
+};
+
 export const Demo: Story = { name: "Demo", render: () => <>{getEntry("tooltip")!.demo}</> };

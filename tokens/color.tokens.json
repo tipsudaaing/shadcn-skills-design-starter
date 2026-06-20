@@ -273,6 +273,61 @@
     },
     "pagination": {
       "active-border": { "$type": "color", "$value": "{semantic.border}", "$description": "Current page uses Button outline; inactive is ghost" }
+    },
+    "alert-dialog": {
+      "overlay":     { "$type": "color", "$value": "oklch(0 0 0 / 50%)", "$description": "Modal backdrop — black at 50%" },
+      "bg":          { "$type": "color", "$value": "{semantic.background}" },
+      "fg":          { "$type": "color", "$value": "{semantic.foreground}" },
+      "title":       { "$type": "color", "$value": "{semantic.foreground}" },
+      "description": { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "border":      { "$type": "color", "$value": "{semantic.border}" }
+    },
+    "dropdown-menu": {
+      "content-bg":    { "$type": "color", "$value": "{semantic.popover}" },
+      "content-fg":    { "$type": "color", "$value": "{semantic.popover-foreground}" },
+      "item-focus-bg": { "$type": "color", "$value": "{semantic.accent}" },
+      "item-focus-fg": { "$type": "color", "$value": "{semantic.accent-foreground}" },
+      "separator":     { "$type": "color", "$value": "{semantic.border}" },
+      "shortcut":      { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "destructive":   { "$type": "color", "$value": "{semantic.destructive}", "$description": "Destructive item text" }
+    },
+    "context-menu": {
+      "content-bg":    { "$type": "color", "$value": "{semantic.popover}" },
+      "content-fg":    { "$type": "color", "$value": "{semantic.popover-foreground}" },
+      "item-focus-bg": { "$type": "color", "$value": "{semantic.accent}" },
+      "item-focus-fg": { "$type": "color", "$value": "{semantic.accent-foreground}" },
+      "separator":     { "$type": "color", "$value": "{semantic.border}" },
+      "shortcut":      { "$type": "color", "$value": "{semantic.muted-foreground}" }
+    },
+    "popover": {
+      "bg":          { "$type": "color", "$value": "{semantic.popover}" },
+      "fg":          { "$type": "color", "$value": "{semantic.popover-foreground}" },
+      "border":      { "$type": "color", "$value": "color-mix(in oklch, var(--foreground) 10%, transparent)", "$description": "Hairline ring (foreground/10, mode-aware)" },
+      "title":       { "$type": "color", "$value": "{semantic.foreground}" },
+      "description": { "$type": "color", "$value": "{semantic.muted-foreground}" }
+    },
+    "hover-card": {
+      "bg":     { "$type": "color", "$value": "{semantic.popover}" },
+      "fg":     { "$type": "color", "$value": "{semantic.popover-foreground}" },
+      "border": { "$type": "color", "$value": "color-mix(in oklch, var(--foreground) 10%, transparent)", "$description": "Hairline ring (foreground/10, mode-aware)" }
+    },
+    "sheet": {
+      "overlay": { "$type": "color", "$value": "oklch(0 0 0 / 50%)", "$description": "Backdrop — black at 50%" },
+      "bg":      { "$type": "color", "$value": "{semantic.background}" },
+      "fg":      { "$type": "color", "$value": "{semantic.foreground}" },
+      "border":  { "$type": "color", "$value": "{semantic.border}", "$description": "Edge against the page" }
+    },
+    "drawer": {
+      "overlay": { "$type": "color", "$value": "oklch(0 0 0 / 50%)", "$description": "Backdrop — black at 50%" },
+      "bg":      { "$type": "color", "$value": "{semantic.background}" },
+      "fg":      { "$type": "color", "$value": "{semantic.foreground}" },
+      "handle":  { "$type": "color", "$value": "{semantic.muted}", "$description": "Drag handle bar" },
+      "border":  { "$type": "color", "$value": "{semantic.border}" }
+    },
+    "tooltip": {
+      "bg":    { "$type": "color", "$value": "{semantic.foreground}", "$description": "Inverted surface (dark on light)" },
+      "fg":    { "$type": "color", "$value": "{semantic.background}", "$description": "Inverted text" },
+      "arrow": { "$type": "color", "$value": "{semantic.foreground}" }
     }
   }
 }

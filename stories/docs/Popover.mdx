@@ -1,0 +1,61 @@
+import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as PopoverStories from "../manual/popover.stories";
+import * as HoverCardStories from "../manual/hover-card.stories";
+
+<Meta title="Docs/Popover & Hover Card" />
+
+# Popover & Hover Card
+
+Floating panels anchored to a trigger. **Popover** (`components/ui/popover.tsx`) opens
+on click and can hold interactive content; **Hover Card** (`components/ui/hover-card.tsx`)
+opens on hover/focus to preview non-essential context. Both are Radix primitives on the
+popover surface, styled through the Apple-language tokens.
+
+## Anatomy
+
+```
+[ Trigger ]
+    │
+    ▼
+┌──────────────────┐
+│ Title             │  ← PopoverTitle (Popover only)
+│ …content/controls │  ← PopoverContent / HoverCardContent
+└──────────────────┘
+   --popover-bg / --hover-card-bg, hairline --*-border
+```
+
+- **Popover** — click-triggered; `side`/`align` position it; holds focusable controls.
+- **Hover Card** — hover/focus-triggered; preview only, never essential or interactive.
+
+## API — Popover
+
+<ArgTypes of={PopoverStories.Playground} />
+
+## Popover (rich content) & Hover Card
+
+<Canvas of={PopoverStories.WithForm} />
+<Canvas of={HoverCardStories.Playground} />
+
+## Usage
+
+- **Do** use a **Popover** for on-demand controls/forms anchored to a button.
+- **Do** use a **Hover Card** to preview a link/entity — supplementary info only.
+- **Do** keep Hover Card content non-interactive (it can't be reliably reached on touch).
+- **Don't** put must-do actions in a Hover Card; use a Popover or inline UI.
+- **Don't** hardcode colors — surfaces map to `--popover-*` / `--hover-card-*` / semantic tokens.
+
+## Token mapping
+
+| Token | Role |
+|---|---|
+| `--popover-bg` / `--hover-card-bg` → `--popover` | Panel surface |
+| `--popover-fg` / `--hover-card-fg` → `--popover-foreground` | Panel text |
+| `--popover-border` / `--hover-card-border` | Hairline ring (`foreground/10`) |
+| `--popover-radius` / `--hover-card-radius` → `--radius-lg` | Panel corner |
+
+## Accessibility (WCAG 2.2 AA)
+
+- **Popover** moves focus into the panel and restores it to the trigger on close; Esc closes.
+- **Hover Card** opens on hover **and** keyboard focus, so it isn't mouse-only.
+- Don't trap essential content in hover-only UI — it's invisible to touch and many AT users.
+- Panel text contrast verified ≥ 4.5:1 in both themes.
