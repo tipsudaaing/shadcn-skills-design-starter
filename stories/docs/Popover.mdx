@@ -1,15 +1,13 @@
 import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
 import * as PopoverStories from "../manual/popover.stories";
-import * as HoverCardStories from "../manual/hover-card.stories";
 
-<Meta title="Docs/Popover & Hover Card" />
+<Meta of={PopoverStories} />
 
-# Popover & Hover Card
+# Popover
 
-Floating panels anchored to a trigger. **Popover** (`components/ui/popover.tsx`) opens
-on click and can hold interactive content; **Hover Card** (`components/ui/hover-card.tsx`)
-opens on hover/focus to preview non-essential context. Both are Radix primitives on the
-popover surface, styled through the Apple-language tokens.
+A floating panel anchored to a trigger, opened on click, that can hold interactive
+content (controls, a small form). Built on `components/ui/popover.tsx` (Radix), styled
+through the Apple-language tokens. For hover-only previews, use **Hover Card**.
 
 ## Anatomy
 
@@ -18,44 +16,46 @@ popover surface, styled through the Apple-language tokens.
     │
     ▼
 ┌──────────────────┐
-│ Title             │  ← PopoverTitle (Popover only)
-│ …content/controls │  ← PopoverContent / HoverCardContent
+│ Title             │  ← PopoverTitle
+│ …content/controls │  ← PopoverContent (--popover-bg, hairline --popover-border)
 └──────────────────┘
-   --popover-bg / --hover-card-bg, hairline --*-border
 ```
 
-- **Popover** — click-triggered; `side`/`align` position it; holds focusable controls.
-- **Hover Card** — hover/focus-triggered; preview only, never essential or interactive.
+- **Popover** — click-triggered; `side`/`align` position it.
+- **PopoverContent / Header / Title / Description** — the panel and its parts; holds focusable controls.
 
-## API — Popover
+## API
 
 <ArgTypes of={PopoverStories.Playground} />
 
-## Popover (rich content) & Hover Card
+## Rich content
 
 <Canvas of={PopoverStories.WithForm} />
-<Canvas of={HoverCardStories.Playground} />
+
+Unlike a Tooltip, a Popover receives focus and can hold a form or controls.
 
 ## Usage
 
-- **Do** use a **Popover** for on-demand controls/forms anchored to a button.
-- **Do** use a **Hover Card** to preview a link/entity — supplementary info only.
-- **Do** keep Hover Card content non-interactive (it can't be reliably reached on touch).
-- **Don't** put must-do actions in a Hover Card; use a Popover or inline UI.
-- **Don't** hardcode colors — surfaces map to `--popover-*` / `--hover-card-*` / semantic tokens.
+- **Do** use a Popover for on-demand controls anchored to a button.
+- **Do** move focus into the panel and restore it to the trigger on close.
+- **Do** keep it dismissible (click-away, Esc).
+- **Don't** put must-do flow in a popover that's easy to dismiss — use a `Dialog`.
+- **Don't** hardcode colors — surface maps to `--popover-*` / semantic tokens.
 
 ## Token mapping
 
 | Token | Role |
 |---|---|
-| `--popover-bg` / `--hover-card-bg` → `--popover` | Panel surface |
-| `--popover-fg` / `--hover-card-fg` → `--popover-foreground` | Panel text |
-| `--popover-border` / `--hover-card-border` | Hairline ring (`foreground/10`) |
-| `--popover-radius` / `--hover-card-radius` → `--radius-lg` | Panel corner |
+| `--popover-bg` → `--popover` | Panel surface |
+| `--popover-fg` → `--popover-foreground` | Panel text |
+| `--popover-border` | Hairline ring (`foreground/10`, mode-aware) |
+| `--popover-title` → `--foreground` | Title |
+| `--popover-description` → `--muted-foreground` | Description |
+| `--popover-radius` → `--radius-lg` | Panel corner |
 
 ## Accessibility (WCAG 2.2 AA)
 
-- **Popover** moves focus into the panel and restores it to the trigger on close; Esc closes.
-- **Hover Card** opens on hover **and** keyboard focus, so it isn't mouse-only.
-- Don't trap essential content in hover-only UI — it's invisible to touch and many AT users.
+- Radix moves focus into the panel and restores it to the trigger on close; Esc closes.
+- The trigger exposes open/closed via `aria-expanded`.
+- Don't trap essential content in hover-only UI — a Popover is click/focus-driven (good for touch).
 - Panel text contrast verified ≥ 4.5:1 in both themes.

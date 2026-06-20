@@ -1,66 +1,59 @@
 import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
 import * as AlertStories from "../manual/alert.stories";
-import * as SonnerStories from "../manual/sonner.stories";
 
-<Meta title="Docs/Alert & Sonner" />
+<Meta of={AlertStories} />
 
-# Alert & Sonner
+# Alert
 
-Feedback surfaces. **Alert** (`components/ui/alert.tsx`) is an inline, persistent
-callout in the page flow; **Sonner** (`components/ui/sonner.tsx`) is a transient toast
-that appears, then auto-dismisses. Both are styled through the Apple-language tokens.
+An inline, persistent callout in the page flow — status, warnings, or guidance the user
+should keep seeing. Built on `components/ui/alert.tsx`, styled through the Apple-language
+tokens. For transient confirmations, use **Sonner** (toasts).
 
 ## Anatomy
 
 ```
-Alert (inline)                     Sonner (toast, transient)
-┌────────────────────────────┐     ┌────────────────────────────┐
-│ ✓  Heads up!        [action]│     │ ✓ Saved          [Undo]     │
-│    Description text          │     │   Your changes are live.    │
-└────────────────────────────┘     └────────────────────────────┘
-  AlertTitle / Description / Action   toast(message, { description, action })
+┌────────────────────────────┐
+│ ✓  Heads up!        [action]│  ← AlertTitle / AlertAction
+│    Description text          │  ← AlertDescription
+└────────────────────────────┘
 ```
 
-- **Alert** — `variant` `default` or `destructive`; optional icon, title, description, action.
-- **Sonner** — render `<Toaster />` once near the root; call `toast(...)` to push messages.
+- **Alert** — `variant` `default` or `destructive`; optional leading icon.
+- **AlertTitle / AlertDescription / AlertAction** — heading, body, trailing control.
 
-## API — Alert
+## API
 
 <ArgTypes of={AlertStories.Playground} />
 
-## Alert variants & compositions
+## Variants & compositions
 
 <Canvas of={AlertStories.Variants} />
 <Canvas of={AlertStories.Compositions} />
 
-## Sonner toast types
-
-<Canvas of={SonnerStories.Types} />
-
-`default · success · error · with action`. Click to trigger (toasts render in a portal).
+`default · destructive`; title-only, with icon, and with a trailing action.
 
 ## Usage
 
-- **Do** use an **Alert** for persistent, in-context status the user should keep seeing.
-- **Do** use **Sonner** for ephemeral confirmations ("Saved", "Copied") that shouldn't block.
-- **Do** keep one clear message; add an action (Undo / Retry) when there's a next step.
-- **Don't** put critical, must-act information only in a toast — it disappears.
-- **Don't** hardcode colors — surfaces map to `--alert-*` / `--sonner-*` / semantic tokens.
+- **Do** use an Alert for persistent, in-context status the user should keep seeing.
+- **Do** pair destructive/success states with an icon and clear text — not color alone.
+- **Do** add an action (Update / Retry) when there's a next step.
+- **Don't** use an Alert for ephemeral confirmations — use a toast (`Sonner`).
+- **Don't** hardcode colors — surfaces map to `--alert-*` / semantic tokens.
 
 ## Token mapping
 
 | Token | Role |
 |---|---|
 | `--alert-bg` → `--card` | Alert surface |
+| `--alert-fg` → `--card-foreground` | Title text |
 | `--alert-description` → `--muted-foreground` | Body text |
 | `--alert-destructive-fg` → `--destructive` | Destructive title/icon |
-| `--sonner-bg` → `--popover` | Toast surface |
-| `--sonner-description` → `--muted-foreground` | Toast body |
-| `--sonner-border` → `--border` | Toast edge |
+| `--alert-border` → `--border` | Edge |
+| `--alert-radius` → `--radius-lg` | Corner |
 
 ## Accessibility (WCAG 2.2 AA)
 
-- **Alert** uses `role="alert"`, so assistive tech announces it when it appears.
-- **Sonner** toasts are announced via a live region; keep them brief and non-essential.
-- Don't rely on color alone — pair destructive/success states with an icon and clear text.
-- Toasts auto-dismiss; provide a persistent path (Alert, inline message) for anything important.
+- Uses `role="alert"`, so assistive tech announces it when it appears.
+- Don't rely on color alone — pair status with an icon and explicit text.
+- Title/description contrast verified ≥ 4.5:1 in both themes.
+- Keep persistent info here (vs. a toast) so it doesn't disappear before it's read.

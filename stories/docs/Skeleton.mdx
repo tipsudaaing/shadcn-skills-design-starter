@@ -1,48 +1,41 @@
 import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
 import * as SkeletonStories from "../manual/skeleton.stories";
-import * as SpinnerStories from "../manual/spinner.stories";
 
-<Meta title="Docs/Skeleton & Spinner" />
+<Meta of={SkeletonStories} />
 
-# Skeleton & Spinner
+# Skeleton
 
-Loading indicators. **Skeleton** (`components/ui/skeleton.tsx`) is a pulsing
-placeholder that mimics the shape of content that's still loading; **Spinner**
-(`components/ui/spinner.tsx`) is a small animated ring for indeterminate, short waits.
-Both are styled through the Apple-language tokens.
+A pulsing placeholder that mimics the shape of content that's still loading. Built on
+`components/ui/skeleton.tsx`, styled through the Apple-language tokens. Because it
+reserves the real layout, it prevents layout shift. For indeterminate short waits, use
+a **Spinner**.
 
 ## Anatomy
 
 ```
-Skeleton                      Spinner
-▓▓▓▓▓▓▓▓▓▓  (animate-pulse)    ◜◝  (animate-spin, currentColor)
+▓▓▓▓▓▓▓▓▓▓   (animate-pulse, bg --skeleton-bg)
 ```
 
 - **Skeleton** — a `bg-muted` block; you set the shape with `h-* / w-* / rounded-*`.
-- **Spinner** — a Lucide loader at `size-4` by default; recolors via `currentColor`.
 
-## API — Skeleton
+## API
 
 <ArgTypes of={SkeletonStories.Playground} />
 
-## Skeleton shapes
+## Shapes & layout
 
 <Canvas of={SkeletonStories.Shapes} />
 <Canvas of={SkeletonStories.InLayout} />
 
-## Spinner sizes, colors & context
-
-<Canvas of={SpinnerStories.Sizes} />
-<Canvas of={SpinnerStories.Colors} />
-<Canvas of={SpinnerStories.InContext} />
+`rounded-full` for avatars, `h-*/w-*` for lines and blocks — mirror the real content.
 
 ## Usage
 
-- **Do** use a **Skeleton** when you know the layout — it prevents layout shift on load.
-- **Do** mirror the real content's shape and size with the skeleton.
-- **Do** use a **Spinner** for short, indeterminate waits (a submit, a fetch).
-- **Don't** show a spinner for long known-progress tasks — use `Progress`.
-- **Don't** hardcode colors — fills map to `--skeleton-bg` / `--spinner-color` / semantic tokens.
+- **Do** use a Skeleton when you know the layout — it holds space and prevents shift.
+- **Do** match the skeleton's shape and size to the content it stands in for.
+- **Do** mark the loading region `aria-busy="true"` and swap in real content when ready.
+- **Don't** use a skeleton for unknown-shape or very short waits — a `Spinner` fits.
+- **Don't** hardcode colors — the fill maps to `--skeleton-bg` → `--muted`.
 
 ## Token mapping
 
@@ -50,14 +43,10 @@ Skeleton                      Spinner
 |---|---|
 | `--skeleton-bg` → `--muted` | Pulsing placeholder fill |
 | `--skeleton-radius` → `--radius-md` | Default corner (override per shape) |
-| `--spinner-color` → currentColor | Inherits text color |
-| `--spinner-size` | 16px default (size-4) |
-| `--spinner-spin-duration` | 1000ms rotation |
 
 ## Accessibility (WCAG 2.2 AA)
 
-- **Spinner** ships with `role="status"` + `aria-label="Loading"` so it's announced.
-- **Skeleton** is decorative; mark the region `aria-busy="true"` while loading and
-  swap in real content (with its own semantics) when ready.
-- Respect reduced motion at the app level for the pulse/spin animations.
+- Skeletons are decorative; mark the region `aria-busy` while loading, not the blocks themselves.
+- Swap in real content (with real semantics) once loaded — don't leave skeletons announced.
+- Respect reduced motion for the pulse at the app level.
 - Never block the UI silently — a visible loading state must accompany long operations.

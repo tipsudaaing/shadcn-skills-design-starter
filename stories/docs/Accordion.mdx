@@ -1,53 +1,44 @@
 import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
 import * as AccordionStories from "../manual/accordion.stories";
-import * as CollapsibleStories from "../manual/collapsible.stories";
 
-<Meta title="Docs/Accordion & Collapsible" />
+<Meta of={AccordionStories} />
 
-# Accordion & Collapsible
+# Accordion
 
-Show/hide content on demand. **Accordion** (`components/ui/accordion.tsx`) is a set of
-expandable sections with chevrons and dividers; **Collapsible** (`components/ui/collapsible.tsx`)
-is a single open/close region with no built-in chrome. Both are Radix primitives,
-animated and styled through the Apple-language tokens.
+A set of expandable sections with chevrons and dividers — one or many open at a time.
+Built on `components/ui/accordion.tsx` (Radix), animated and styled through the
+Apple-language tokens. For a single bare toggle region, use **Collapsible**.
 
 ## Anatomy
 
 ```
-Accordion                         Collapsible
-┌──────────────────────────┐      Header                [⌄]
-│ Product Information    ⌄  │      ┌──────────────────────┐
-├──────────────────────────┤      │ revealed content      │
-│ Shipping Details       ⌄  │      └──────────────────────┘
+┌──────────────────────────┐
+│ Product Information    ⌄  │  ← AccordionTrigger
+├──────────────────────────┤
+│ Shipping Details       ⌄  │  ← AccordionItem (divider --accordion-item-border)
 └──────────────────────────┘
-  AccordionTrigger + Content
 ```
 
 - **Accordion** — `type="single"` (one open, optionally `collapsible`) or `"multiple"`.
 - **AccordionItem / Trigger / Content** — a section, its header button, and its body.
-- **Collapsible / Trigger / Content** — a bare toggle region you style yourself.
 
-## API — Accordion
+## API
 
 <ArgTypes of={AccordionStories.Playground} />
 
-## Accordion types & disabled
+## Types & disabled
 
 <Canvas of={AccordionStories.Types} />
 <Canvas of={AccordionStories.DisabledItem} />
 
-## Collapsible states
-
-<Canvas of={CollapsibleStories.States} />
-
-`closed · open`. A Collapsible is one region; an Accordion coordinates a set.
+`single` keeps one open; `multiple` lets several stay open. Disabled triggers are skipped.
 
 ## Usage
 
-- **Do** use an **Accordion** for FAQ-style lists where sections are peers.
-- **Do** use a **Collapsible** to hide secondary detail behind a single toggle.
+- **Do** use an Accordion for FAQ-style lists where sections are peers.
 - **Do** keep trigger labels descriptive — they're the only cue when collapsed.
-- **Don't** hide critical content by default if users must act on it.
+- **Do** use `collapsible` with `single` so users can close everything.
+- **Don't** hide critical content that users must act on by default.
 - **Don't** hardcode colors — triggers/dividers map to `--accordion-*` / semantic tokens.
 
 ## Token mapping
@@ -60,11 +51,9 @@ Accordion                         Collapsible
 | `--accordion-focus-ring` → `--ring` | Focus ring |
 | `--accordion-transition-duration` | 200ms expand/collapse |
 
-Collapsible adds no color tokens — style its content yourself; it shares the expand timing.
-
 ## Accessibility (WCAG 2.2 AA)
 
 - Radix wires `aria-expanded`/`aria-controls` between triggers and panels; full keyboard support.
 - Disabled triggers expose `aria-disabled` and are skipped by the keyboard.
-- The chevron reflects state visually **and** via `aria-expanded` — not by rotation alone.
+- State is conveyed by `aria-expanded` **and** the chevron — not rotation/color alone.
 - Respect reduced motion for the height animation at the app level.

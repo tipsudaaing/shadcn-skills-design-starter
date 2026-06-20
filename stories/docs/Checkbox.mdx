@@ -1,34 +1,31 @@
 import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
 import * as CheckboxStories from "../manual/checkbox.stories";
-import * as RadioStories from "../manual/radio-group.stories";
 
-<Meta title="Docs/Checkbox & Radio Group" />
+<Meta of={CheckboxStories} />
 
-# Checkbox & Radio Group
+# Checkbox
 
-Choice controls. **Checkbox** (`components/ui/checkbox.tsx`) toggles an independent
-option; **Radio Group** (`components/ui/radio-group.tsx`) picks exactly one from a
-set. Both are Radix primitives styled through the Apple-language tokens and share
-the same fill/ring treatment — document them together.
+A control that toggles an independent option on or off. Built on
+`components/ui/checkbox.tsx` (Radix `Checkbox`), styled through the Apple-language
+tokens. Pairs with a `Label`; for one-of-many choices use **Radio Group** instead.
 
 ## Anatomy
 
 ```
-Checkbox                 Radio Group
-┌──┐                     ( ) Default
-│✓ │  Label              (•) Comfortable   ← one selected
-└──┘                     ( ) Compact
+┌──┐
+│✓ │  Label              ← <button role="checkbox"> + check indicator
+└──┘
+  └─ checked fills with --checkbox-checked-bg
 ```
 
-- **Checkbox** — `size-4` rounded square; checked fills with `--checkbox-checked-bg`.
-- **RadioGroupItem** — `size-4` circle; selected shows a centered dot.
-- Both pair with a `Label` (`htmlFor` ↔ `id`).
+- **Checkbox** — `size-4` rounded square; checked fills + shows the check glyph.
+- **Label** — associate with `htmlFor` ↔ `id` so the text is part of the hit target.
 
-## API — Checkbox
+## API
 
 <ArgTypes of={CheckboxStories.Playground} />
 
-## Checkbox states
+## States
 
 <Canvas of={CheckboxStories.States} />
 <Canvas of={CheckboxStories.WithLabel} />
@@ -36,19 +33,13 @@ Checkbox                 Radio Group
 `unchecked · checked · focus · disabled · error`. Focus reproduces the focus-visible
 ring statically; disabled/error use real attributes.
 
-## Radio Group item states
-
-<Canvas of={RadioStories.ItemStates} />
-
-`unselected · selected · focus · disabled · error`.
-
 ## Usage
 
-- **Do** use a **Checkbox** for independent on/off options (or a single opt-in).
-- **Do** use a **Radio Group** when options are mutually exclusive and all should be visible.
-- **Do** give every control a `Label` or `aria-label`.
-- **Don't** use a single radio — that's a checkbox. Don't use radios for >6 options (use Select).
-- **Don't** hardcode colors — fills/rings map to `--checkbox-*` / `--radio-*` / semantic tokens.
+- **Do** use a Checkbox for independent options or a single opt-in (terms, newsletter).
+- **Do** give every box a `Label` or `aria-label`.
+- **Do** use the error state (`aria-invalid`) with accompanying text, not color alone.
+- **Don't** use a single checkbox where a Switch (instant setting) fits better.
+- **Don't** hardcode colors — fill/ring map to `--checkbox-*` / semantic tokens.
 
 ## Token mapping
 
@@ -57,16 +48,13 @@ ring statically; disabled/error use real attributes.
 | `--checkbox-checked-bg` → `--primary` | Checked fill + border (Apple blue) |
 | `--checkbox-checked-fg` → `--primary-foreground` | Check glyph |
 | `--checkbox-border` → `--input` | Resting border |
-| `--radio-checked-bg` → `--primary` | Selected fill |
-| `--radio-dot` → `--primary-foreground` | Selected dot |
-| `--checkbox-focus-ring` / `--radio-focus-ring` → `--ring` | Focus ring |
-| `--checkbox-invalid-ring` / `--radio-invalid-ring` → `--destructive` | Error ring |
+| `--checkbox-focus-ring` → `--ring` | Focus ring |
+| `--checkbox-invalid-ring` → `--destructive` | Error ring |
+| `--checkbox-radius` | Small rounded square (4px) |
 
 ## Accessibility (WCAG 2.2 AA)
 
-- Radix supplies `role`, `aria-checked`, and keyboard support (Space to toggle;
-  arrows to move within a radio group).
+- Radix supplies `role="checkbox"` + `aria-checked` and Space-to-toggle.
 - Always provide an accessible name via `Label htmlFor` or `aria-label`.
-- Visible focus ring on every control — never removed.
-- State is conveyed by the check/dot **and** color, not color alone.
-- Error uses `aria-invalid` (the destructive ring) plus accompanying text — never color only.
+- Visible focus ring — never removed.
+- State is conveyed by the check **and** fill color, not color alone.

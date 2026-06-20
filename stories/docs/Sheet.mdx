@@ -1,61 +1,59 @@
 import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
 import * as SheetStories from "../manual/sheet.stories";
-import * as DrawerStories from "../manual/drawer.stories";
 
-<Meta title="Docs/Sheet & Drawer" />
+<Meta of={SheetStories} />
 
-# Sheet & Drawer
+# Sheet
 
-Panels that slide in from an edge over the page. **Sheet** (`components/ui/sheet.tsx`,
-Radix `Dialog`) is the desktop side-panel; **Drawer** (`components/ui/drawer.tsx`, Vaul)
-is the touch-friendly variant with drag-to-dismiss. Both are styled through the
-Apple-language tokens and trap focus while open.
+A panel that slides in from a screen edge over the page — the desktop side-panel for
+secondary tasks (filters, details, quick edit). Built on `components/ui/sheet.tsx`
+(Radix `Dialog`), styled through the Apple-language tokens. The touch-first variant is
+**Drawer**.
 
 ## Anatomy
 
 ```
-Sheet (right)                 Drawer (bottom)
-       ▒▒▒┌────────┐          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒
-          │ Title  │          ┌──────────────┐
-          │ Desc.  │          │     ──        │ ← drag handle
-          │        │          │ Title / Desc │
-          └────────┘          └──────────────┘
+       ▒▒▒┌────────┐  ← overlay (--sheet-overlay) + panel
+          │ Title  │
+          │ Desc.  │
+          │        │
+          └────────┘
+   side: top · right · bottom · left
 ```
 
-- **Sheet** — `side` `top · right · bottom · left`; slides over a 50% backdrop.
-- **Drawer** — `direction` matches; adds a drag handle and momentum dismiss.
-- **Header / Title / Description / Footer / Close** — same parts in both.
+- **Sheet** — the root; `SheetContent` takes `side`.
+- **Header / Title / Description / Footer / Close** — the panel's parts.
 
-## API — Sheet
+## API
 
 <ArgTypes of={SheetStories.Playground} />
 
-## Sheet & Drawer open
+## Open
 
 <Canvas of={SheetStories.Open} />
-<Canvas of={DrawerStories.Open} />
+
+Slides from the chosen `side` over a 50% backdrop; focus is trapped while open.
 
 ## Usage
 
-- **Do** use a **Sheet** for secondary tasks beside the main content (filters, details, edit).
-- **Do** use a **Drawer** on mobile/touch where an edge swipe and handle feel natural.
+- **Do** use a Sheet for secondary tasks beside the main content on desktop.
 - **Do** keep a clear title + primary action; close returns focus to the trigger.
-- **Don't** stack sheets/drawers — one panel at a time.
-- **Don't** hardcode colors — surfaces/overlay map to `--sheet-*` / `--drawer-*` / semantic tokens.
+- **Do** prefer a `Drawer` on touch where an edge swipe feels natural.
+- **Don't** stack sheets — one panel at a time.
+- **Don't** hardcode colors — surface/overlay map to `--sheet-*` / semantic tokens.
 
 ## Token mapping
 
 | Token | Role |
 |---|---|
-| `--sheet-overlay` / `--drawer-overlay` | Backdrop — black at 50% |
-| `--sheet-bg` / `--drawer-bg` → `--background` | Panel surface |
-| `--sheet-border` / `--drawer-border` → `--border` | Edge against the page |
-| `--drawer-handle` → `--muted` | Drag handle bar |
-| `--drawer-radius` → `--radius-lg` | Rounded leading edge |
+| `--sheet-overlay` | Backdrop — black at 50% |
+| `--sheet-bg` → `--background` | Panel surface |
+| `--sheet-fg` → `--foreground` | Panel text |
+| `--sheet-border` → `--border` | Edge against the page |
 
 ## Accessibility (WCAG 2.2 AA)
 
-- Both are dialogs: focus is trapped, Esc closes, and focus returns to the trigger.
+- It's a dialog: focus is trapped, Esc closes, and focus returns to the trigger.
 - Provide a `Title` (and ideally a `Description`) so the panel is announced.
 - The backdrop is inert; background content can't be reached while open.
-- Drawer's drag-dismiss is augmented by a real close button and Esc — never gesture-only.
+- Panel text contrast verified ≥ 4.5:1 in both themes.

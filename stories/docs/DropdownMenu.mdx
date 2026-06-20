@@ -1,57 +1,50 @@
 import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
 import * as DropdownMenuStories from "../manual/dropdown-menu.stories";
-import * as ContextMenuStories from "../manual/context-menu.stories";
 
-<Meta title="Docs/Dropdown & Context Menu" />
+<Meta of={DropdownMenuStories} />
 
-# Dropdown & Context Menu
+# Dropdown Menu
 
-Command menus built on the same Radix menu primitive, styled through the
-Apple-language tokens. **Dropdown Menu** (`components/ui/dropdown-menu.tsx`) opens from
-a button you click; **Context Menu** (`components/ui/context-menu.tsx`) opens where you
-right-click. Same items, labels, separators, checkboxes, radios, and submenus.
+A menu of actions opened from a button. Built on `components/ui/dropdown-menu.tsx`
+(Radix), styled through the Apple-language tokens. Same primitive as **Context Menu**,
+but triggered by a click instead of a right-click.
 
 ## Anatomy
 
 ```
+[ Open menu ▾ ]
 ┌────────────────────┐
-│ Label               │  ← (Dropdown/Context)MenuLabel
-│ Item          ⇧⌘P  │  ← MenuItem + MenuShortcut
-│ ──────────────      │  ← MenuSeparator
-│ ☑ Checkbox item     │  ← MenuCheckboxItem
-│ ◉ Radio item        │  ← MenuRadioItem
+│ Label               │  ← DropdownMenuLabel
+│ Item          ⇧⌘P  │  ← DropdownMenuItem + Shortcut
+│ ──────────────      │  ← DropdownMenuSeparator
+│ ☑ Checkbox item     │  ← DropdownMenuCheckboxItem
+│ ◉ Radio item        │  ← DropdownMenuRadioItem
 │ Destructive         │  ← variant="destructive"
 └────────────────────┘
 ```
 
-- **Trigger** — a button (Dropdown) or a right-clickable region (Context).
-- **Content** — the floating menu on `--dropdown-menu-content-bg` / `--context-menu-content-bg`.
+- **Trigger** — a button that opens the menu.
+- **Content** — the floating menu on `--dropdown-menu-content-bg`.
 - **Item / CheckboxItem / RadioItem / Sub** — commands, toggles, choices, nested menus.
 
-## API — Dropdown Menu
+## API
 
 <ArgTypes of={DropdownMenuStories.Playground} />
 
-## Dropdown item types
+## Item types
 
 <Canvas of={DropdownMenuStories.ItemTypes} />
 
 Labels, shortcuts, checkboxes, a radio group, and a destructive item. The highlighted
 item uses `--dropdown-menu-item-focus-bg`.
 
-## Context Menu
-
-<Canvas of={ContextMenuStories.Playground} />
-
-Identical menu, opened by right-clicking the trigger region (interact in the canvas).
-
 ## Usage
 
-- **Do** use a **Dropdown** for actions tied to a visible button (a "⋯" or "Actions" trigger).
-- **Do** use a **Context Menu** for power-user shortcuts on an object (a row, a canvas item).
-- **Do** group with labels/separators and mark destructive items with the destructive variant.
-- **Don't** hide essential actions in a context menu only — also expose them visibly.
-- **Don't** hardcode colors — surfaces/items map to `--dropdown-menu-*` / `--context-menu-*` / semantic tokens.
+- **Do** use a Dropdown for actions attached to a visible button ("⋯", "Actions").
+- **Do** group with labels/separators; mark destructive items with the destructive variant.
+- **Do** keep labels short and verb-first ("Duplicate", "Delete").
+- **Don't** put a long form in a dropdown — use a `Popover` or `Dialog`.
+- **Don't** hardcode colors — surfaces/items map to `--dropdown-menu-*` / semantic tokens.
 
 ## Token mapping
 
@@ -62,12 +55,12 @@ Identical menu, opened by right-clicking the trigger region (interact in the can
 | `--dropdown-menu-separator` → `--border` | Divider |
 | `--dropdown-menu-shortcut` → `--muted-foreground` | Shortcut hint |
 | `--dropdown-menu-destructive` → `--destructive` | Destructive item |
-| `--context-menu-*` | Same roles for the right-click menu |
+| `--dropdown-menu-content-radius` → `--radius-md` | Menu corner |
 
 ## Accessibility (WCAG 2.2 AA)
 
 - Radix supplies `role="menu"/"menuitem(checkbox/radio)"`, roving focus, type-ahead, and
-  full keyboard control (arrows, Enter, Esc); Context Menu also opens via the keyboard menu key.
+  full keyboard control (arrows, Enter, Esc).
 - Checkbox/radio state is exposed via `aria-checked` plus a visible mark — not color alone.
 - The focused item is shown by background **and** focus state.
 - Focus returns to the trigger on close.
