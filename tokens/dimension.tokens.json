@@ -27,6 +27,21 @@
       "radius":         { "$type": "dimension", "$value": "{semantic.radius-lg}", "$description": "Trigger + content corner" },
       "content-radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" }
     },
-    "card":   { "radius": { "$type": "dimension", "$value": "{semantic.radius-xl}", "$description": "Card panel (rounded-xl ~17px)" } }
+    "card":   { "radius": { "$type": "dimension", "$value": "{semantic.radius-xl}", "$description": "Card panel (rounded-xl ~17px)" } },
+    "checkbox": { "radius": { "$type": "dimension", "$value": "4px", "$description": "Small rounded square (rounded-[4px])" } },
+    "radio":    { "radius": { "$type": "dimension", "$value": "9999px", "$description": "Full circle (rounded-full)" } },
+    "slider": {
+      "track-radius": { "$type": "dimension", "$value": "9999px", "$description": "Pill rail + thumb" },
+      "thumb-size":   { "$type": "dimension", "$value": "0.75rem", "$description": "12px knob (size-3)" }
+    },
+    "textarea":      { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
+    "toggle":        { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
+    "native-select": { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
+    "input-group":   { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
+    "button-group":  { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}", "$description": "Outer corners; inner edges square via the group" } },
+    "input-otp": {
+      "slot-size":   { "$type": "dimension", "$value": "2rem", "$description": "32px square slot (size-8)" },
+      "slot-radius": { "$type": "dimension", "$value": "{semantic.radius-lg}", "$description": "Applied to the group's outer corners only" }
+    }
   }
 }

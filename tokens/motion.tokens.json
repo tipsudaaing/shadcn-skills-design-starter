@@ -39,6 +39,13 @@
     },
     "select": {
       "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Trigger color transition" }
-    }
+    },
+    "checkbox":      { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "toggle":        { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "textarea":      { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "native-select": { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "input-group":   { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "slider":        { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Thumb color + ring" } },
+    "input-otp":     { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Slot border/ring" } }
   }
 }

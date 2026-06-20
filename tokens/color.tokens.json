@@ -129,6 +129,73 @@
       "description": { "$type": "color", "$value": "{semantic.muted-foreground}" },
       "footer-bg":   { "$type": "color", "$value": "{semantic.muted}", "$description": "Footer bar — rendered at 50% (bg-muted/50)" },
       "ring":        { "$type": "color", "$value": "color-mix(in oklch, var(--foreground) 10%, transparent)", "$description": "Hairline edge — foreground at 10% (mode-aware)" }
+    },
+    "checkbox": {
+      "border":       { "$type": "color", "$value": "{semantic.input}" },
+      "checked-bg":   { "$type": "color", "$value": "{semantic.primary}",            "$description": "Checked box fill + border (Apple blue)" },
+      "checked-fg":   { "$type": "color", "$value": "{semantic.primary-foreground}",  "$description": "Check glyph" },
+      "focus-ring":   { "$type": "color", "$value": "{semantic.ring}" },
+      "invalid-ring": { "$type": "color", "$value": "{semantic.destructive}" }
+    },
+    "radio": {
+      "border":         { "$type": "color", "$value": "{semantic.input}" },
+      "checked-bg":     { "$type": "color", "$value": "{semantic.primary}" },
+      "checked-border": { "$type": "color", "$value": "{semantic.primary}" },
+      "dot":            { "$type": "color", "$value": "{semantic.primary-foreground}", "$description": "Selected dot" },
+      "focus-ring":     { "$type": "color", "$value": "{semantic.ring}" },
+      "invalid-ring":   { "$type": "color", "$value": "{semantic.destructive}" }
+    },
+    "slider": {
+      "track":        { "$type": "color", "$value": "{semantic.muted}",  "$description": "Unfilled rail" },
+      "range":        { "$type": "color", "$value": "{semantic.primary}", "$description": "Filled portion (Apple blue)" },
+      "thumb-bg":     { "$type": "color", "$value": "{primitive.white}",  "$description": "Knob fill (constant white, both modes)" },
+      "thumb-border": { "$type": "color", "$value": "{semantic.ring}" },
+      "focus-ring":   { "$type": "color", "$value": "{semantic.ring}" }
+    },
+    "textarea": {
+      "bg":           { "$type": "color", "$value": "{semantic.background}" },
+      "text":         { "$type": "color", "$value": "{semantic.foreground}" },
+      "placeholder":  { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "border":       { "$type": "color", "$value": "{semantic.input}" },
+      "border-focus": { "$type": "color", "$value": "{semantic.ring}" },
+      "border-error": { "$type": "color", "$value": "{semantic.destructive}" }
+    },
+    "toggle": {
+      "on-bg":          { "$type": "color", "$value": "{semantic.muted}",     "$description": "Pressed/on surface (also hover)" },
+      "on-fg":          { "$type": "color", "$value": "{semantic.foreground}" },
+      "outline-border": { "$type": "color", "$value": "{semantic.input}" },
+      "focus-ring":     { "$type": "color", "$value": "{semantic.ring}" }
+    },
+    "native-select": {
+      "bg":           { "$type": "color", "$value": "{semantic.background}" },
+      "text":         { "$type": "color", "$value": "{semantic.foreground}" },
+      "placeholder":  { "$type": "color", "$value": "{semantic.muted-foreground}" },
+      "border":       { "$type": "color", "$value": "{semantic.input}" },
+      "icon":         { "$type": "color", "$value": "{semantic.muted-foreground}", "$description": "Chevron" },
+      "focus-ring":   { "$type": "color", "$value": "{semantic.ring}" },
+      "invalid-ring": { "$type": "color", "$value": "{semantic.destructive}" }
+    },
+    "input-group": {
+      "bg":           { "$type": "color", "$value": "{semantic.background}" },
+      "border":       { "$type": "color", "$value": "{semantic.input}" },
+      "border-focus": { "$type": "color", "$value": "{semantic.ring}" },
+      "border-error": { "$type": "color", "$value": "{semantic.destructive}" },
+      "addon":        { "$type": "color", "$value": "{semantic.muted-foreground}", "$description": "Addon icon/text" }
+    },
+    "button-group": {
+      "separator": { "$type": "color", "$value": "{semantic.input}" },
+      "text-bg":   { "$type": "color", "$value": "{semantic.muted}", "$description": "ButtonGroupText label cell" }
+    },
+    "input-otp": {
+      "slot-bg":        { "$type": "color", "$value": "{semantic.background}" },
+      "slot-text":      { "$type": "color", "$value": "{semantic.foreground}" },
+      "slot-border":    { "$type": "color", "$value": "{semantic.input}" },
+      "active-ring":    { "$type": "color", "$value": "{semantic.ring}",        "$description": "Ring on the focused slot" },
+      "invalid-border": { "$type": "color", "$value": "{semantic.destructive}" },
+      "caret":          { "$type": "color", "$value": "{semantic.foreground}",  "$description": "Blinking fake caret" }
+    },
+    "label": {
+      "text": { "$type": "color", "$value": "{semantic.foreground}", "$description": "Disabled state is opacity-only (no separate color)" }
     }
   }
 }

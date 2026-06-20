@@ -64,4 +64,34 @@ export default meta;
 type Story = StoryObj<Args>;
 
 export const Playground: Story = {};
+
+export const TriggerStates: Story = {
+  name: "Trigger states",
+  parameters: {
+    docs: { description: { story: "A Combobox is a composition — `Button` (trigger) + `Popover` + `Command`. Closed-trigger states shown here; the open popover and search live in Playground/Demo." } },
+  },
+  render: () => (
+    <div className="flex flex-wrap items-start gap-4">
+      <div className="flex flex-col items-start gap-2">
+        <Button variant="outline" role="combobox" className="w-[220px] justify-between">
+          Select framework…<ChevronsUpDown className="ml-2 size-4 opacity-50" />
+        </Button>
+        <span className="text-muted-foreground font-mono text-xs">empty</span>
+      </div>
+      <div className="flex flex-col items-start gap-2">
+        <Button variant="outline" role="combobox" className="w-[220px] justify-between">
+          Next.js<ChevronsUpDown className="ml-2 size-4 opacity-50" />
+        </Button>
+        <span className="text-muted-foreground font-mono text-xs">selected</span>
+      </div>
+      <div className="flex flex-col items-start gap-2">
+        <Button variant="outline" role="combobox" disabled className="w-[220px] justify-between">
+          Select framework…<ChevronsUpDown className="ml-2 size-4 opacity-50" />
+        </Button>
+        <span className="text-muted-foreground font-mono text-xs">disabled</span>
+      </div>
+    </div>
+  ),
+};
+
 export const Demo: Story = { name: "Demo", render: () => <>{getEntry("combobox")!.demo}</> };

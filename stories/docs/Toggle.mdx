@@ -1,0 +1,71 @@
+import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as ToggleStories from "../manual/toggle.stories";
+import * as ToggleGroupStories from "../manual/toggle-group.stories";
+
+<Meta title="Docs/Toggle & Toggle Group" />
+
+# Toggle & Toggle Group
+
+Two-state buttons. **Toggle** (`components/ui/toggle.tsx`) is a single on/off button
+(usually an icon); **Toggle Group** (`components/ui/toggle-group.tsx`) arranges several
+into a single- or multi-select set. Both build on Radix Toggle, styled through the
+Apple-language tokens, and share the pressed/hover treatment.
+
+## Anatomy
+
+```
+Toggle            Toggle Group (single, joined)
+┌──┐              ┌──┬──┬──┐
+│ B│  on →        │◧ │▣ │◨ │   ← exactly one pressed
+└──┘  bg-muted    └──┴──┴──┘
+```
+
+- **Toggle** — `rounded-lg` button; pressed/hover fill `--toggle-on-bg`.
+- **Variants** — `default` (chromeless) and `outline` (bordered).
+- **Toggle Group** — `type="single"` (radio-like) or `"multiple"`; `spacing={0}` fuses
+  items into a segmented control.
+
+## API — Toggle
+
+<ArgTypes of={ToggleStories.Playground} />
+
+## Toggle variants, sizes & states
+
+<Canvas of={ToggleStories.Variants} />
+<Canvas of={ToggleStories.Sizes} />
+<Canvas of={ToggleStories.States} />
+
+`off · on · focus · disabled`. Off/on are the two pressed states; focus reproduces
+the focus-visible ring statically.
+
+## Toggle Group
+
+<Canvas of={ToggleGroupStories.Variants} />
+<Canvas of={ToggleGroupStories.Sizes} />
+<Canvas of={ToggleGroupStories.SingleSelect} />
+
+## Usage
+
+- **Do** use a **Toggle** for a single formatting/state button (bold, mute, pin).
+- **Do** use a **Toggle Group** `single` for mutually-exclusive options (text align).
+- **Do** give icon-only toggles an `aria-label`.
+- **Don't** use a Toggle for navigation or to submit — that's a `Button`.
+- **Don't** hardcode colors — pressed/border map to `--toggle-*` / semantic tokens.
+
+## Token mapping
+
+| Token | Role |
+|---|---|
+| `--toggle-on-bg` → `--muted` | Pressed / hover surface |
+| `--toggle-on-fg` → `--foreground` | Pressed icon/text |
+| `--toggle-outline-border` → `--input` | Outline variant edge |
+| `--toggle-focus-ring` → `--ring` | Focus-visible ring |
+| `--toggle-radius` → `--radius-lg` | Corner radius |
+
+## Accessibility (WCAG 2.2 AA)
+
+- Radix supplies `aria-pressed` (Toggle) / roving focus + `role="group"` (Toggle Group)
+  and full keyboard support (Space/Enter; arrows within a group).
+- Icon-only controls require an `aria-label`.
+- Visible focus ring; pressed state is conveyed by fill **and** `aria-pressed`, not color alone.
+- In a `single` group, exactly one item is pressed at a time.

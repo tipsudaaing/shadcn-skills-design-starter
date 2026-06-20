@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Bold, Italic, Underline } from "lucide-react";
+import { Bold, Italic, Underline, AlignLeft, AlignCenter, AlignRight } from "lucide-react";
 import { getEntry } from "@/components/docs/registry";
 
 type Args = {
@@ -39,5 +39,58 @@ const meta: Meta<Args> = {
 export default meta;
 type Story = StoryObj<Args>;
 
+function Cell({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="flex flex-col items-start gap-2">
+      {children}
+      <span className="text-muted-foreground font-mono text-xs">{label}</span>
+    </div>
+  );
+}
+
+const Marks = () => (
+  <>
+    <ToggleGroupItem value="bold" aria-label="Bold"><Bold /></ToggleGroupItem>
+    <ToggleGroupItem value="italic" aria-label="Italic"><Italic /></ToggleGroupItem>
+    <ToggleGroupItem value="underline" aria-label="Underline"><Underline /></ToggleGroupItem>
+  </>
+);
+
 export const Playground: Story = {};
+
+export const Variants: Story = {
+  name: "Variants",
+  render: () => (
+    <div className="flex flex-wrap items-start gap-6">
+      <Cell label="default"><ToggleGroup type="multiple"><Marks /></ToggleGroup></Cell>
+      <Cell label="outline"><ToggleGroup type="multiple" variant="outline"><Marks /></ToggleGroup></Cell>
+    </div>
+  ),
+};
+
+export const Sizes: Story = {
+  name: "Sizes",
+  render: () => (
+    <div className="flex flex-wrap items-start gap-6">
+      {(["sm", "default", "lg"] as const).map((s) => (
+        <Cell key={s} label={s}>
+          <ToggleGroup type="multiple" variant="outline" size={s}><Marks /></ToggleGroup>
+        </Cell>
+      ))}
+    </div>
+  ),
+};
+
+export const SingleSelect: Story = {
+  name: "Single select (joined)",
+  parameters: { docs: { description: { story: "`type=\"single\"` with `spacing={0}` fuses items into a segmented control — exactly one stays pressed." } } },
+  render: () => (
+    <ToggleGroup type="single" variant="outline" defaultValue="center" spacing={0}>
+      <ToggleGroupItem value="left" aria-label="Align left"><AlignLeft /></ToggleGroupItem>
+      <ToggleGroupItem value="center" aria-label="Align center"><AlignCenter /></ToggleGroupItem>
+      <ToggleGroupItem value="right" aria-label="Align right"><AlignRight /></ToggleGroupItem>
+    </ToggleGroup>
+  ),
+};
+
 export const Demo: Story = { name: "Demo", render: () => <>{getEntry("toggle-group")!.demo}</> };
