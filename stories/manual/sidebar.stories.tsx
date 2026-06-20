@@ -63,4 +63,42 @@ export default meta;
 type Story = StoryObj<Args>;
 
 export const Playground: Story = {};
+
+export const Floating: Story = {
+  name: "Floating variant",
+  parameters: {
+    docs: { description: { story: "The `floating` variant detaches the sidebar into a rounded, ringed panel. All surfaces use the dedicated `--sidebar-*` tokens." } },
+  },
+  render: () => (
+    <div className="h-96 w-[40rem] overflow-hidden rounded-lg border bg-sidebar/30">
+      <SidebarProvider className="min-h-full">
+        <Sidebar variant="floating" collapsible="icon">
+          <SidebarHeader className="px-4 py-3 text-sm font-semibold">Acme Inc</SidebarHeader>
+          <SidebarContent>
+            <SidebarGroup>
+              <SidebarGroupLabel>Platform</SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {links.map(({ title, icon: Icon }) => (
+                    <SidebarMenuItem key={title}>
+                      <SidebarMenuButton isActive={title === "Home"}>
+                        <Icon />
+                        <span>{title}</span>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  ))}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          </SidebarContent>
+        </Sidebar>
+        <SidebarInset className="p-4">
+          <SidebarTrigger />
+          <p className="mt-4 text-sm text-muted-foreground">Main content</p>
+        </SidebarInset>
+      </SidebarProvider>
+    </div>
+  ),
+};
+
 export const Demo: Story = { name: "Demo", render: () => <>{getEntry("sidebar")!.demo}</> };

@@ -53,4 +53,34 @@ export default meta;
 type Story = StoryObj<Args>;
 
 export const Playground: Story = {};
+
+export const Open: Story = {
+  name: "Open menu (items + shortcuts)",
+  parameters: {
+    docs: { description: { story: "The File menu open on mount — items, shortcuts, a separator, and a disabled item. The open trigger and focused item use `--menubar-*`." } },
+  },
+  render: () => (
+    <div className="h-64">
+      <Menubar value="file">
+        <MenubarMenu value="file">
+          <MenubarTrigger>File</MenubarTrigger>
+          <MenubarContent>
+            <MenubarItem>New Tab <MenubarShortcut>⌘T</MenubarShortcut></MenubarItem>
+            <MenubarItem>New Window <MenubarShortcut>⌘N</MenubarShortcut></MenubarItem>
+            <MenubarSeparator />
+            <MenubarItem disabled>Print <MenubarShortcut>⌘P</MenubarShortcut></MenubarItem>
+          </MenubarContent>
+        </MenubarMenu>
+        <MenubarMenu value="edit">
+          <MenubarTrigger>Edit</MenubarTrigger>
+          <MenubarContent>
+            <MenubarItem>Undo <MenubarShortcut>⌘Z</MenubarShortcut></MenubarItem>
+            <MenubarItem>Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut></MenubarItem>
+          </MenubarContent>
+        </MenubarMenu>
+      </Menubar>
+    </div>
+  ),
+};
+
 export const Demo: Story = { name: "Demo", render: () => <>{getEntry("menubar")!.demo}</> };

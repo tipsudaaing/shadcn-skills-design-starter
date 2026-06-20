@@ -241,6 +241,38 @@
       "footer-bg":    { "$type": "color", "$value": "{semantic.muted}",            "$description": "Footer/total row (50%)" },
       "border":       { "$type": "color", "$value": "{semantic.border}",           "$description": "Row dividers" },
       "caption":      { "$type": "color", "$value": "{semantic.muted-foreground}" }
+    },
+    "tabs": {
+      "list-bg":          { "$type": "color", "$value": "{semantic.muted}",            "$description": "Segmented track (default variant)" },
+      "trigger-fg":       { "$type": "color", "$value": "{semantic.muted-foreground}", "$description": "Inactive tab label" },
+      "trigger-active-bg":{ "$type": "color", "$value": "{semantic.background}",        "$description": "Active tab pill" },
+      "trigger-active-fg":{ "$type": "color", "$value": "{semantic.foreground}" },
+      "line-indicator":   { "$type": "color", "$value": "{semantic.foreground}",        "$description": "Underline (line variant)" },
+      "focus-ring":       { "$type": "color", "$value": "{semantic.ring}" }
+    },
+    "breadcrumb": {
+      "fg":         { "$type": "color", "$value": "{semantic.muted-foreground}", "$description": "Trail + separators" },
+      "link-hover": { "$type": "color", "$value": "{semantic.foreground}" },
+      "current":    { "$type": "color", "$value": "{semantic.foreground}",       "$description": "Current page (aria-current)" }
+    },
+    "menubar": {
+      "trigger-open-bg": { "$type": "color", "$value": "{semantic.muted}",            "$description": "Hover/open trigger" },
+      "content-bg":      { "$type": "color", "$value": "{semantic.popover}" },
+      "content-fg":      { "$type": "color", "$value": "{semantic.popover-foreground}" },
+      "item-focus-bg":   { "$type": "color", "$value": "{semantic.accent}" },
+      "item-focus-fg":   { "$type": "color", "$value": "{semantic.accent-foreground}" },
+      "separator":       { "$type": "color", "$value": "{semantic.border}" },
+      "shortcut":        { "$type": "color", "$value": "{semantic.muted-foreground}" }
+    },
+    "navigation-menu": {
+      "trigger-bg":    { "$type": "color", "$value": "{semantic.muted}",            "$description": "Hover/open trigger" },
+      "content-bg":    { "$type": "color", "$value": "{semantic.popover}" },
+      "content-fg":    { "$type": "color", "$value": "{semantic.popover-foreground}" },
+      "link-hover-bg": { "$type": "color", "$value": "{semantic.accent}" },
+      "focus-ring":    { "$type": "color", "$value": "{semantic.ring}" }
+    },
+    "pagination": {
+      "active-border": { "$type": "color", "$value": "{semantic.border}", "$description": "Current page uses Button outline; inactive is ghost" }
     }
   }
 }

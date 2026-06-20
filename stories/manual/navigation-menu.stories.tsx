@@ -39,4 +39,33 @@ export default meta;
 type Story = StoryObj<Args>;
 
 export const Playground: Story = {};
+
+export const Inline: Story = {
+  name: "Inline (no viewport)",
+  parameters: {
+    docs: { description: { story: "`viewport={false}` renders each panel beneath its own trigger (a popover surface on `--navigation-menu-content-bg`) instead of in the shared animated viewport." } },
+  },
+  render: () => (
+    <div className="h-64">
+      <NavigationMenu viewport={false}>
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className="grid w-[220px] gap-1 p-2">
+                {links.map((l) => (
+                  <li key={l}><NavigationMenuLink>{l}</NavigationMenuLink></li>
+                ))}
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink className="px-2.5 py-1.5 text-sm font-medium">Docs</NavigationMenuLink>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+    </div>
+  ),
+};
+
 export const Demo: Story = { name: "Demo", render: () => <>{getEntry("navigation-menu")!.demo}</> };

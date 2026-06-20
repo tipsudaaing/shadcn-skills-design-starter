@@ -49,6 +49,11 @@
     "input-otp":     { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Slot border/ring" } },
     "progress":      { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.base}", "$description": "Indicator width tween" } },
     "item":          { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Hover/focus color" } },
-    "table":         { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Row hover color" } }
+    "table":         { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Row hover color" } },
+    "tabs":          { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}", "$description": "Trigger active/hover" } },
+    "menubar":       { "transition-duration": { "$type": "duration", "$value": "{primitive.duration.fast}" } },
+    "navigation-menu": {
+      "transition-duration": { "$type": "duration", "$value": "{primitive.duration.moderate}", "$description": "Viewport + content motion (300ms)" }
+    }
   }
 }

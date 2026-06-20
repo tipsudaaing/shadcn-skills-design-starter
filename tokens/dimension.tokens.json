@@ -55,6 +55,19 @@
     "spinner":  { "size":   { "$type": "dimension", "$value": "1rem", "$description": "16px default (size-4)" } },
     "kbd":      { "radius": { "$type": "dimension", "$value": "{semantic.radius-sm}" } },
     "empty":    { "radius": { "$type": "dimension", "$value": "{semantic.radius-xl}" } },
-    "item":     { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } }
+    "item":     { "radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" } },
+    "tabs": {
+      "list-radius":    { "$type": "dimension", "$value": "{semantic.radius-lg}", "$description": "Track corner (default variant)" },
+      "trigger-radius": { "$type": "dimension", "$value": "{semantic.radius-md}", "$description": "Active tab pill" }
+    },
+    "menubar": {
+      "radius":         { "$type": "dimension", "$value": "{semantic.radius-lg}", "$description": "Bar container" },
+      "trigger-radius": { "$type": "dimension", "$value": "{semantic.radius-sm}" },
+      "content-radius": { "$type": "dimension", "$value": "{semantic.radius-md}" }
+    },
+    "navigation-menu": {
+      "trigger-radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" },
+      "content-radius": { "$type": "dimension", "$value": "{semantic.radius-lg}" }
+    }
   }
 }
