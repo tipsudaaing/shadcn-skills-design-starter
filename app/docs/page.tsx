@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -26,6 +27,22 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
+// Card-specific previews for components whose real demo can't show its point in
+// an inert, non-hover thumbnail. Tooltip only appears on hover and portals out
+// of the frame, so we render a static mock of the open tooltip using the same
+// tokens as the real TooltipContent (bg-foreground / text-background).
+const CARD_PREVIEW_OVERRIDES: Record<string, ReactNode> = {
+  tooltip: (
+    <div className="flex flex-col items-center gap-2">
+      <div className="bg-foreground text-background relative rounded-md px-3 py-1.5 text-xs">
+        Add to library
+        <span className="bg-foreground absolute -bottom-1 left-1/2 size-2 -translate-x-1/2 rotate-45 rounded-[1px]" />
+      </div>
+      <Button variant="outline">Hover me</Button>
+    </div>
+  ),
+};
 
 export default function DocsHome() {
   // Group the full registry entries (keeps `demo` for the card previews).
@@ -83,7 +100,8 @@ export default function DocsHome() {
                           <AutoFitPreview>{item.demo}</AutoFitPreview>
                         ) : (
                           <div className="flex w-full scale-90 items-center justify-center p-4 [&_*]:!animate-none">
-                            {defaultPreview(item.demo)}
+                            {CARD_PREVIEW_OVERRIDES[item.slug] ??
+                              defaultPreview(item.demo)}
                           </div>
                         )}
                       </div>
