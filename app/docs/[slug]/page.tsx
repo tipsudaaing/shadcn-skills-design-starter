@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 import { ComponentPreview } from "@/components/docs/component-preview";
+import { getComponentCss } from "@/components/docs/component-css";
 import { getEntry, registry } from "@/components/docs/registry";
 import {
   Breadcrumb,
@@ -76,6 +77,7 @@ export default async function ComponentPage({
         <ComponentPreview
           preview={entry.demo}
           code={entry.code}
+          css={getComponentCss(entry.slug, entry.title)?.css}
           install={INSTALL_OVERRIDES[entry.slug] ?? entry.slug}
         />
       )}

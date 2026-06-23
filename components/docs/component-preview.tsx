@@ -41,10 +41,13 @@ function CopyButton({
 export function ComponentPreview({
   preview,
   code,
+  css,
   install,
 }: {
   preview: React.ReactNode;
   code: string;
+  /** Design tokens this component uses, as a copy-pasteable CSS block. */
+  css?: string | null;
   /** Items to pass to `shadcn add`. Defaults to none (Installation tab hidden). */
   install?: string;
 }) {
@@ -57,6 +60,7 @@ export function ComponentPreview({
       <TabsList>
         <TabsTrigger value="preview">Preview</TabsTrigger>
         <TabsTrigger value="code">Code</TabsTrigger>
+        {css && <TabsTrigger value="css">CSS Variables</TabsTrigger>}
         {installCommand && (
           <TabsTrigger value="installation">Installation</TabsTrigger>
         )}
@@ -74,6 +78,20 @@ export function ComponentPreview({
           <CodeBlock code={code} />
         </div>
       </TabsContent>
+
+      {css && (
+        <TabsContent value="css">
+          <p className="text-muted-foreground mb-3 text-sm">
+            The design tokens this component styles itself with. Override these
+            CSS custom properties to retheme it — values map 1:1 to the Tailwind
+            semantic classes.
+          </p>
+          <div className="relative">
+            <CopyButton value={css} label="Copy CSS variables" />
+            <CodeBlock code={css} />
+          </div>
+        </TabsContent>
+      )}
 
       {installCommand && (
         <TabsContent value="installation">
