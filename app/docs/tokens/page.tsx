@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { DesignTokensView } from "@/components/docs/design-tokens-view";
 import { registry } from "@/components/docs/registry";
 import {
   Breadcrumb,
@@ -10,7 +11,6 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export const metadata: Metadata = {
   title: "Design Tokens — Documentation",
@@ -48,24 +48,7 @@ export default function DesignTokensPage() {
         </p>
       </header>
 
-      <Tabs defaultValue={tokens[0]?.slug} className="w-full gap-6">
-        <TabsList>
-          {tokens.map((token) => (
-            <TabsTrigger key={token.slug} value={token.slug}>
-              {token.title}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-
-        {tokens.map((token) => (
-          <TabsContent key={token.slug} value={token.slug} className="space-y-4">
-            <p className="text-muted-foreground border-b pb-3 text-sm leading-6">
-              {token.description}
-            </p>
-            {token.demo}
-          </TabsContent>
-        ))}
-      </Tabs>
+      <DesignTokensView />
     </article>
   );
 }
