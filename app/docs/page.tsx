@@ -1,7 +1,23 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-import { getNavGroups } from "@/components/docs/registry";
+import { AutoFitPreview } from "@/components/docs/auto-fit-preview";
+import { defaultPreview } from "@/components/docs/card-preview";
+import { CATEGORY_ORDER, registry } from "@/components/docs/registry";
+
+// Demos taller/wider than the card frame — scaled to fit so the whole
+// component shows uncropped, instead of being centre-cropped to the frame.
+const FIT_TO_FRAME = new Set([
+  "card",
+  "carousel",
+  "empty",
+  "sidebar",
+  "data-table",
+  "command",
+  "calendar",
+  "scroll-area",
+  "chart",
+]);
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,8 +28,12 @@ import {
 } from "@/components/ui/card";
 
 export default function DocsHome() {
-  const groups = getNavGroups();
-  const total = groups.reduce((n, g) => n + g.items.length, 0);
+  // Group the full registry entries (keeps `demo` for the card previews).
+  const groups = CATEGORY_ORDER.map((title) => ({
+    title,
+    items: registry.filter((e) => e.category === title),
+  })).filter((g) => g.items.length > 0);
+  const total = registry.length;
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-10 md:py-14">
@@ -47,9 +67,28 @@ export default function DocsHome() {
             </div>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {group.items.map((item) => (
-                <Link key={item.slug} href={`/docs/${item.slug}`} className="group">
-                  <Card className="hover:border-foreground/20 hover:bg-accent/40 h-full p-0 transition-colors">
-                    <CardHeader className="p-4">
+                // The card holds a live demo preview that can itself contain
+                // links/buttons, so the whole card can't be wrapped in an <a>
+                // (that nests anchors → invalid HTML + hydration error). Instead
+                // an absolutely-positioned overlay <Link> makes it clickable, and
+                // the preview is `inert` so it's out of the tab order / a11y tree.
+                <div key={item.slug} className="group relative">
+                  <Card className="group-hover:border-foreground/20 h-full gap-0 overflow-hidden p-0 transition-colors">
+                    {item.category !== "Design Tokens" && (
+                      <div
+                        inert
+                        className="bg-muted/30 relative flex h-36 items-center justify-center overflow-hidden border-b"
+                      >
+                        {FIT_TO_FRAME.has(item.slug) ? (
+                          <AutoFitPreview>{item.demo}</AutoFitPreview>
+                        ) : (
+                          <div className="flex w-full scale-90 items-center justify-center p-4 [&_*]:!animate-none">
+                            {defaultPreview(item.demo)}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                    <CardHeader className="group-hover:bg-accent/40 p-4 transition-colors">
                       <CardTitle className="flex items-center justify-between text-base">
                         {item.title}
                         <ArrowRight className="text-muted-foreground size-4 opacity-0 transition-opacity group-hover:opacity-100" />
@@ -59,7 +98,12 @@ export default function DocsHome() {
                       </CardDescription>
                     </CardHeader>
                   </Card>
-                </Link>
+                  <Link
+                    href={`/docs/${item.slug}`}
+                    aria-label={`${item.title} documentation`}
+                    className="focus-visible:ring-ring absolute inset-0 rounded-lg focus-visible:ring-2 focus-visible:outline-none"
+                  />
+                </div>
               ))}
             </div>
           </section>
