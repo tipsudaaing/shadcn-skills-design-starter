@@ -53,7 +53,7 @@ export default function DocsHome() {
             </Link>
           </Button>
           <Button variant="outline" asChild>
-            <Link href="/docs/colors">View design tokens</Link>
+            <Link href="/docs/tokens">View design tokens</Link>
           </Button>
         </div>
       </div>
